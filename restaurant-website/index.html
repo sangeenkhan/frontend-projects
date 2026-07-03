@@ -1,9 +1,446 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Restaurant Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layali — Modern Saudi Gastronomy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@200;300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0D;
+  --bg-2:#131316;
+  --surface:#1A1A1E;
+  --sand:#E5D3B3;
+  --gold:#D4AF37;
+  --gold-light:#F3E5AB;
+  --emerald:#1E564B;
+  --fg:#F8F5F0;
+  --muted:#8C8C94;
+  --border:rgba(212, 175, 55, 0.15);
+  --border-strong:rgba(212, 175, 55, 0.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.serif{font-family:'Cormorant Garamond',serif;letter-spacing:-.01em;font-weight:400}
+.arabic{font-family:'Amiri',serif}
+
+/* Texture & Background */
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle at 20% 10%,rgba(212,175,55,.04),transparent 40%),radial-gradient(circle at 80% 90%,rgba(30,86,75,.05),transparent 40%);pointer-events:none;z-index:0}
+.pattern-overlay{position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l15 15-15 15-15-15zM30 30l15 15-15 15-15-15z' fill='none' stroke='%23D4AF37' stroke-opacity='0.02' stroke-width='1'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+
+/* Navigation */
+nav{position:fixed;top:0;left:0;width:100%;padding:24px 5%;display:flex;align-items:center;justify-content:space-between;z-index:1000;transition:all .4s;background:transparent}
+nav.scrolled{background:rgba(11,11,13,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 5%}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
+.logo-mark{width:36px;height:36px;border:1px solid var(--gold);display:grid;place-items:center;transform:rotate(45deg);transition:transform .4s}
+.logo:hover .logo-mark{transform:rotate(135deg)}
+.logo-mark span{transform:rotate(-45deg);color:var(--gold);font-family:'Amiri',serif;font-size:18px;font-weight:700}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{color:var(--sand);text-decoration:none;font-size:13px;font-weight:300;letter-spacing:1px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.reserve-btn{padding:12px 24px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:'Outfit',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.reserve-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);transition:left .4s cubic-bezier(.4,0,.2,1);z-index:-1}
+.reserve-btn:hover{color:var(--bg)}
+.reserve-btn:hover::before{left:0}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;z-index:1;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1471400974738-0c89e0d1f1be?auto=format&fit=crop&w=1920&q=80');background-size:cover;background-position:center;filter:brightness(0.4) contrast(1.1)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,transparent 0%,rgba(11,11,13,0.8) 80%)}
+.hero-content{position:relative;z-index:2;max-width:900px;padding:0 20px;animation:fadeUp 1.5s ease}
+.hero-arabic{font-size:clamp(2rem,5vw,3.5rem);color:var(--gold);margin-bottom:16px;opacity:0.9}
+.hero h1{font-size:clamp(3rem,8vw,7rem);font-weight:300;line-height:1;text-transform:uppercase;letter-spacing:8px;background:linear-gradient(180deg,#FFFFFF 0%,#E5D3B3 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:24px}
+.hero p{font-size:18px;color:var(--sand);max-width:600px;margin:0 auto 40px;line-height:1.8;font-weight:300;letter-spacing:1px}
+.hero-divider{width:1px;height:60px;background:linear-gradient(180deg,transparent,var(--gold),transparent);margin:0 auto 40px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+/* Section Structure */
+section{padding:120px 5%;position:relative;z-index:1}
+.container{max-width:1280px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:80px}
+.section-tag{display:inline-block;color:var(--gold);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;font-weight:500}
+.section-title{font-size:clamp(2.5rem,5vw,4rem);font-weight:300;letter-spacing:-.5px}
+.section-subtitle{color:var(--muted);margin-top:16px;font-size:16px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.8}
+
+/* Story Section */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-img-wrap{position:relative;height:600px}
+.story-img{width:100%;height:100%;object-fit:cover;filter:sepia(0.2) contrast(1.1)}
+.story-img-frame{position:absolute;inset:20px;border:1px solid var(--border-strong);pointer-events:none;z-index:2}
+.story-img-gold{position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;background:var(--gold);z-index:0;opacity:0.2;filter:blur(40px)}
+.story-content .section-tag{text-align:left}
+.story-content h2{font-size:clamp(2rem,4vw,3.5rem);margin-bottom:24px;line-height:1.1}
+.story-content p{color:var(--muted);line-height:1.8;margin-bottom:24px;font-weight:300}
+.signature{font-family:'Amiri',serif;font-size:24px;color:var(--gold);margin-top:32px}
+
+/* Menu Section */
+.menu-section{background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 60px}
+.menu-item{display:flex;gap:20px;padding-bottom:24px;border-bottom:1px solid var(--border);align-items:flex-start;cursor:pointer;transition:transform .3s}
+.menu-item:hover{transform:translateX(10px)}
+.menu-img-wrap{width:80px;height:80px;flex-shrink:0;overflow:hidden;border:1px solid var(--border);position:relative}
+.menu-img-wrap::after{content:'';position:absolute;inset:0;background:rgba(11,11,13,0.5);transition:background .3s}
+.menu-item:hover .menu-img-wrap::after{background:transparent}
+.menu-img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.menu-item:hover .menu-img{transform:scale(1.1)}
+.menu-info{flex:1}
+.menu-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.menu-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500}
+.menu-dots{flex:1;margin:0 12px;border-bottom:1px dotted var(--border-strong);transform:translateY(-4px)}
+.menu-price{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold)}
+.menu-desc{font-size:13px;color:var(--muted);font-weight:300;line-height:1.6}
+.menu-tag{font-size:10px;color:var(--emerald);text-transform:uppercase;letter-spacing:1px;margin-top:4px;font-weight:600}
+
+/* Gallery / Ambiance */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+.gallery-item{position:relative;overflow:hidden;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,1,.3,1)}
+.gallery-item:hover img{transform:scale(1.1)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(11,11,13,0.8) 100%);opacity:0;transition:opacity .3s}
+.gallery-item:hover::after{opacity:1}
+.gallery-item.tall{grid-row:span 2}
+.gallery-item.wide{grid-column:span 2}
+.gallery-cap{position:absolute;bottom:20px;left:20px;color:var(--fg);font-family:'Cormorant Garamond',serif;font-size:18px;z-index:2;opacity:0;transform:translateY(20px);transition:all .3s}
+.gallery-item:hover .gallery-cap{opacity:1;transform:translateY(0)}
+
+/* Reservation */
+.reserve-section{background:linear-gradient(180deg,var(--bg),var(--bg-2))}
+.reserve-box{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);background:var(--surface)}
+.reserve-info{padding:60px;background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80');background-size:cover;background-position:center;position:relative}
+.reserve-info::before{content:'';position:absolute;inset:0;background:rgba(11,11,13,0.85)}
+.reserve-info-content{position:relative;z-index:2}
+.reserve-info h3{font-size:32px;margin-bottom:24px}
+.reserve-info p{color:var(--sand);margin-bottom:32px;line-height:1.6}
+.detail-item{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:var(--muted);font-size:14px}
+.detail-item svg{width:18px;height:18px;color:var(--gold);flex-shrink:0}
+.reserve-form{padding:60px;display:flex;flex-direction:column;gap:20px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-group label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold)}
+.form-group input, .form-group select{background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--fg);padding:8px 0;font-family:'Outfit',sans-serif;font-size:15px;outline:none;transition:border-color .3s}
+.form-group input:focus, .form-group select:focus{border-color:var(--gold)}
+.submit-btn{margin-top:20px;padding:16px;background:var(--gold);color:var(--bg);border:none;font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .3s}
+.submit-btn:hover{background:var(--gold-light);letter-spacing:3px}
+
+/* Footer */
+footer{padding:80px 5% 40px;background:var(--bg-2);border-top:1px solid var(--border)}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:32px;letter-spacing:2px;margin-bottom:16px}
+.footer-brand p{color:var(--muted);line-height:1.8;font-size:14px;max-width:300px}
+.footer-col h4{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:20px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:12px}
+.footer-col a{color:var(--sand);text-decoration:none;font-size:14px;transition:color .3s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{max-width:1280px;margin:0 auto;padding-top:30px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+
+/* Reveal Animations */
+.reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.2,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Responsive */
+@media (max-width:968px){
+  .nav-links{display:none}
+  .story-grid, .reserve-box{grid-template-columns:1fr;gap:40px}
+  .menu-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-item.wide{grid-column:span 1}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media (max-width:640px){
+  section{padding:80px 5%}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-    <h1>Restaurant Website</h1>
+
+<div class="pattern-overlay"></div>
+
+<nav id="navbar">
+  <a href="#" class="logo">
+    <div class="logo-mark"><span>L</span></div>
+    <span class="logo-text">Layali</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#ambiance">Ambiance</a></li>
+    <li><a href="#reserve">Reserve</a></li>
+  </ul>
+  <button class="reserve-btn" onclick="document.getElementById('reserve').scrollIntoView()">Book a Table</button>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-arabic">ليالي</div>
+    <h1>Layali</h1>
+    <div class="hero-divider"></div>
+    <p>An immersive culinary journey through the heart of Saudi Arabia.<br>Where ancient tradition meets modern gastronomy.</p>
+    <button class="reserve-btn" onclick="document.getElementById('reserve').scrollIntoView()">Reserve Your Experience</button>
+  </div>
+</header>
+
+<section id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-img-wrap reveal">
+        <div class="story-img-gold"></div>
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" class="story-img" alt="Saudi Cuisine">
+        <div class="story-img-frame"></div>
+      </div>
+      <div class="story-content reveal">
+        <span class="section-tag">Our Heritage</span>
+        <h2>A Legacy <br>Crafted in <em style="color:var(--gold)">Gold</em></h2>
+        <p>Born in the bustling heart of Riyadh, Layali is more than a restaurant; it is a sanctuary of Saudi heritage. We bridge the ancient spices of the Silk Road with the refined techniques of modern fine dining.</p>
+        <p>Every dish tells a story of the desert, the oasis, and the sea. From the saffron-infused rice of the Najd to the freshly caught seafood of the Red Sea, we source only the purest ingredients to create an unforgettable global experience.</p>
+        <div class="signature">Chef Tariq Al-Saud</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="menu-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Culinary Art</span>
+      <h2 class="section-title">Signature Selections</h2>
+      <p class="section-subtitle">A curated tasting menu honoring the rich flavors of the Kingdom.</p>
+    </div>
+
+    <div class="menu-grid">
+      <!-- Item 1 -->
+      <div class="menu-item reveal">
+        <div class="menu-img-wrap"><img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=200&q=80" class="menu-img" alt="Kabsa"></div>
+        <div class="menu-info">
+          <div class="menu-header">
+            <span class="menu-name">Royal Lamb Kabsa</span>
+            <span class="menu-dots"></span>
+            <span class="menu-price">240 SAR</span>
+          </div>
+          <p class="menu-desc">Slow-roasted Najdi lamb over aromatic basmati rice, infused with saffron, cardamom, and toasted almonds.</p>
+          <span class="menu-tag">Chef's Signature</span>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="menu-item reveal">
+        <div class="menu-img-wrap"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=200&q=80" class="menu-img" alt="Seafood"></div>
+        <div class="menu-info">
+          <div class="menu-header">
+            <span class="menu-name">Red Sea Sayadia</span>
+            <span class="menu-dots"></span>
+            <span class="menu-price">180 SAR</span>
+          </div>
+          <p class="menu-desc">Pan-seared hammour fillet on caramelized onion rice, finished with a tamarind-pine nut reduction.</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="menu-item reveal">
+        <div class="menu-img-wrap"><img src="https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=200&q=80" class="menu-img" alt="Mutabbaq"></div>
+        <div class="menu-info">
+          <div class="menu-header">
+            <span class="menu-name">Truffle Mutabbaq</span>
+            <span class="menu-dots"></span>
+            <span class="menu-price">110 SAR</span>
+          </div>
+          <p class="menu-desc">Thin, flaky pastry stuffed with desert truffles, wild thyme, and aged aged halloumi.</p>
+          <span class="menu-tag">Vegetarian</span>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="menu-item reveal">
+        <div class="menu-img-wrap"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=200&q=80" class="menu-img" alt="Dessert"></div>
+        <div class="menu-info">
+          <div class="menu-header">
+            <span class="menu-name">Kunafa Royale</span>
+            <span class="menu-dots"></span>
+            <span class="menu-price">95 SAR</span>
+          </div>
+          <p class="menu-desc">Crisp kataifi layered with mascarpone cream, soaked in orange-blossom syrup and edible 24k gold leaf.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ambiance">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">The Experience</span>
+      <h2 class="section-title">Step Into The Oasis</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item wide tall reveal">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Interior">
+        <span class="gallery-cap">The Royal Hall</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=80" alt="Dining">
+        <span class="gallery-cap">Private Dining</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1471400974738-0c89e0d1f1be?auto=format&fit=crop&w=400&q=80" alt="Drinks">
+        <span class="gallery-cap">Lounge & Tea</span>
+      </div>
+      <div class="gallery-item tall reveal">
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=400&q=80" alt="Chef">
+        <span class="gallery-cap">The Kitchen</span>
+      </div>
+      <div class="gallery-item wide reveal">
+        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=800&q=80" alt="Architecture">
+        <span class="gallery-cap">Najdi Architecture</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reserve" class="reserve-section">
+  <div class="container">
+    <div class="reserve-box reveal">
+      <div class="reserve-info">
+        <div class="reserve-info-content">
+          <h3>Reserve <em style="color:var(--gold)">Your Table</em></h3>
+          <p>Join us for an evening of unparalleled hospitality. We welcome guests globally from 6:00 PM until midnight.</p>
+          
+          <div class="detail-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>King Fahd Rd, Olaya District, Riyadh</span>
+          </div>
+          <div class="detail-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Daily: 6:00 PM – 12:00 AM</span>
+          </div>
+          <div class="detail-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+966 11 234 5678</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="reserve-form" id="bookingForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" required>
+          </div>
+          <div class="form-group">
+            <label>Time</label>
+            <input type="time" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Guests</label>
+          <select>
+            <option>2 People</option>
+            <option>3 People</option>
+            <option>4 People</option>
+            <option>5+ People (Private Room)</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Confirm Reservation</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Layali</div>
+      <p>An immersive culinary journey through the heart of Saudi Arabia. Crafted with passion, served with heritage.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#ambiance">Ambiance</a></li>
+        <li><a href="#reserve">Reservations</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <ul>
+        <li><a href="#">Olaya District, Riyadh</a></li>
+        <li><a href="#">Jeddah Corniche (Opening Soon)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">X (Twitter)</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Layali Fine Dining. All rights reserved.</span>
+    <span>Designed with Heritage by Trendrica</span>
+  </div>
+</footer>
+
+<script>
+// Sticky Nav
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// Scroll Reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Form Submission
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.submit-btn');
+  const originalText = btn.textContent;
+  
+  btn.textContent = 'Reservation Confirmed ✓';
+  btn.style.background = 'var(--emerald)';
+  btn.style.color = '#fff';
+  
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.style.background = '';
+    btn.style.color = '';
+    this.reset();
+  }, 3000);
+});
+</script>
 </body>
 </html>
