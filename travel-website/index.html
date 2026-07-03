@@ -1,1 +1,597 @@
-travel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rihla — Discover Saudi Arabia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@200;300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08090F;
+  --bg-2:#0F1015;
+  --surface:rgba(255,255,255,.04);
+  --surface-hover:rgba(255,255,255,.08);
+  --border:rgba(255,255,255,.08);
+  --border-strong:rgba(255,255,255,.15);
+  --fg:#F8F5F0;
+  --muted:#8892A6;
+  --sand:#E3B778;
+  --sunset:#FF6B35;
+  --teal:#00C2A8;
+  --indigo:#1A1B3A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+h1,h2,h3,h4,.font-display{font-family:'Syne',sans-serif;letter-spacing:-.02em}
+.arabic{font-family:'Amiri',serif}
+
+/* Custom Cursor */
+.cursor-dot,.cursor-outline{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);transition:transform .15s ease-out,width .3s,height .3s,border-color .3s,background .3s}
+.cursor-dot{width:6px;height:6px;background:var(--sunset)}
+.cursor-outline{width:32px;height:32px;border:1px solid rgba(255,107,53,.4)}
+.cursor-outline.hover{width:60px;height:60px;border-color:var(--sand);background:rgba(227,183,120,.05)}
+
+/* Navigation */
+nav{position:fixed;top:0;left:0;width:100%;padding:24px 5%;display:flex;align-items:center;justify-content:space-between;z-index:1000;transition:all .4s}
+nav.scrolled{background:rgba(8,9,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 5%}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
+.logo-icon{font-family:'Amiri',serif;font-size:28px;color:var(--sunset);line-height:1}
+.logo-text{font-family:'Syne',sans-serif;font-size:24px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--fg);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:1px;text-transform:uppercase;transition:color .3s;position:relative;opacity:.8}
+.nav-links a:hover{opacity:1;color:var(--sunset)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--sunset);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.book-btn{padding:12px 24px;background:var(--sunset);color:var(--bg);font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:none;transition:all .3s}
+.book-btn:hover{background:var(--sand);transform:translateY(-2px);box-shadow:0 10px 20px rgba(255,107,53,.3)}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:flex-end;padding:140px 5% 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(180deg, #1A1B3A 0%, #FF6B35 80%, #E3B778 100%)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,9,15,.3) 0%,rgba(8,9,15,.4) 40%,rgba(8,9,15,.98) 100%)}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto}
+.hero-arabic{font-size:clamp(3rem,8vw,6rem);color:var(--sand);opacity:.8;margin-bottom:16px;line-height:1}
+.hero h1{font-size:clamp(3rem,8vw,7rem);font-weight:700;line-height:.9;text-transform:uppercase;max-width:900px;margin-bottom:32px}
+.hero h1 span{font-weight:200;font-style:italic}
+.hero p{font-size:18px;color:var(--muted);max-width:500px;margin-bottom:40px;line-height:1.6}
+
+/* Booking Widget */
+.booking-widget{background:rgba(15,16,21,.7);backdrop-filter:blur(20px);border:1px solid var(--border-strong);padding:24px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:16px;align-items:end;border-radius:4px;max-width:1000px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--sand)}
+.form-group input, .form-group select{background:transparent;border:none;border-bottom:1px solid var(--border-strong);color:var(--fg);padding:8px 0;font-family:'Outfit',sans-serif;font-size:15px;outline:none;transition:border-color .3s;cursor:none}
+.form-group input:focus, .form-group select:focus{border-color:var(--sunset)}
+.search-btn{padding:12px 24px;background:var(--sunset);color:var(--bg);border:none;height:42px;display:grid;place-items:center;cursor:none;transition:background .3s}
+.search-btn:hover{background:var(--sand)}
+.search-btn svg{width:20px;height:20px}
+
+/* Marquee */
+.marquee{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 0;overflow:hidden;background:var(--bg-2);position:relative;z-index:3}
+.marquee-track{display:flex;gap:60px;animation:marquee 30s linear infinite;white-space:nowrap}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.marquee-item{font-family:'Syne',sans-serif;font-size:28px;font-weight:600;color:var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:60px}
+.marquee-item span{color:var(--sunset)}
+
+/* Destinations */
+section{padding:120px 5%;position:relative;z-index:1}
+.container{max-width:1400px;margin:0 auto}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:20px}
+.section-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:600;text-transform:capitalize}
+.section-title em{font-weight:200;font-style:italic;color:var(--sand)}
+.section-subtitle{color:var(--muted);font-size:16px;max-width:400px;line-height:1.6}
+
+.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.dest-card{position:relative;height:500px;border-radius:8px;overflow:hidden;cursor:none;transition:transform .5s cubic-bezier(.2,1,.3,1)}
+.dest-card.featured{grid-column:span 2;height:500px}
+.dest-art{position:absolute;inset:0;transition:transform 1s cubic-bezier(.2,1,.3,1)}
+.dest-card:hover .dest-art{transform:scale(1.08)}
+.dest-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(8,9,15,.95) 100%)}
+.dest-info{position:absolute;bottom:0;left:0;padding:32px;z-index:2;width:100%}
+.dest-region{font-size:11px;color:var(--sunset);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:8px;display:block}
+.dest-name{font-family:'Syne',sans-serif;font-size:32px;font-weight:600;margin-bottom:8px}
+.dest-desc{font-size:14px;color:var(--muted);max-width:300px;opacity:0;transform:translateY(20px);transition:all .4s}
+.dest-card:hover .dest-desc{opacity:1;transform:translateY(0)}
+.dest-explore{margin-top:16px;display:inline-flex;align-items:center;gap:8px;color:var(--sand);font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:600;opacity:0;transition:opacity .4s}
+.dest-card:hover .dest-explore{opacity:1}
+
+/* Experiences */
+.exp-section{background:linear-gradient(180deg,var(--bg),var(--indigo))}
+.exp-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
+.exp-tabs{display:flex;flex-direction:column;gap:16px}
+.exp-tab{padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:8px;cursor:none;transition:all .3s;display:flex;align-items:center;gap:20px}
+.exp-tab.active{background:var(--surface-hover);border-color:var(--sunset)}
+.exp-tab:hover{border-color:var(--border-strong)}
+.exp-tab-num{font-family:'Syne',sans-serif;font-size:24px;color:var(--muted);font-weight:600}
+.exp-tab.active .exp-tab-num{color:var(--sunset)}
+.exp-tab-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:500}
+.exp-tab-desc{font-size:13px;color:var(--muted);margin-top:4px}
+.exp-visual{position:relative;height:600px;border-radius:8px;overflow:hidden}
+.exp-img{position:absolute;inset:0;opacity:0;transition:opacity .8s ease, transform 8s ease}
+.exp-img.active{opacity:1;transform:scale(1.05)}
+.exp-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(8,9,15,.8) 100%)}
+.exp-caption{position:absolute;bottom:40px;left:40px;z-index:2}
+.exp-caption h3{font-size:48px;font-weight:600;margin-bottom:8px}
+.exp-caption p{color:var(--sand)}
+
+/* Stats */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:60px}
+.stat-item{text-align:center;padding:32px;border:1px solid var(--border);border-radius:8px;background:var(--surface);transition:all .3s}
+.stat-item:hover{border-color:var(--sunset);transform:translateY(-5px)}
+.stat-num{font-family:'Syne',sans-serif;font-size:56px;font-weight:700;background:linear-gradient(180deg,var(--sand),var(--sunset));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.stat-label{color:var(--muted);text-transform:uppercase;letter-spacing:2px;font-size:12px}
+
+/* CTA */
+.cta-section{text-align:center;padding:140px 5%;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:linear-gradient(135deg, #0F1015 0%, #1A1B3A 100%)}
+.cta-content{position:relative;z-index:2;max-width:800px;margin:0 auto}
+.cta-arabic{font-size:48px;color:var(--sunset);margin-bottom:16px}
+.cta-content h2{font-size:clamp(2.5rem,6vw,5rem);font-weight:600;margin-bottom:24px;line-height:1}
+.cta-content p{color:var(--muted);font-size:18px;margin-bottom:40px}
+.cta-btn{padding:18px 40px;background:var(--sunset);color:var(--bg);border:none;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:none;transition:all .3s;display:inline-flex;align-items:center;gap:12px}
+.cta-btn:hover{background:var(--sand);transform:translateY(-3px);box-shadow:0 15px 30px rgba(255,107,53,.3)}
+
+/* Footer */
+footer{padding:80px 5% 40px;background:var(--bg-2);border-top:1px solid var(--border)}
+.footer-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.footer-logo{font-family:'Syne',sans-serif;font-size:32px;font-weight:700;margin-bottom:16px}
+.footer-brand p{color:var(--muted);line-height:1.8;font-size:14px;max-width:300px}
+.footer-col h4{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--sand);margin-bottom:20px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:12px}
+.footer-col a{color:var(--fg);text-decoration:none;font-size:14px;opacity:.8;transition:all .3s}
+.footer-col a:hover{opacity:1;color:var(--sunset);padding-left:4px}
+.footer-bottom{max-width:1400px;margin:0 auto;padding-top:30px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);flex-wrap:wrap;gap:16px}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.2,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Custom CSS Art Backgrounds */
+.art-vid{position:absolute;inset:0}
+.svg-art{width:100%;height:100%;object-fit:cover}
+
+/* Responsive */
+@media (max-width:1024px){
+  .booking-widget{grid-template-columns:1fr 1fr;}
+  .search-btn{grid-column:span 2}
+  .dest-grid{grid-template-columns:repeat(2,1fr)}
+  .dest-card.featured{grid-column:span 2}
+  .exp-layout{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  body{cursor:auto}
+  .cursor-dot,.cursor-outline{display:none}
+  .nav-links{display:none}
+  .dest-grid{grid-template-columns:1fr}
+  .dest-card.featured{grid-column:span 1}
+  .booking-widget{grid-template-columns:1fr}
+  .search-btn{grid-column:span 1}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-outline" id="cursor-outline"></div>
+<div class="cursor-dot" id="cursor-dot"></div>
+
+<nav id="navbar">
+  <a href="#" class="logo">
+    <span class="logo-icon">رحلة</span>
+    <span class="logo-text">Rihla</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#experiences">Experiences</a></li>
+    <li><a href="#">Planner</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <button class="book-btn">Plan My Trip</button>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-arabic">رحلة العمر</div>
+    <h1>Discover The <br><span>Undiscovered</span></h1>
+    <p>Journey through the mystical landscapes of Saudi Arabia. From the golden dunes of the Empty Quarter to the vibrant coral reefs of the Red Sea.</p>
+    
+    <div class="booking-widget">
+      <div class="form-group">
+        <label>Destination</label>
+        <select>
+          <option>AlUla (Hegra)</option>
+          <option>Riyadh</option>
+          <option>Jeddah</option>
+          <option>NEOM</option>
+          <option>Red Sea</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Check In</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Check Out</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Guests</label>
+        <select>
+          <option>2 Adults</option>
+          <option>1 Adult</option>
+          <option>3 Adults</option>
+          <option>Family (4+)</option>
+        </select>
+      </div>
+      <button class="search-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">AlUla <span>✦</span> Diriyah <span>✦</span> Red Sea <span>✦</span> NEOM <span>✦</span> Jeddah <span>✦</span> Riyadh <span>✦</span> Empty Quarter <span>✦</span></div>
+    <div class="marquee-item">AlUla <span>✦</span> Diriyah <span>✦</span> Red Sea <span>✦</span> NEOM <span>✦</span> Jeddah <span>✦</span> Riyadh <span>✦</span> Empty Quarter <span>✦</span></div>
+  </div>
+</div>
+
+<section id="destinations">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <h2 class="section-title">Iconic <em>Destinations</em></h2>
+      </div>
+      <p class="section-subtitle">Explore the most breathtaking historical and modern wonders rising from the desert sands.</p>
+    </div>
+
+    <div class="dest-grid">
+      <!-- AlUla Custom Art -->
+      <div class="dest-card featured reveal">
+        <div class="dest-art" style="background: linear-gradient(180deg, #4A2511 0%, #8B3A1A 60%, #D35400 100%);">
+          <svg class="svg-art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+            <path d="M10,100 L40,40 L50,60 L70,20 L90,100 Z" fill="#2C1408" opacity="0.8"/>
+            <path d="M0,100 L25,50 L40,80 L60,30 L75,70 L100,100 Z" fill="#1A0A02" opacity="0.6"/>
+            <circle cx="80" cy="20" r="8" fill="#FFD700" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="dest-info">
+          <span class="dest-region">North West · Heritage</span>
+          <h3 class="dest-name">AlUla & Hegra</h3>
+          <p class="dest-desc">Step back 2,000 years into Saudi's first UNESCO World Heritage site. Stunning Nabataean tombs carved into rose-colored sandstone mountains.</p>
+          <a href="#" class="dest-explore">Explore AlUla <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Riyadh Custom Art -->
+      <div class="dest-card reveal">
+        <div class="dest-art" style="background: linear-gradient(180deg, #0F2027 0%, #203A43 50%, #2C5364 100%);">
+          <svg class="svg-art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+            <rect x="10" y="40" width="15" height="60" fill="#0B0F10" opacity="0.8"/>
+            <rect x="25" y="20" width="20" height="80" fill="#0B0F10" opacity="0.9"/>
+            <polygon points="25,20 35,5 45,20" fill="#0B0F10" opacity="0.9"/>
+            <rect x="45" y="50" width="20" height="50" fill="#0B0F10" opacity="0.7"/>
+            <rect x="65" y="30" width="15" height="70" fill="#0B0F10" opacity="0.85"/>
+            <rect x="80" y="45" width="20" height="55" fill="#0B0F10" opacity="0.6"/>
+            <circle cx="20" cy="15" r="4" fill="#FFD700" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="dest-info">
+          <span class="dest-region">Central · Metropolis</span>
+          <h3 class="dest-name">Riyadh</h3>
+          <a href="#" class="dest-explore">Explore City <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Jeddah Custom Art -->
+      <div class="dest-card reveal">
+        <div class="dest-art" style="background: linear-gradient(180deg, #0052D4 0%, #4364F7 50%, #6FB1FC 100%);">
+          <svg class="svg-art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+            <path d="M0,100 Q25,70 50,80 T100,60 L100,100 Z" fill="#0033A0" opacity="0.6"/>
+            <path d="M0,100 Q30,60 60,75 T100,50 L100,100 Z" fill="#001F5C" opacity="0.8"/>
+            <circle cx="80" cy="20" r="6" fill="#FFFFFF" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="dest-info">
+          <span class="dest-region">West · Coastal</span>
+          <h3 class="dest-name">Jeddah</h3>
+          <a href="#" class="dest-explore">Explore City <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Red Sea Custom Art -->
+      <div class="dest-card reveal">
+        <div class="dest-art" style="background: linear-gradient(180deg, #00C2A8 0%, #00766C 100%);">
+          <svg class="svg-art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+            <path d="M10,100 L10,60 Q15,50 20,60 T30,60 T40,60 T50,60 T60,60 T70,60 T80,60 T90,60 L90,100 Z" fill="#004D40" opacity="0.8"/>
+            <circle cx="20" cy="70" r="3" fill="#FF6B35"/>
+            <circle cx="50" cy="80" r="4" fill="#FFD700"/>
+            <circle cx="75" cy="75" r="3" fill="#FF6B35"/>
+          </svg>
+        </div>
+        <div class="dest-info">
+          <span class="dest-region">West · Islands</span>
+          <h3 class="dest-name">Red Sea</h3>
+          <a href="#" class="dest-explore">Explore Islands <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Empty Quarter Custom Art -->
+      <div class="dest-card featured reveal">
+        <div class="dest-art" style="background: linear-gradient(180deg, #E6B980 0%, #C07F5A 100%);">
+          <svg class="svg-art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+            <path d="M0,100 Q30,40 60,70 T100,30 L100,100 Z" fill="#D08C50" opacity="0.8"/>
+            <path d="M0,100 Q40,60 70,80 T100,50 L100,100 Z" fill="#A66A3A" opacity="0.9"/>
+            <circle cx="20" cy="15" r="10" fill="#FFFFFF" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="dest-info">
+          <span class="dest-region">South · Adventure</span>
+          <h3 class="dest-name">Rub' al Khali</h3>
+          <p class="dest-desc">Venture into the world's largest contiguous sand desert. A vast, silent sea of dunes offering unparalleled stargazing and dune-bashing.</p>
+          <a href="#" class="dest-explore">Explore Desert <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experiences" class="exp-section">
+  <div class="container">
+    <div class="exp-layout">
+      <div class="exp-tabs reveal">
+        <div class="section-header" style="margin-bottom:40px">
+          <div>
+            <h2 class="section-title">Curated <em>Experiences</em></h2>
+          </div>
+        </div>
+        
+        <div class="exp-tab active" data-target="0">
+          <span class="exp-tab-num">01</span>
+          <div>
+            <div class="exp-tab-title">Desert Adventures</div>
+            <div class="exp-tab-desc">Dune bashing, camel trekking, and Bedouin camps.</div>
+          </div>
+        </div>
+        
+        <div class="exp-tab" data-target="1">
+          <span class="exp-tab-num">02</span>
+          <div>
+            <div class="exp-tab-title">Red Sea Diving</div>
+            <div class="exp-tab-desc">Pristine coral reefs and untouched marine ecosystems.</div>
+          </div>
+        </div>
+
+        <div class="exp-tab" data-target="2">
+          <span class="exp-tab-num">03</span>
+          <div>
+            <div class="exp-tab-title">Historical Voyages</div>
+            <div class="exp-tab-desc">Walk through 7,000 years of human civilization.</div>
+          </div>
+        </div>
+
+        <div class="exp-tab" data-target="3">
+          <span class="exp-tab-num">04</span>
+          <div>
+            <div class="exp-tab-title">Modern Luxuries</div>
+            <div class="exp-tab-desc">Ultra-luxury resorts in NEOM and the Red Sea Project.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-visual reveal">
+        <!-- Desert Adventure Art -->
+        <div class="exp-img active" style="background: linear-gradient(180deg, #FF6B35 0%, #C07F5A 100%);">
+          <svg class="svg-art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+            <circle cx="80" cy="20" r="12" fill="#FFD700" opacity="0.6"/>
+            <path d="M0,100 Q30,50 60,80 T100,40 L100,100 Z" fill="#8B3A1A" opacity="0.8"/>
+            <path d="M0,100 Q40,70 70,90 T100,60 L100,100 Z" fill="#4A2511" opacity="0.9"/>
+          </svg>
+          <div class="exp-caption">
+            <h3>Rub' al Khali</h3>
+            <p>The Empty Quarter</p>
+          </div>
+        </div>
+        
+        <!-- Red Sea Diving Art -->
+        <div class="exp-img" style="background: linear-gradient(180deg, #00766C 0%, #0033A0 100%);">
+          <svg class="svg-art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+            <path d="M10,100 L10,50 Q15,40 20,50 T30,50 T40,50 T50,50 T60,50 T70,50 T80,50 T90,50 L90,100 Z" fill="#004D40" opacity="0.9"/>
+            <circle cx="25" cy="60" r="3" fill="#FF6B35"/>
+            <circle cx="55" cy="70" r="4" fill="#FFD700"/>
+            <circle cx="80" cy="65" r="3" fill="#FF6B35"/>
+            <path d="M10,80 Q20,70 30,80 T50,80 T70,80 T90,80" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.3"/>
+          </svg>
+          <div class="exp-caption">
+            <h3>Red Sea</h3>
+            <p>Vibrant Coral Reefs</p>
+          </div>
+        </div>
+        
+        <!-- Historical Art -->
+        <div class="exp-img" style="background: linear-gradient(180deg, #4A2511 0%, #D35400 100%);">
+          <svg class="svg-art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+            <rect x="20" y="40" width="15" height="60" fill="#2C1408" opacity="0.9"/>
+            <rect x="22" y="20" width="11" height="20" fill="#1A0A02" opacity="0.9"/>
+            <rect x="40" y="50" width="12" height="50" fill="#2C1408" opacity="0.8"/>
+            <rect x="42" y="30" width="8" height="20" fill="#1A0A02" opacity="0.8"/>
+            <rect x="55" y="35" width="16" height="65" fill="#2C1408" opacity="0.9"/>
+            <rect x="57" y="15" width="12" height="20" fill="#1A0A02" opacity="0.9"/>
+            <rect x="75" y="55" width="10" height="45" fill="#2C1408" opacity="0.7"/>
+            <rect x="77" y="40" width="6" height="15" fill="#1A0A02" opacity="0.7"/>
+            <circle cx="15" cy="15" r="8" fill="#FFD700" opacity="0.4"/>
+          </svg>
+          <div class="exp-caption">
+            <h3>Hegra</h3>
+            <p>Ancient Nabataean City</p>
+          </div>
+        </div>
+        
+        <!-- Modern Luxuries / NEOM Art -->
+        <div class="exp-img" style="background: linear-gradient(180deg, #0F2027 0%, #00C2A8 100%);">
+          <svg class="svg-art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+            <polygon points="10,100 40,20 70,100" fill="#0B0F10" opacity="0.8"/>
+            <polygon points="40,100 70,40 90,100" fill="#0B0F10" opacity="0.9"/>
+            <line x1="10" y1="80" x2="90" y2="80" stroke="#00C2A8" stroke-width="0.5" opacity="0.6"/>
+            <line x1="10" y1="60" x2="90" y2="60" stroke="#00C2A8" stroke-width="0.5" opacity="0.4"/>
+            <line x1="10" y1="40" x2="90" y2="40" stroke="#00C2A8" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="80" cy="15" r="6" fill="#FFFFFF" opacity="0.5"/>
+          </svg>
+          <div class="exp-caption">
+            <h3>NEOM</h3>
+            <p>The Future of Hospitality</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-header reveal" style="justify-content:center;text-align:center;flex-direction:column">
+      <h2 class="section-title">Why <em>Rihla</em></h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Destinations</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">10K</div>
+        <div class="stat-label">Happy Travelers</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">4.9</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Concierge Support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-content reveal">
+    <div class="cta-arabic">ابدأ رحلتك</div>
+    <h2>Begin Your Saudi Adventure</h2>
+    <p>Let our local experts craft the perfect itinerary tailored just for you. From luxury to adventure, your journey awaits.</p>
+    <button class="cta-btn">
+      Start Planning
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Rihla</div>
+      <p>Your gateway to the undiscovered wonders of Saudi Arabia. We craft journeys, not just trips.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#">Visa Info</a></li>
+        <li><a href="#">Travel Insurance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">+966 11 234 5678</a></li>
+        <li><a href="#">hello@rihla.travel</a></li>
+        <li><a href="#">Riyadh, Saudi Arabia</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Rihla Travel Co. All rights reserved.</span>
+    <span>Designed with Wanderlust by Trendrica</span>
+  </div>
+</footer>
+
+<script>
+// Custom Cursor
+const dot = document.getElementById('cursor-dot');
+const outline = document.getElementById('cursor-outline');
+let mouseX = 0, mouseY = 0, outX = 0, outY = 0;
+
+window.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  dot.style.left = mouseX + 'px';
+  dot.style.top = mouseY + 'px';
+});
+
+function animateCursor(){
+  outX += (mouseX - outX) * 0.15;
+  outY += (mouseY - outY) * 0.15;
+  outline.style.left = outX + 'px';
+  outline.style.top = outY + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a, button, input, select, .dest-card, .exp-tab').forEach(el => {
+  el.addEventListener('mouseenter', () => outline.classList.add('hover'));
+  el.addEventListener('mouseleave', () => outline.classList.remove('hover'));
+});
+
+// Sticky Nav
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// Scroll Reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Experience Tabs
+const tabs = document.querySelectorAll('.exp-tab');
+const images = document.querySelectorAll('.exp-img');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.target;
+    
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    
+    images.forEach(img => img.classList.remove('active'));
+    images[target].classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
