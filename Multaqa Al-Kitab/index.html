@@ -1,1 +1,2273 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ملتقى الكتاب - مكتبة ومقهى في حي طويق، الرياض. حيث يلتقي الكتاب بالقهوة.">
+<title>ملتقى الكتاب | مكتبة ومقهى</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4ebdc;
+    --bg-deep: #ecdfc7;
+    --paper: #faf5ea;
+    --ink: #2a1c12;
+    --ink-soft: #5a4836;
+    --muted: #8a7a66;
+    --walnut: #5a3a26;
+    --walnut-dark: #3d2616;
+    --burgundy: #7a2e3a;
+    --burgundy-dark: #5e222c;
+    --sage: #9aa890;
+    --sage-deep: #6f7d65;
+    --gold: #b8924a;
+    --line: rgba(90, 58, 38, 0.15);
+    --line-strong: rgba(90, 58, 38, 0.35);
+    --shadow-soft: 0 10px 30px -10px rgba(58, 38, 22, 0.18);
+    --shadow-deep: 0 24px 60px -24px rgba(58, 38, 22, 0.35);
+    --shadow-card: 0 2px 8px rgba(58, 38, 22, 0.06), 0 12px 32px -16px rgba(58, 38, 22, 0.15);
+    --font-serif: 'Amiri', 'Times New Roman', serif;
+    --font-sans: 'Tajawal', system-ui, -apple-system, sans-serif;
+    --radius: 4px;
+    --max: 1240px;
+  }
 
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* paper grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.23 0 0 0 0 0.14 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1.18;
+    color: var(--walnut-dark);
+    margin: 0;
+    letter-spacing: 0;
+  }
+  h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); }
+  h2 { font-size: clamp(1.9rem, 4vw, 3rem); }
+  h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); }
+  
+  p { margin: 0 0 1em; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  button { font-family: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 2;
+  }
+
+  section { padding: 96px 0; position: relative; z-index: 2; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 18px;
+  }
+  .eyebrow .num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--gold);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--burgundy);
+    opacity: 0.6;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 0 auto;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .ornament svg { width: 32px; height: 32px; }
+  .ornament .line { flex: 0 0 60px; height: 1px; background: currentColor; opacity: 0.5; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-align: center;
+    justify-content: center;
+  }
+  .btn-primary {
+    background: var(--walnut);
+    color: var(--paper);
+    box-shadow: 0 6px 18px -8px rgba(58, 38, 22, 0.5);
+  }
+  .btn-primary:hover {
+    background: var(--walnut-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -10px rgba(58, 38, 22, 0.6);
+  }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--walnut-dark);
+    border-color: var(--line-strong);
+  }
+  .btn-ghost:hover {
+    border-color: var(--walnut);
+    background: rgba(90, 58, 38, 0.05);
+  }
+  .btn-sm { padding: 10px 18px; font-size: 0.85rem; }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(244, 235, 220, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    transition: padding 0.3s ease, background 0.3s ease;
+  }
+  .nav.scrolled { background: rgba(244, 235, 220, 0.95); }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    max-width: var(--max);
+    margin: 0 auto;
+    gap: 24px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--walnut);
+    color: var(--paper);
+    display: grid;
+    place-items: center;
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1px var(--gold), 0 4px 10px -4px rgba(58,38,22,0.4);
+  }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .brand-text strong { font-family: var(--font-serif); font-size: 1.15rem; color: var(--walnut-dark); }
+  .brand-text em { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--muted); font-style: normal; text-transform: uppercase; }
+  
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .nav-links a {
+    position: relative;
+    padding: 8px 14px;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    inset-inline-start: 14px;
+    inset-inline-end: 14px;
+    bottom: 4px;
+    height: 1px;
+    background: var(--burgundy);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--walnut-dark); }
+  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+  .nav-actions { display: flex; align-items: center; gap: 12px; }
+  .lang-toggle {
+    width: 42px;
+    height: 38px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--walnut-dark);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    display: grid;
+    place-items: center;
+  }
+  .lang-toggle:hover { background: var(--walnut); color: var(--paper); border-color: var(--walnut); }
+
+  .hamburger {
+    display: none;
+    width: 42px;
+    height: 38px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+  }
+  .hamburger span {
+    width: 20px;
+    height: 1.5px;
+    background: var(--walnut-dark);
+    transition: transform 0.3s ease, opacity 0.2s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 80px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 50% at 75% 30%, rgba(184, 146, 74, 0.18), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 15% 80%, rgba(122, 46, 58, 0.1), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+  }
+  .hero-copy { max-width: 580px; }
+  .hero h1 {
+    margin-bottom: 24px;
+    color: var(--walnut-dark);
+  }
+  .hero h1 .accent { color: var(--burgundy); font-style: italic; }
+  .hero-sub {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+  
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .rating-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .stars { display: flex; gap: 2px; color: var(--gold); }
+  .stars svg { width: 18px; height: 18px; }
+  .rating-num { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: var(--walnut-dark); }
+  .rating-label { font-size: 0.78rem; color: var(--muted); line-height: 1.3; }
+  
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: rgba(154, 168, 144, 0.18);
+    color: var(--sage-deep);
+    border: 1px solid rgba(154, 168, 144, 0.4);
+  }
+  .status-pill::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sage-deep);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .status-pill.closed {
+    background: rgba(122, 46, 58, 0.1);
+    color: var(--burgundy);
+    border-color: rgba(122, 46, 58, 0.3);
+  }
+  .status-pill.closed::before { background: var(--burgundy); animation: none; }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(111, 125, 101, 0.5); }
+    50% { box-shadow: 0 0 0 6px rgba(111, 125, 101, 0); }
+  }
+
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 460px;
+    margin-inline-start: auto;
+  }
+  .hero-visual svg { width: 100%; height: 100%; }
+  .steam {
+    transform-origin: center bottom;
+    animation: steamRise 3.5s ease-in-out infinite;
+    opacity: 0;
+  }
+  .steam-2 { animation-delay: 1.2s; }
+  .steam-3 { animation-delay: 2.1s; }
+  @keyframes steamRise {
+    0% { opacity: 0; transform: translateY(0) scaleX(1); }
+    20% { opacity: 0.7; }
+    80% { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-30px) scaleX(1.3); }
+  }
+
+  /* ===== ABOUT ===== */
+  .about { background: var(--bg-deep); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+  }
+  .about-text .lead {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    line-height: 1.7;
+    color: var(--walnut-dark);
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .about-text p { color: var(--ink-soft); }
+  .about-text .drop-cap::first-letter {
+    font-family: var(--font-serif);
+    font-size: 3.4rem;
+    font-weight: 700;
+    float: inline-start;
+    line-height: 0.85;
+    margin-inline-end: 8px;
+    margin-top: 4px;
+    color: var(--burgundy);
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .stat .num {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--walnut-dark);
+    display: block;
+    line-height: 1;
+  }
+  .stat .lbl { font-size: 0.82rem; color: var(--muted); margin-top: 4px; display: block; }
+
+  .about-visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-deep);
+    background: var(--walnut);
+  }
+  .about-visual svg { width: 100%; height: 100%; }
+  .quote-mark {
+    position: absolute;
+    top: -20px;
+    inset-inline-start: -20px;
+    font-family: var(--font-serif);
+    font-size: 8rem;
+    line-height: 1;
+    color: var(--burgundy);
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  /* ===== BOOKS ===== */
+  .books-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .books-intro { max-width: 460px; color: var(--ink-soft); }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+  .filter-btn {
+    padding: 8px 18px;
+    border-radius: 30px;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+  }
+  .filter-btn:hover { border-color: var(--walnut); color: var(--walnut-dark); }
+  .filter-btn.active {
+    background: var(--walnut);
+    color: var(--paper);
+    border-color: var(--walnut);
+  }
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 28px;
+  }
+  .book-card {
+    background: var(--paper);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+  }
+  .book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-deep);
+  }
+  .book-cover {
+    aspect-ratio: 3 / 4;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+  .book-cover svg { width: 100%; height: 100%; position: absolute; inset: 0; }
+  .book-cover-title {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: var(--paper);
+    text-align: center;
+    line-height: 1.4;
+    padding: 0 12px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  .book-info {
+    padding: 18px 20px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .book-genre {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .book-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--walnut-dark);
+    margin-bottom: 4px;
+    line-height: 1.35;
+  }
+  .book-author { font-size: 0.85rem; color: var(--muted); }
+  .book-card.hide { display: none; }
+
+  /* ===== MENU ===== */
+  .menu { background: var(--walnut-dark); color: var(--paper); position: relative; overflow: hidden; }
+  .menu::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184, 146, 74, 0.15), transparent 60%);
+    pointer-events: none;
+  }
+  .menu h2 { color: var(--paper); }
+  .menu .eyebrow { color: var(--gold); }
+  .menu .eyebrow::before { background: var(--gold); }
+  .menu .eyebrow .num { color: var(--paper); opacity: 0.7; }
+  .menu-intro { color: rgba(250, 245, 234, 0.75); max-width: 540px; margin-bottom: 40px; }
+
+  .menu-tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid rgba(250, 245, 234, 0.15);
+    margin-bottom: 40px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .menu-tab {
+    padding: 14px 24px;
+    color: rgba(250, 245, 234, 0.6);
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.25s ease;
+    white-space: nowrap;
+  }
+  .menu-tab::after {
+    content: '';
+    position: absolute;
+    inset-inline: 24px;
+    bottom: -1px;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  .menu-tab:hover { color: var(--paper); }
+  .menu-tab.active { color: var(--gold); }
+  .menu-tab.active::after { transform: scaleX(1); }
+
+  .menu-panel { display: none; }
+  .menu-panel.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .menu-item {
+    padding: 22px 24px;
+    background: rgba(250, 245, 234, 0.04);
+    border: 1px solid rgba(250, 245, 234, 0.1);
+    border-radius: var(--radius);
+    transition: background 0.25s ease, border-color 0.25s ease;
+  }
+  .menu-item:hover {
+    background: rgba(250, 245, 234, 0.08);
+    border-color: rgba(184, 146, 74, 0.4);
+  }
+  .menu-item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .menu-item-name {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: var(--paper);
+  }
+  .menu-item-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 2px 8px;
+    border: 1px solid rgba(184, 146, 74, 0.4);
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .menu-item-desc { font-size: 0.88rem; color: rgba(250, 245, 234, 0.65); line-height: 1.6; }
+
+  /* ===== GALLERY ===== */
+  .gallery-head { text-align: center; margin-bottom: 50px; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 180px;
+    gap: 16px;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    cursor: pointer;
+    background: var(--walnut);
+    box-shadow: var(--shadow-card);
+  }
+  .gallery-item svg { width: 100%; height: 100%; display: block; transition: transform 0.6s ease; }
+  .gallery-item:hover svg { transform: scale(1.06); }
+  .gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(58, 38, 22, 0.5) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+  .gallery-caption {
+    position: absolute;
+    inset-inline: 16px;
+    bottom: 14px;
+    color: var(--paper);
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-item.tall { grid-row: span 2; }
+  .gallery-item.big { grid-column: span 2; grid-row: span 2; }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(42, 28, 18, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .lightbox.open { display: flex; opacity: 1; }
+  .lightbox-content {
+    max-width: 700px;
+    width: 100%;
+    background: var(--paper);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+  }
+  .lightbox.open .lightbox-content { transform: scale(1); }
+  .lightbox-svg { aspect-ratio: 4/3; background: var(--walnut); }
+  .lightbox-svg svg { width: 100%; height: 100%; }
+  .lightbox-info { padding: 20px 24px; }
+  .lightbox-info h4 { font-size: 1.3rem; margin-bottom: 4px; }
+  .lightbox-info p { color: var(--muted); font-size: 0.9rem; margin: 0; }
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    inset-inline-end: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(250, 245, 234, 0.1);
+    color: var(--paper);
+    font-size: 1.4rem;
+    display: grid;
+    place-items: center;
+    transition: background 0.2s ease;
+  }
+  .lightbox-close:hover { background: rgba(250, 245, 234, 0.25); }
+
+  /* ===== TESTIMONIALS ===== */
+  .voices { background: var(--bg-deep); overflow: hidden; }
+  .voices-head { text-align: center; margin-bottom: 50px; }
+  .carousel { position: relative; max-width: 880px; margin: 0 auto; }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.6, 0.05, 0.2, 1);
+  }
+  .voice-slide {
+    min-width: 100%;
+    padding: 16px 32px;
+    text-align: center;
+  }
+  .voice-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    line-height: 1.6;
+    color: var(--walnut-dark);
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .voice-quote::before, .voice-quote::after {
+    font-family: var(--font-serif);
+    color: var(--burgundy);
+    opacity: 0.4;
+    font-size: 2.4rem;
+    line-height: 0;
+    position: relative;
+    top: 0.4em;
+  }
+  .voice-quote::before { content: '“'; inset-inline-start: 0; margin-inline-end: 6px; }
+  .voice-quote::after { content: '”'; margin-inline-start: 6px; }
+  .voice-author {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--walnut-dark);
+    font-size: 1.05rem;
+  }
+  .voice-role { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+  
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 36px;
+  }
+  .carousel-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--walnut-dark);
+    display: grid;
+    place-items: center;
+    transition: all 0.25s ease;
+  }
+  .carousel-btn:hover { background: var(--walnut); color: var(--paper); border-color: var(--walnut); }
+  .carousel-btn svg { width: 18px; height: 18px; }
+  .carousel-dots { display: flex; gap: 8px; }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .dot.active { background: var(--burgundy); width: 24px; border-radius: 4px; }
+
+  /* ===== VISIT ===== */
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 50px;
+    align-items: stretch;
+  }
+  .visit-info { display: flex; flex-direction: column; gap: 24px; }
+  .info-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 28px;
+    box-shadow: var(--shadow-card);
+  }
+  .info-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .info-card h3 svg { width: 18px; height: 18px; color: var(--burgundy); }
+  .hours-table { width: 100%; border-collapse: collapse; }
+  .hours-table tr { border-bottom: 1px dashed var(--line); }
+  .hours-table tr:last-child { border-bottom: 0; }
+  .hours-table td { padding: 10px 0; font-size: 0.92rem; }
+  .hours-table td:first-child { color: var(--ink-soft); font-weight: 500; }
+  .hours-table td:last-child { text-align: end; color: var(--muted); font-family: var(--font-serif); }
+  .hours-today { color: var(--burgundy) !important; font-weight: 700; }
+  
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .contact-row:last-child { margin-bottom: 0; }
+  .contact-row a, .contact-row span { font-size: 0.95rem; color: var(--ink-soft); }
+  .contact-row a:hover { color: var(--burgundy); }
+  
+  .visit-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  
+  .map-wrap {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-deep);
+    min-height: 420px;
+    background: var(--bg-deep);
+    position: relative;
+  }
+  .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; min-height: 420px; }
+
+  /* ===== CONTACT / FOOTER ===== */
+  .footer {
+    background: var(--walnut-dark);
+    color: var(--paper);
+    padding: 80px 0 30px;
+    position: relative;
+    z-index: 2;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 50px;
+  }
+  .footer h4 {
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+  .footer-brand .brand-mark { background: var(--gold); color: var(--walnut-dark); margin-bottom: 16px; }
+  .footer-brand p { color: rgba(250, 245, 234, 0.7); font-size: 0.92rem; max-width: 320px; }
+  .footer-links a, .footer-contact p {
+    color: rgba(250, 245, 234, 0.75);
+    font-size: 0.92rem;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.2s ease;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-contact p { margin: 0 0 10px; }
+  .social-row { display: flex; gap: 12px; margin-top: 14px; }
+  .social-row a {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(250, 245, 234, 0.08);
+    display: grid; place-items: center;
+    transition: background 0.25s ease;
+  }
+  .social-row a:hover { background: var(--gold); color: var(--walnut-dark); }
+  .social-row svg { width: 18px; height: 18px; }
+  
+  .footer-form { margin-top: 16px; }
+  .form-row { position: relative; margin-bottom: 14px; }
+  .form-row input, .form-row textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(250, 245, 234, 0.06);
+    border: 1px solid rgba(250, 245, 234, 0.15);
+    border-radius: var(--radius);
+    color: var(--paper);
+    font-family: inherit;
+    font-size: 0.92rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .form-row input:focus, .form-row textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(250, 245, 234, 0.1);
+  }
+  .form-row input::placeholder, .form-row textarea::placeholder { color: rgba(250, 245, 234, 0.4); }
+  .form-row textarea { resize: vertical; min-height: 80px; }
+  .form-row.error input, .form-row.error textarea { border-color: var(--burgundy); }
+  .form-error {
+    font-size: 0.78rem;
+    color: #e8a4ad;
+    margin-top: 4px;
+    display: none;
+  }
+  .form-row.error .form-error { display: block; }
+  .form-success {
+    background: rgba(154, 168, 144, 0.2);
+    border: 1px solid var(--sage);
+    color: var(--paper);
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    font-size: 0.88rem;
+    display: none;
+    margin-top: 10px;
+  }
+  .form-success.show { display: block; }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(250, 245, 234, 0.12);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 0.82rem;
+    color: rgba(250, 245, 234, 0.55);
+  }
+
+  /* Back to top */
+  .to-top {
+    position: fixed;
+    inset-inline-end: 28px;
+    bottom: 28px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--walnut);
+    color: var(--paper);
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow-deep);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: all 0.3s ease;
+    z-index: 90;
+  }
+  .to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .to-top:hover { background: var(--burgundy); }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 980px) {
+    .hero-grid, .about-grid, .visit-grid, .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-visual { max-width: 360px; margin: 0 auto; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: span 2; }
+  }
+  @media (max-width: 768px) {
+    .nav-links {
+      position: fixed;
+      inset: 70px 0 auto 0;
+      background: var(--paper);
+      flex-direction: column;
+      align-items: stretch;
+      padding: 20px 28px;
+      gap: 4px;
+      transform: translateY(-110%);
+      transition: transform 0.4s ease;
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-deep);
+    }
+    .nav-links.open { transform: translateY(0); }
+    .nav-links a { padding: 14px 8px; border-bottom: 1px solid var(--line); }
+    .nav-links a::after { display: none; }
+    .hamburger { display: flex; }
+    .nav-actions .btn-sm { display: none; }
+    section { padding: 70px 0; }
+    .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+    .gallery-item.wide, .gallery-item.big { grid-column: span 1; }
+    .gallery-item.tall, .gallery-item.big { grid-row: span 1; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-brand { grid-column: span 1; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    .stat:last-child { grid-column: span 2; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 0 20px; }
+    .nav-inner { padding: 14px 20px; }
+    .brand-text em { display: none; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .hero-actions .btn { width: 100%; }
+    .about-stats { grid-template-columns: 1fr; }
+    .stat:last-child { grid-column: span 1; }
+    .voice-slide { padding: 16px 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+    .steam { display: none; }
+  }
+
+  /* Print-friendly direction fixes */
+  [dir="ltr"] .nav-links a::after { transform-origin: left center; }
+  [dir="rtl"] .nav-links a::after { transform-origin: right center; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="top">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="Multaqa Al-Kitab home">
+      <span class="brand-mark">م</span>
+      <span class="brand-text">
+        <strong>ملتقى الكتاب</strong>
+        <em>Multaqa Al-Kitab</em>
+      </span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#about" data-i18n="nav.about">عن المكان</a>
+      <a href="#books" data-i18n="nav.books">المكتبة</a>
+      <a href="#menu" data-i18n="nav.menu">المقهى</a>
+      <a href="#gallery" data-i18n="nav.gallery">المعرض</a>
+      <a href="#voices" data-i18n="nav.voices">آراء</a>
+      <a href="#visit" data-i18n="nav.visit">الزيارة</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
+      <a href="#visit" class="btn btn-primary btn-sm" data-i18n="nav.cta">زورونا</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow"><span class="num">٠١</span><span data-i18n="hero.tag">الرياض · حي طويق</span></span>
+        <h1 data-i18n="hero.title">حيث يلتقي <span class="accent">الكتاب</span> بالقهوة</h1>
+        <p class="hero-sub" data-i18n="hero.sub">زاويةٌ هادئة في جنوب غرب الرياض، تجمع بين مكتبةٍ منتقاة بعناية ومقهى متخصّص. مكانٌ للقرّاء الباحثين عن سكينة المكان الثالث بين الروائح الورقية وعبق البنّ.</p>
+        <div class="hero-actions">
+          <a href="#visit" class="btn btn-primary" data-i18n="hero.cta">زورونا اليوم</a>
+          <a href="#books" class="btn btn-ghost" data-i18n="hero.cta2">تصفّح المكتبة</a>
+        </div>
+        <div class="hero-meta">
+          <div class="rating-badge">
+            <span class="rating-num">4.7</span>
+            <div>
+              <div class="stars" aria-label="4.7 out of 5 stars">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8.6-5.1 4.5 1.5 6.7L12 17.3 5.9 20.6l1.5-6.7L2.3 9.4l6.8-.6z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8.6-5.1 4.5 1.5 6.7L12 17.3 5.9 20.6l1.5-6.7L2.3 9.4l6.8-.6z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8.6-5.1 4.5 1.5 6.7L12 17.3 5.9 20.6l1.5-6.7L2.3 9.4l6.8-.6z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8.6-5.1 4.5 1.5 6.7L12 17.3 5.9 20.6l1.5-6.7L2.3 9.4l6.8-.6z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" opacity="0.7"><path d="M12 2l2.9 6.3 6.8.6-5.1 4.5 1.5 6.7L12 17.3 5.9 20.6l1.5-6.7L2.3 9.4l6.8-.6z"/></svg>
+              </div>
+              <div class="rating-label" data-i18n="hero.ratingLabel">تقييم الزوّار على خرائط جوجل</div>
+            </div>
+          </div>
+          <div class="status-pill" id="heroStatus">
+            <span id="heroStatusText">—</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual reveal reveal-delay-2" aria-hidden="true">
+        <!-- Hero SVG: stack of books with coffee cup and steam -->
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="hglow" cx="50%" cy="50%" r="55%">
+              <stop offset="0%" stop-color="#d4a574" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="woodG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6b4530"/>
+              <stop offset="100%" stop-color="#3d2616"/>
+            </linearGradient>
+          </defs>
+          <circle cx="250" cy="250" r="240" fill="url(#hglow)"/>
+          
+          <!-- Table surface -->
+          <ellipse cx="250" cy="400" rx="220" ry="22" fill="#3d2616" opacity="0.25"/>
+          <rect x="60" y="380" width="380" height="40" fill="url(#woodG)" rx="2"/>
+          <rect x="60" y="380" width="380" height="3" fill="#b8924a" opacity="0.4"/>
+          
+          <!-- Stack of books (closed, lying down, spine facing viewer) -->
+          <!-- Book 1 (bottom) -->
+          <rect x="90" y="350" width="280" height="30" fill="#5a3a26" rx="2"/>
+          <rect x="90" y="350" width="280" height="4" fill="#3d2616"/>
+          <rect x="90" y="377" width="280" height="3" fill="#2a1c12"/>
+          <line x1="110" y1="365" x2="150" y2="365" stroke="#b8924a" stroke-width="1.2"/>
+          <line x1="310" y1="365" x2="350" y2="365" stroke="#b8924a" stroke-width="1.2"/>
+          <circle cx="170" cy="365" r="2" fill="#b8924a"/>
+          
+          <!-- Book 2 -->
+          <rect x="100" y="322" width="270" height="28" fill="#7a2e3a" rx="2"/>
+          <rect x="100" y="322" width="270" height="4" fill="#5e222c"/>
+          <rect x="100" y="348" width="270" height="2" fill="#3a151c"/>
+          <line x1="120" y1="337" x2="155" y2="337" stroke="#b8924a" stroke-width="1.2"/>
+          <line x1="315" y1="337" x2="350" y2="337" stroke="#b8924a" stroke-width="1.2"/>
+          
+          <!-- Book 3 -->
+          <rect x="115" y="296" width="255" height="26" fill="#9aa890" rx="2"/>
+          <rect x="115" y="296" width="255" height="3" fill="#7d8a73"/>
+          <rect x="115" y="320" width="255" height="2" fill="#5c6855"/>
+          <line x1="135" y1="310" x2="170" y2="310" stroke="#b8924a" stroke-width="1.2"/>
+          <line x1="315" y1="310" x2="350" y2="310" stroke="#b8924a" stroke-width="1.2"/>
+          
+          <!-- Book 4 (top, slightly offset) -->
+          <rect x="130" y="272" width="230" height="24" fill="#b8924a" rx="2"/>
+          <rect x="130" y="272" width="230" height="3" fill="#8e6f3a"/>
+          <rect x="130" y="294" width="230" height="2" fill="#6b5128"/>
+          <line x1="150" y1="285" x2="180" y2="285" stroke="#3d2616" stroke-width="1.2"/>
+          <line x1="310" y1="285" x2="340" y2="285" stroke="#3d2616" stroke-width="1.2"/>
+          
+          <!-- Coffee cup with saucer on top of books -->
+          <g transform="translate(190, 200)">
+            <!-- Steam -->
+            <g class="steam steam-1">
+              <path d="M 35 30 Q 28 12 38 -2 Q 48 -16 40 -34" stroke="#8a7a66" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            </g>
+            <g class="steam steam-2">
+              <path d="M 60 30 Q 68 14 58 0 Q 48 -14 62 -30" stroke="#8a7a66" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            </g>
+            <g class="steam steam-3">
+              <path d="M 85 30 Q 78 14 88 0 Q 98 -14 90 -30" stroke="#8a7a66" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            </g>
+            
+            <!-- Saucer -->
+            <ellipse cx="60" cy="68" rx="90" ry="12" fill="#3d2616"/>
+            <ellipse cx="60" cy="66" rx="90" ry="10" fill="#5a3a26"/>
+            <ellipse cx="60" cy="64" rx="80" ry="7" fill="none" stroke="#b8924a" stroke-width="0.8" opacity="0.6"/>
+            
+            <!-- Cup -->
+            <path d="M 12 10 L 22 60 Q 22 66 30 66 L 90 66 Q 98 66 98 60 L 108 10 Z" fill="#faf5ea" stroke="#3d2616" stroke-width="1.8"/>
+            <!-- Cup rim -->
+            <ellipse cx="60" cy="10" rx="48" ry="6" fill="#3d2616"/>
+            <ellipse cx="60" cy="9" rx="46" ry="4.5" fill="#5a3a26"/>
+            <ellipse cx="60" cy="8" rx="44" ry="3.5" fill="#2a1c12"/>
+            <!-- Coffee surface highlight -->
+            <ellipse cx="55" cy="8" rx="20" ry="1.5" fill="#8e6f3a" opacity="0.6"/>
+            <!-- Handle -->
+            <path d="M 102 22 Q 130 22 130 42 Q 130 58 102 58" fill="none" stroke="#3d2616" stroke-width="3"/>
+            <path d="M 102 28 Q 124 28 124 42 Q 124 52 102 52" fill="none" stroke="#3d2616" stroke-width="1.5" opacity="0.5"/>
+            <!-- Decorative band on cup -->
+            <line x1="18" y1="35" x2="102" y2="35" stroke="#b8924a" stroke-width="0.8" opacity="0.7"/>
+            <line x1="20" y1="40" x2="100" y2="40" stroke="#b8924a" stroke-width="0.5" opacity="0.5"/>
+          </g>
+          
+          <!-- Decorative open book in background -->
+          <g transform="translate(330, 230) rotate(-12)" opacity="0.85">
+            <path d="M 0 20 L 50 12 L 50 50 L 0 56 Z" fill="#faf5ea" stroke="#3d2616" stroke-width="1.2"/>
+            <path d="M 50 12 L 100 20 L 100 56 L 50 50 Z" fill="#ecdfc7" stroke="#3d2616" stroke-width="1.2"/>
+            <line x1="6" y1="28" x2="42" y2="22" stroke="#8a7a66" stroke-width="0.6"/>
+            <line x1="6" y1="34" x2="42" y2="28" stroke="#8a7a66" stroke-width="0.6"/>
+            <line x1="6" y1="40" x2="42" y2="34" stroke="#8a7a66" stroke-width="0.6"/>
+            <line x1="58" y1="22" x2="94" y2="28" stroke="#8a7a66" stroke-width="0.6"/>
+            <line x1="58" y1="28" x2="94" y2="34" stroke="#8a7a66" stroke-width="0.6"/>
+            <line x1="58" y1="34" x2="94" y2="40" stroke="#8a7a66" stroke-width="0.6"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="eyebrow"><span class="num">٠٢</span><span data-i18n="about.label">عن المكان</span></span>
+        <h2 data-i18n="about.title">زاويةٌ هادئة بين الكتب والقهوة</h2>
+        <p class="lead" data-i18n="about.lead">"كأنّك تدخل متحفاً صغيراً للثقافة السعودية والعربية، حيث يحيط بك عبق الورق وعبق البنّ."</p>
+        <p class="drop-cap" data-i18n="about.p1">في حيّ طويق، جنوب غرب الرياض، وُلِد ملتقى الكتاب ليكون مساحةً جامعة بين عشّاق القراءة وعشّاق القهوة المختصّة. ليست مجرد مكتبة تبيع الكتب، ولا مقهى يقدّم القهوة فحسب — بل مكانٌ صُمِّم ليكون "المكان الثالث" الذي يبحث عنه القارئ: هادئٌ بلا ضجيج، دافئٌ بلا تكلّف، غنيٌّ بالكتاب بلا تكدّس.</p>
+        <p data-i18n="about.p2">انتقينا رفوفنا بعنايةٍ لتضمّ نماذج من الشعر العربي وأدبه، وكتباً في التاريخ والسير الذاتية وتطوير الذات، إلى جانب corner للقهوة التركية المقدّمة في كأس زجاجي — لأنّ التفاصيل الصغيرة هي ما يصنع الفارق.</p>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="num">4.7★</span>
+            <span class="lbl" data-i18n="about.stat1">تقييم الزوّار</span>
+          </div>
+          <div class="stat">
+            <span class="num">5+</span>
+            <span class="lbl" data-i18n="about.stat2">تخصّصات أدبية</span>
+          </div>
+          <div class="stat">
+            <span class="num">∞</span>
+            <span class="lbl" data-i18n="about.stat3">ساعات هدوء</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="abg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6b4530"/>
+              <stop offset="100%" stop-color="#3d2616"/>
+            </linearGradient>
+            <pattern id="spine" x="0" y="0" width="20" height="100" patternUnits="userSpaceOnUse">
+              <rect width="20" height="100" fill="#5a3a26"/>
+              <rect width="2" height="100" fill="#3d2616"/>
+              <rect x="18" width="2" height="100" fill="#3d2616"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="500" fill="url(#abg)"/>
+          <!-- warm light from above -->
+          <ellipse cx="200" cy="60" rx="180" ry="80" fill="#b8924a" opacity="0.25"/>
+          
+          <!-- Bookshelf wall -->
+          <g transform="translate(0, 100)">
+            <!-- shelf outer frame -->
+            <rect x="20" y="0" width="360" height="380" fill="#2a1c12"/>
+            <!-- shelves -->
+            <g>
+              <!-- Shelf 1 -->
+              <rect x="30" y="10" width="340" height="80" fill="#3d2616"/>
+              <!-- books on shelf 1 -->
+              <rect x="35" y="15" width="18" height="70" fill="#7a2e3a"/>
+              <rect x="55" y="20" width="16" height="65" fill="#9aa890"/>
+              <rect x="73" y="12" width="20" height="73" fill="#b8924a"/>
+              <rect x="95" y="18" width="14" height="67" fill="#5a3a26"/>
+              <rect x="111" y="15" width="22" height="70" fill="#7a2e3a"/>
+              <rect x="135" y="22" width="16" height="63" fill="#3d2616"/>
+              <rect x="153" y="14" width="18" height="71" fill="#9aa890"/>
+              <rect x="173" y="18" width="20" height="67" fill="#b8924a"/>
+              <rect x="195" y="12" width="14" height="73" fill="#5a3a26"/>
+              <rect x="211" y="20" width="22" height="65" fill="#7a2e3a"/>
+              <rect x="235" y="15" width="16" height="70" fill="#3d2616"/>
+              <rect x="253" y="18" width="20" height="67" fill="#9aa890"/>
+              <rect x="275" y="14" width="18" height="71" fill="#b8924a"/>
+              <rect x="295" y="22" width="14" height="63" fill="#5a3a26"/>
+              <rect x="311" y="16" width="22" height="69" fill="#7a2e3a"/>
+              <rect x="335" y="18" width="16" height="67" fill="#9aa890"/>
+              <rect x="353" y="14" width="17" height="71" fill="#3d2616"/>
+              <!-- horizontal book stack -->
+              <rect x="35" y="78" width="80" height="6" fill="#b8924a"/>
+              <rect x="35" y="72" width="80" height="6" fill="#7a2e3a"/>
+              <!-- shelf line -->
+              <rect x="20" y="90" width="360" height="4" fill="#2a1c12"/>
+            </g>
+            <g transform="translate(0, 95)">
+              <rect x="30" y="10" width="340" height="80" fill="#3d2616"/>
+              <rect x="35" y="14" width="20" height="71" fill="#5a3a26"/>
+              <rect x="57" y="18" width="16" height="67" fill="#7a2e3a"/>
+              <rect x="75" y="12" width="18" height="73" fill="#b8924a"/>
+              <rect x="95" y="20" width="14" height="65" fill="#9aa890"/>
+              <rect x="111" y="14" width="22" height="71" fill="#3d2616"/>
+              <rect x="135" y="22" width="16" height="63" fill="#7a2e3a"/>
+              <rect x="153" y="16" width="18" height="69" fill="#b8924a"/>
+              <rect x="173" y="18" width="20" height="67" fill="#5a3a26"/>
+              <rect x="195" y="14" width="14" height="71" fill="#9aa890"/>
+              <rect x="211" y="20" width="22" height="65" fill="#3d2616"/>
+              <rect x="235" y="16" width="16" height="69" fill="#7a2e3a"/>
+              <rect x="253" y="18" width="20" height="67" fill="#b8924a"/>
+              <rect x="275" y="14" width="18" height="71" fill="#5a3a26"/>
+              <rect x="295" y="22" width="14" height="63" fill="#9aa890"/>
+              <rect x="311" y="16" width="22" height="69" fill="#3d2616"/>
+              <rect x="335" y="18" width="16" height="67" fill="#7a2e3a"/>
+              <rect x="353" y="14" width="17" height="71" fill="#b8924a"/>
+              <rect x="20" y="90" width="360" height="4" fill="#2a1c12"/>
+            </g>
+            <g transform="translate(0, 190)">
+              <rect x="30" y="10" width="340" height="80" fill="#3d2616"/>
+              <rect x="35" y="15" width="18" height="70" fill="#9aa890"/>
+              <rect x="55" y="20" width="16" height="65" fill="#7a2e3a"/>
+              <rect x="73" y="12" width="20" height="73" fill="#b8924a"/>
+              <rect x="95" y="18" width="14" height="67" fill="#5a3a26"/>
+              <rect x="111" y="15" width="22" height="70" fill="#3d2616"/>
+              <!-- decorative plant -->
+              <g transform="translate(150, 30)">
+                <rect x="0" y="40" width="20" height="30" fill="#6b4530"/>
+                <path d="M 10 40 Q -5 25 0 5 Q 8 15 10 30 Q 12 15 20 5 Q 25 25 10 40" fill="#6f7d65"/>
+              </g>
+              <rect x="190" y="14" width="18" height="71" fill="#9aa890"/>
+              <rect x="210" y="18" width="20" height="67" fill="#7a2e3a"/>
+              <rect x="232" y="12" width="14" height="73" fill="#b8924a"/>
+              <rect x="248" y="20" width="22" height="65" fill="#5a3a26"/>
+              <rect x="272" y="15" width="16" height="70" fill="#3d2616"/>
+              <rect x="290" y="18" width="20" height="67" fill="#9aa890"/>
+              <rect x="312" y="14" width="18" height="71" fill="#7a2e3a"/>
+              <rect x="332" y="22" width="14" height="63" fill="#b8924a"/>
+              <rect x="350" y="14" width="20" height="71" fill="#5a3a26"/>
+              <rect x="20" y="90" width="360" height="4" fill="#2a1c12"/>
+            </g>
+            <g transform="translate(0, 285)">
+              <rect x="30" y="10" width="340" height="80" fill="#3d2616"/>
+              <!-- framed picture -->
+              <rect x="40" y="20" width="50" height="60" fill="#b8924a"/>
+              <rect x="46" y="26" width="38" height="48" fill="#3d2616"/>
+              <circle cx="65" cy="46" r="8" fill="#b8924a"/>
+              <path d="M 50 70 L 60 56 L 70 64 L 80 50 L 82 70 Z" fill="#9aa890"/>
+              <!-- books -->
+              <rect x="100" y="20" width="18" height="65" fill="#7a2e3a"/>
+              <rect x="120" y="14" width="20" height="71" fill="#5a3a26"/>
+              <rect x="142" y="18" width="16" height="67" fill="#9aa890"/>
+              <rect x="160" y="20" width="22" height="65" fill="#3d2616"/>
+              <rect x="184" y="14" width="18" height="71" fill="#b8924a"/>
+              <rect x="204" y="22" width="20" height="63" fill="#7a2e3a"/>
+              <rect x="226" y="16" width="14" height="69" fill="#5a3a26"/>
+              <rect x="242" y="18" width="22" height="67" fill="#9aa890"/>
+              <!-- clock -->
+              <circle cx="290" cy="50" r="22" fill="#faf5ea" stroke="#3d2616" stroke-width="2"/>
+              <line x1="290" y1="50" x2="290" y2="35" stroke="#3d2616" stroke-width="2"/>
+              <line x1="290" y1="50" x2="300" y2="50" stroke="#3d2616" stroke-width="2"/>
+              <circle cx="290" cy="50" r="2" fill="#3d2616"/>
+              <!-- more books -->
+              <rect x="320" y="20" width="18" height="65" fill="#7a2e3a"/>
+              <rect x="340" y="14" width="20" height="71" fill="#b8924a"/>
+              <rect x="362" y="18" width="16" height="67" fill="#5a3a26"/>
+            </g>
+          </g>
+          
+          <!-- floor lamp glow -->
+          <ellipse cx="200" cy="500" rx="200" ry="40" fill="#b8924a" opacity="0.15"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<section class="books" id="books">
+  <div class="wrap">
+    <div class="books-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">٠٣</span><span data-i18n="books.label">المكتبة</span></span>
+        <h2 data-i18n="books.title">رفوفٌ منتقاة بعناية</h2>
+      </div>
+      <p class="books-intro" data-i18n="books.intro">مجموعةٌ مدروسة تجمع بين روائع الأدب العربي والعالمي، من الشعر إلى السيرة، من التاريخ إلى تطوير الذات.</p>
+    </div>
+    <div class="filters reveal" id="filters" role="tablist">
+      <button class="filter-btn active" data-filter="all" data-i18n="books.f.all">الكل</button>
+      <button class="filter-btn" data-filter="poetry" data-i18n="books.f.poetry">الشعر والمجمّعات</button>
+      <button class="filter-btn" data-filter="literature" data-i18n="books.f.literature">الأدب</button>
+      <button class="filter-btn" data-filter="history" data-i18n="books.f.history">التاريخ</button>
+      <button class="filter-btn" data-filter="biography" data-i18n="books.f.biography">السير الذاتية</button>
+      <button class="filter-btn" data-filter="selfhelp" data-i18n="books.f.selfhelp">تطوير الذات</button>
+    </div>
+    <div class="books-grid reveal" id="booksGrid">
+      <!-- books injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow"><span class="num">٠٤</span><span data-i18n="menu.label">المقهى</span></span>
+      <h2 data-i18n="menu.title">ركن القهوة والمعزوفات</h2>
+      <p class="menu-intro" data-i18n="menu.intro">قائمةٌ بسيطة، مختارة بعنايةٍ لتُكمل تجربة القراءة. نقدّم قهوتنا في أكوابٍ زجاجية وسيراميك — لا ورق ولا بلاستيك — لأنّ الهدوء يستحقّ التفاصيل.</p>
+    </div>
+    <div class="menu-tabs reveal" id="menuTabs" role="tablist">
+      <button class="menu-tab active" data-tab="coffee" data-i18n="menu.t.coffee">القهوة المختصّة</button>
+      <button class="menu-tab" data-tab="turkish" data-i18n="menu.t.turkish">القهوة التركية والراحة</button>
+      <button class="menu-tab" data-tab="snacks" data-i18n="menu.t.snacks">معمول وحلويات</button>
+    </div>
+    <div class="menu-panel active" id="panel-coffee"></div>
+    <div class="menu-panel" id="panel-turkish"></div>
+    <div class="menu-panel" id="panel-snacks"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head reveal">
+      <span class="eyebrow" style="margin-inline:auto"><span class="num">٠٥</span><span data-i18n="gallery.label">المعرض</span></span>
+      <h2 data-i18n="gallery.title">لمحاتٌ من المكان</h2>
+    </div>
+    <div class="gallery-grid reveal" id="galleryGrid">
+      <!-- gallery items injected -->
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="voices" id="voices">
+  <div class="wrap">
+    <div class="voices-head reveal">
+      <span class="eyebrow" style="margin-inline:auto"><span class="num">٠٦</span><span data-i18n="voices.label">آراء الزوّار</span></span>
+      <h2 data-i18n="voices.title">ما يقولونه عنّا</h2>
+    </div>
+    <div class="carousel reveal" id="carousel">
+      <div class="carousel-track" id="carouselTrack">
+        <!-- slides injected -->
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="nextBtn" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom: 50px;">
+      <span class="eyebrow"><span class="num">٠٧</span><span data-i18n="visit.label">الزيارة</span></span>
+      <h2 data-i18n="visit.title">زورونا في طويق</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-info reveal">
+        <div class="info-card">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span data-i18n="visit.hoursTitle">ساعات العمل</span>
+          </h3>
+          <table class="hours-table" id="hoursTable">
+            <tbody>
+              <tr data-day="6"><td data-i18n="visit.days.sat">السبت</td><td>8:00 ص – 11:30 ص، 4:00 م – 11:00 م</td></tr>
+              <tr data-day="0"><td data-i18n="visit.days.sun">الأحد</td><td>8:00 ص – 11:30 ص، 4:00 م – 11:00 م</td></tr>
+              <tr data-day="1"><td data-i18n="visit.days.mon">الإثنين</td><td>8:00 ص – 11:30 ص، 4:00 م – 11:00 م</td></tr>
+              <tr data-day="2"><td data-i18n="visit.days.tue">الثلاثاء</td><td>8:00 ص – 11:30 ص، 4:00 م – 11:00 م</td></tr>
+              <tr data-day="3"><td data-i18n="visit.days.wed">الأربعاء</td><td>8:00 ص – 11:30 ص، 4:00 م – 11:00 م</td></tr>
+              <tr data-day="4"><td data-i18n="visit.days.thu">الخميس</td><td>8:00 ص – 11:30 ص، 4:00 م – 11:00 م</td></tr>
+              <tr data-day="5"><td data-i18n="visit.days.fri">الجمعة</td><td>1:00 م – 11:00 م</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top: 16px;">
+            <span class="status-pill" id="visitStatus"><span id="visitStatusText">—</span></span>
+          </div>
+        </div>
+        <div class="info-card">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n="visit.addrTitle">العنوان</span>
+          </h3>
+          <div class="contact-row">
+            <span data-i18n="visit.address">طريق خديجة بنت خويلد، حي طويق، الرياض 14923</span>
+          </div>
+          <div class="visit-actions" style="margin-top: 16px;">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=24.586070,46.548854" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-i18n="visit.directions">الاتجاهات</a>
+            <a href="https://www.openstreetmap.org/?mlat=24.586070&mlon=46.548854#map=16/24.586070/46.548854" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" data-i18n="visit.viewMap">عرض الخريطة</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span data-i18n="visit.contactTitle">تواصل معنا</span>
+          </h3>
+          <div class="contact-row">
+            <a href="tel:+966539561171" dir="ltr">+966 53 956 1171</a>
+          </div>
+          <div class="visit-actions" style="margin-top: 16px;">
+            <a href="tel:+966539561171" class="btn btn-primary btn-sm" data-i18n="visit.call">اتصل بنا</a>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap reveal reveal-delay-2">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=46.538854%2C24.576070%2C46.558854%2C24.596070&amp;layer=mapnik&amp;marker=24.586070%2C46.548854" loading="lazy" title="Multaqa Al-Kitab location map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-mark">م</span>
+        <h4 data-i18n="footer.brandTitle">ملتقى الكتاب</h4>
+        <p data-i18n="footer.brandDesc">مكتبةٌ ومقهى في حيّ طويق بالرياض — حيث يلتقي عشق القراءة بفنّ القهوة المختصّة في زاويةٍ هادئة تجمع الثقافة والدفء.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></a>
+          <a href="https://wa.me/966539561171" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.8.97h.01a7.94 7.94 0 0 0 7.94-7.94 7.86 7.86 0 0 0-2.35-5.61zm-5.55 12.21h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 1 1 12.23-3.5 6.59 6.59 0 0 1-6.63 6.59zm3.62-4.93c-.2-.1-1.18-.58-1.36-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.63.77-.12.13-.23.15-.43.05-.2-.1-.84-.31-1.6-.99-.59-.53-.99-1.18-1.11-1.38-.12-.2-.01-.31.09-.41.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.34-.45-.34l-.39-.01c-.13 0-.35.05-.53.25-.18.2-.7.68-.7 1.65 0 .97.71 1.91.81 2.04.1.13 1.4 2.14 3.39 3 .47.21.84.33 1.13.42.48.15.91.13 1.25.08.38-.06 1.18-.48 1.34-.95.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4 data-i18n="footer.linksTitle">روابط سريعة</h4>
+        <a href="#about" data-i18n="nav.about">عن المكان</a>
+        <a href="#books" data-i18n="nav.books">المكتبة</a>
+        <a href="#menu" data-i18n="nav.menu">المقهى</a>
+        <a href="#gallery" data-i18n="nav.gallery">المعرض</a>
+        <a href="#visit" data-i18n="nav.visit">الزيارة</a>
+      </div>
+      <div class="footer-contact">
+        <h4 data-i18n="footer.contactTitle">بقيتُم على تواصل؟</h4>
+        <p data-i18n="footer.contactDesc">شاركونا اقتراحاتكم أو استفساراتكم، وسنردّ عليكم في أقرب وقت.</p>
+        <form class="footer-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <input type="text" name="name" placeholder="الاسم" data-i18n-ph="footer.namePh" aria-label="Name">
+            <span class="form-error" data-i18n="footer.errName">الرجاء إدخال الاسم</span>
+          </div>
+          <div class="form-row">
+            <input type="tel" name="phone" placeholder="رقم الجوال" data-i18n-ph="footer.phonePh" aria-label="Phone">
+            <span class="form-error" data-i18n="footer.errPhone">الرجاء إدخال رقم صحيح</span>
+          </div>
+          <div class="form-row">
+            <textarea name="msg" placeholder="رسالتكم" data-i18n-ph="footer.msgPh" aria-label="Message"></textarea>
+            <span class="form-error" data-i18n="footer.errMsg">الرجاء كتابة رسالتكم</span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm" data-i18n="footer.send">إرسال</button>
+          <div class="form-success" id="formSuccess" data-i18n="footer.success">شكراً لكم! سنتواصل معكم قريباً.</div>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.copy">© 2024 ملتقى الكتاب. جميع الحقوق محفوظة.</span>
+      <span data-i18n="footer.made">صُنع بحبّ في الرياض</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+  <div class="lightbox-content">
+    <div class="lightbox-svg" id="lightboxSvg"></div>
+    <div class="lightbox-info">
+      <h4 id="lightboxTitle"></h4>
+      <p id="lightboxDesc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================
+   I18N CONTENT
+============================ */
+const i18n = {
+  ar: {
+    nav: { about:'عن المكان', books:'المكتبة', menu:'المقهى', gallery:'المعرض', voices:'آراء', visit:'الزيارة', cta:'زورونا' },
+    hero: {
+      tag: 'الرياض · حي طويق',
+      title: 'حيث يلتقي <span class="accent">الكتاب</span> بالقهوة',
+      sub: 'زاويةٌ هادئة في جنوب غرب الرياض، تجمع بين مكتبةٍ منتقاة بعناية ومقهى متخصّص. مكانٌ للقرّاء الباحثين عن سكينة المكان الثالث بين الروائح الورقية وعبق البنّ.',
+      cta: 'زورونا اليوم',
+      cta2: 'تصفّح المكتبة',
+      ratingLabel: 'تقييم الزوّار على خرائط جوجل'
+    },
+    about: {
+      label: 'عن المكان',
+      title: 'زاويةٌ هادئة بين الكتب والقهوة',
+      lead: '"كأنّك تدخل متحفاً صغيراً للثقافة السعودية والعربية، حيث يحيط بك عبق الورق وعبق البنّ."',
+      p1: 'في حيّ طويق، جنوب غرب الرياض، وُلِد ملتقى الكتاب ليكون مساحةً جامعة بين عشّاق القراءة وعشّاق القهوة المختصّة. ليست مجرد مكتبة تبيع الكتب، ولا مقهى يقدّم القهوة فحسب — بل مكانٌ صُمِّم ليكون "المكان الثالث" الذي يبحث عنه القارئ: هادئٌ بلا ضجيج، دافئٌ بلا تكلّف، غنيٌّ بالكتاب بلا تكدّس.',
+      p2: 'انتقينا رفوفنا بعنايةٍ لتضمّ نماذج من الشعر العربي وأدبه، وكتباً في التاريخ والسير الذاتية وتطوير الذات، إلى جانب ركنٍ للقهوة التركية المقدّمة في كأس زجاجي — لأنّ التفاصيل الصغيرة هي ما يصنع الفارق.',
+      stat1: 'تقييم الزوّار', stat2: 'تخصّصات أدبية', stat3: 'ساعات هدوء'
+    },
+    books: {
+      label: 'المكتبة', title: 'رفوفٌ منتقاة بعناية',
+      intro: 'مجموعةٌ مدروسة تجمع بين روائع الأدب العربي والعالمي، من الشعر إلى السيرة، من التاريخ إلى تطوير الذات.',
+      f: { all:'الكل', poetry:'الشعر والمجمّعات', literature:'الأدب', history:'التاريخ', biography:'السير الذاتية', selfhelp:'تطوير الذات' },
+      genre: { poetry:'شعر', literature:'أدب', history:'تاريخ', biography:'سيرة', selfhelp:'تطوير ذات' }
+    },
+    menu: {
+      label: 'المقهى', title: 'ركن القهوة والمعزوفات',
+      intro: 'قائمةٌ بسيطة، مختارة بعنايةٍ لتُكمل تجربة القراءة. نقدّم قهوتنا في أكوابٍ زجاجية وسيراميك — لا ورق ولا بلاستيك — لأنّ الهدوء يستحقّ التفاصيل.',
+      t: { coffee:'القهوة المختصّة', turkish:'القهوة التركية والراحة', snacks:'معمول وحلويات' },
+      signature: 'مميّز'
+    },
+    gallery: { label: 'المعرّض', title: 'لمحاتٌ من المكان' },
+    voices: { label: 'آراء الزوّار', title: 'ما يقولونه عنّا' },
+    visit: {
+      label: 'الزيارة', title: 'زورونا في طويق',
+      hoursTitle: 'ساعات العمل', addrTitle: 'العنوان', contactTitle: 'تواصل معنا',
+      address: 'طريق خديجة بنت خويلد، حي طويق، الرياض 14923',
+      directions: 'الاتجاهات', viewMap: 'عرض الخريطة', call: 'اتصل بنا',
+      days: { sat:'السبت', sun:'الأحد', mon:'الإثنين', tue:'الثلاثاء', wed:'الأربعاء', thu:'الخميس', fri:'الجمعة' }
+    },
+    footer: {
+      brandTitle:'ملتقى الكتاب',
+      brandDesc:'مكتبةٌ ومقهى في حيّ طويق بالرياض — حيث يلتقي عشق القراءة بفنّ القهوة المختصّة في زاويةٍ هادئة تجمع الثقافة والدفء.',
+      linksTitle:'روابط سريعة', contactTitle:'بقيتُم على تواصل؟',
+      contactDesc:'شاركونا اقتراحاتكم أو استفساراتكم، وسنردّ عليكم في أقرب وقت.',
+      namePh:'الاسم', phonePh:'رقم الجوال', msgPh:'رسالتكم', send:'إرسال',
+      errName:'الرجاء إدخال الاسم', errPhone:'الرجاء إدخال رقم صحيح', errMsg:'الرجاء كتابة رسالتكم',
+      success:'شكراً لكم! سنتواصل معكم قريباً.',
+      copy:'© 2024 ملتقى الكتاب. جميع الحقوق محفوظة.', made:'صُنع بحبّ في الرياض'
+    },
+    status: { open:'مفتوح الآن', closed:'مغلق الآن', closesAt:'يغلق عند', opensAt:'يفتح عند' }
+  },
+  en: {
+    nav: { about:'About', books:'Library', menu:'Café', gallery:'Gallery', voices:'Voices', visit:'Visit', cta:'Visit Us' },
+    hero: {
+      tag: 'Riyadh · Tuwaiq District',
+      title: 'Where <span class="accent">coffee</span> meets pages',
+      sub: 'A tranquil corner in southwest Riyadh, blending a thoughtfully curated bookstore with a specialty café. A third place for readers who seek quietude among the scent of paper and the aroma of beans.',
+      cta: 'Visit Us Today',
+      cta2: 'Browse the Library',
+      ratingLabel: 'Visitor rating on Google Maps'
+    },
+    about: {
+      label: 'About',
+      title: 'A quiet corner between books and coffee',
+      lead: '"It feels like stepping into a little museum of Saudi and Arabic culture — wrapped in the scent of paper and the aroma of coffee."',
+      p1: 'In the Tuwaiq district of southwest Riyadh, Multaqa Al-Kitab was born as a gathering space for lovers of both reading and specialty coffee. Not merely a bookstore that sells books, nor a café that serves coffee — but a place designed to be the "third place" readers search for: quiet without coldness, warm without pretense, rich with books without clutter.',
+      p2: 'Our shelves were curated to hold selections of Arabic poetry and literature, history, biography, and self-development — alongside a corner for Turkish coffee served in a glass cup, because the small details are what make the difference.',
+      stat1: 'Visitor Rating', stat2: 'Literary Genres', stat3: 'Hours of Calm'
+    },
+    books: {
+      label: 'Library', title: 'Thoughtfully Curated Shelves',
+      intro: 'A considered collection bridging the best of Arabic and world literature — from poetry to memoir, from history to self-development.',
+      f: { all:'All', poetry:'Poetry & Anthologies', literature:'Literature', history:'History', biography:'Biography', selfhelp:'Self-Help' },
+      genre: { poetry:'Poetry', literature:'Literature', history:'History', biography:'Biography', selfhelp:'Self-Help' }
+    },
+    menu: {
+      label: 'Café', title: 'The Coffee Corner',
+      intro: 'A simple menu, chosen with care to complete the reading experience. We serve our coffee in glass and ceramic — never paper, never plastic — because tranquility deserves the details.',
+      t: { coffee:'Specialty Coffee', turkish:'Turkish Coffee & Delight', snacks:'Pastries & Sweets' },
+      signature: 'Signature'
+    },
+    gallery: { label: 'Gallery', title: 'Glimpses of the Place' },
+    voices: { label: 'Visitor Voices', title: 'What they say about us' },
+    visit: {
+      label: 'Visit', title: 'Find us in Tuwaiq',
+      hoursTitle: 'Opening Hours', addrTitle: 'Address', contactTitle: 'Contact',
+      address: 'Khadijah Bint Khuwailid Rd, Tuwaiq, Riyadh 14923, Saudi Arabia',
+      directions: 'Get Directions', viewMap: 'View Map', call: 'Call Us',
+      days: { sat:'Saturday', sun:'Sunday', mon:'Monday', tue:'Tuesday', wed:'Wednesday', thu:'Thursday', fri:'Friday' }
+    },
+    footer: {
+      brandTitle:'Multaqa Al-Kitab',
+      brandDesc:'A bookstore and café in the Tuwaiq district of Riyadh — where the love of reading meets the craft of specialty coffee in a tranquil corner of culture and warmth.',
+      linksTitle:'Quick Links', contactTitle:'Stay in Touch',
+      contactDesc:'Share your suggestions or inquiries, and we will get back to you shortly.',
+      namePh:'Name', phonePh:'Phone number', msgPh:'Your message', send:'Send',
+      errName:'Please enter your name', errPhone:'Please enter a valid phone number', errMsg:'Please write your message',
+      success:'Thank you! We will be in touch soon.',
+      copy:'© 2024 Multaqa Al-Kitab. All rights reserved.', made:'Crafted with love in Riyadh'
+    },
+    status: { open:'Open Now', closed:'Closed Now', closesAt:'closes at', opensAt:'opens at' }
+  }
+};
+
+/* Books data */
+const books = [
+  { genre:'poetry', ar:{t:'ديوان النصّ', a:'محمود درويش'}, en:{t:'The Text Diwan', a:'Mahmoud Darwish'}, c:'#7a2e3a' },
+  { genre:'poetry', ar:{t:'حروفٌ على الماء', a:'أدونيس'}, en:{t:'Letters on Water', a:'Adonis'}, c:'#5a3a26' },
+  { genre:'literature', ar:{t:'موسم الهجرة', a:'الطيّب صالح'}, en:{t:'Season of Migration', a:'Tayeb Salih'}, c:'#9aa890' },
+  { genre:'literature', ar:{t:'أرض زيكولا', a:'عمرو عبد الحميد'}, en:{t:'Land of Zikola', a:'Amr Abdel Hamid'}, c:'#b8924a' },
+  { genre:'literature', ar:{t:'اللص والكلاب', a:'نجيب محفوظ'}, en:{t:'The Thief and the Dogs', a:'Naguib Mahfouz'}, c:'#3d2616' },
+  { genre:'history', ar:{ت:'تاريخ الطبري', a:'الطبري'}, en:{t:'History of Tabari', a:'Al-Tabari'}, c:'#5a3a26' },
+  { genre:'history', ar:{t:'البداية والنهاية', a:'ابن كثير'}, en:{t:'The Beginning and the End', a:'Ibn Kathir'}, c:'#7a2e3a' },
+  { genre:'biography', ar:{t:'سيرة ابن هشام', a:'ابن هشام'}, en:{t:'Ibn Hisham Biography', a:'Ibn Hisham'}, c:'#9aa890' },
+  { genre:'biography', ar:{t:'الأيام', a:'طه حسين'}, en:{t:'The Days', a:'Taha Hussein'}, c:'#b8924a' },
+  { genre:'selfhelp', ar:{t:'العادات الذرّية', a:'جيمس كلير'}, en:{t:'Atomic Habits', a:'James Clear'}, c:'#5a3a26' },
+  { genre:'selfhelp', ar:{t:'فنّ اللامبالاة', a:'مارك مانسون'}, en:{t:'The Subtle Art', a:'Mark Manson'}, c:'#7a2e3a' },
+  { genre:'selfhelp', ar:{t:'ابدأ بالأسباب', a:'سايمون سينك'}, en:{t:'Start with Why', a:'Simon Sinek'}, c:'#3d2616' }
+].map(b => ({...b, ar:{t:b.ar.t||b.ar.ت, a:b.ar.a}, en:b.en}));
+
+/* Menu data */
+const menuData = {
+  coffee: [
+    { sig:true, ar:{n:'إسبريسو', d:'جرعةٌ مركّزة من البنّ المختصّ، بطعمٍ غنيّ وكريمةٍ ذهبية.'}, en:{n:'Espresso', d:'A concentrated shot of specialty beans — rich body, golden crema.'} },
+    { sig:false, ar:{n:'كابتشينو', d:'إسبريسو مع رغوة حليبٍ مخمليّة.'}, en:{n:'Cappuccino', d:'Espresso with velvety steamed milk foam.'} },
+    { sig:false, ar:{n:'لاتيه', d:'حليبٌ مبخّر بنعومةٍ فوق جرعة الإسبريسو.'}, en:{n:'Latte', d:'Smooth steamed milk over a shot of espresso.'} },
+    { sig:true, ar:{n:'لاتيه إسباني', d:'حليبٌ مكثّف محلّى مع إسبريسو — حلو ودافئ.'}, en:{n:'Spanish Latte', d:'Sweetened condensed milk with espresso — warm and indulgent.'} },
+    { sig:false, ar:{n:'قهوة عربية', d:'مبهّرة بالهيل، تُقدّم مع التمر في دلالٍ تقليدية.'}, en:{n:'Arabic Coffee', d:'Cardamom-spiced, served with dates in a traditional dallah.'} },
+    { sig:false, ar:{n:'V60 / بور-أوف', d:'قهوةٌ مُعدّة يدوياً تُبرز نكهات الحبّة.'}, en:{n:'V60 / Pour-Over', d:'Hand-brewed coffee highlighting bean notes.'} }
+  ],
+  turkish: [
+    { sig:true, ar:{n:'قهوة تركية', d:'تُقدّم في كأسٍ زجاجي — لا ورق ولا بلاستيك — بدرجة تحميصٍ متوسّطة.'}, en:{n:'Turkish Coffee', d:'Served in a glass cup — never paper, never plastic — medium roast.'} },
+    { sig:false, ar:{n:'قهوة تركية بالهيل', d:'بنكهة الهيل الفاخر، رغوةٌ كثيفة وعبقٌ دافئ.'}, en:{n:'Cardamom Turkish', d:'Infused with premium cardamom — thick foam, warm aroma.'} },
+    { sig:false, ar:{n:'قهوة تركية محلّاة', d:'مُحلّاة باعتدال أثناء التسخين.'}, en:{n:'Sweet Turkish', d:'Gently sweetened during brewing.'} },
+    { sig:true, ar:{n:'راحة الحلقوم', d:'قطعٌ فاخرة من الحلوى التركية تُقدّم مع القهوة.'}, en:{n:'Turkish Delight', d:'Premium loukoum pieces served alongside coffee.'} }
+  ],
+  snacks: [
+    { sig:false, ar:{n:'كرواسون بالزبدة', d:'طبقاتٌ هشّة بالزبدة الفرنسية.'}, en:{n:'Butter Croissant', d:'Flaky layers with French butter.'} },
+    { sig:true, ar:{n:'كيك التمر', d:'كيكٌ طريّ بنكهة التمر السعودي والقرفة.'}, en:{n:'Date Cake', d:'Moist cake with Saudi dates and cinnamon.'} },
+    { sig:false, ar:{n:'تشيز كيك', d:'قاعدة بسكويت وكريمة جبنٍ مخمليّة.'}, en:{n:'Cheesecake', d:'Biscuit base with velvety cream cheese.'} },
+    { sig:false, ar:{n:'معمول شوكولاتة', d:'معمولٌ محشوّ بالشوكولاتة الفاخرة.'}, en:{n:'Chocolate Maamoul', d:'Maamoul filled with premium chocolate.'} },
+    { sig:false, ar:{n:'حلوى موسمية', d:'حلوى يوميّة يختارها الشيف.'}, en:{n:'Seasonal Pastry', d:"Chef's daily selection."} }
+  ]
+};
+
+/* Gallery data */
+const gallery = [
+  { ar:{t:'رفوف الكتب', d:'جدارٌ من القصائد والروايات'}, en:{t:'Bookshelves', d:'A wall of poems and novels'}, cls:'' },
+  { ar:{t:'ركن القراءة', d:'كرسيٌّ هادئ بجانب النافذة'}, en:{t:'Reading Nook', d:'A quiet chair by the window'}, cls:'tall' },
+  { ar:{t:'مقصورة القهوة', d:'حيث تُحضّر القهوة بعناية'}, en:{t:'Coffee Corner', d:'Where coffee is crafted with care'}, cls:'wide' },
+  { ar:{t:'زاوية التأمّل', d:'ركنٌ للسكينة بين الكتب'}, en:{t:'Reflection Corner', d:'A corner for stillness among books'}, cls:'' },
+  { ar:{t:'الطاولة المشتركة', d:'مساحةٌ للقرّاء والضيوف'}, en:{t:'Shared Table', d:'A space for readers and guests'}, cls:'wide' },
+  { ar:{t:'الإضاءة الدافئة', d:'نورٌ أصفر يُضيء الصفحات'}, en:{t:'Warm Lighting', d:'Amber glow across the pages'}, cls:'' }
+];
+
+/* Testimonials */
+const voices = [
+  { ar:{q:'زاويةٌ هادئة حقاً، تجلس فيها فتنسى وقتك بين الكتاب والقهوة. اختيار الكتب مدروس بعناية، والأخ أشرف من أطيب الناس.', n:'زائر دائم', r:'مراجعة جوجل'}, 
+    en:{q:'A truly quiet corner — you sit down and lose track of time between book and coffee. The book selection is thoughtfully curated, and Ashraf is one of the kindest souls.', n:'Regular Visitor', r:'Google Review'} },
+  { ar:{q:'كأنّك تدخل متحفاً صغيراً للثقافة. الهدوء هنا ليس غياباً للصوت، بل حضوراً للمعنى.', n:'قارئة', r:'مراجعة جوجل'}, 
+    en:{q:'It\'s like entering a little museum of culture. The quiet here isn\'t the absence of sound — it\'s the presence of meaning.', n:'A Reader', r:'Google Review'} },
+  { ar:{q:'القهوة التركية في كأس الزجاج كانت لمسةً راقية. مكانٌ يستحقّ الزيارة المتكرّرة لكل من يحبّ القراءة.', n:'زائر', r:'مراجعة جوجل'}, 
+    en:{q:'The Turkish coffee in a glass cup was a refined touch. A place worth returning to for anyone who loves reading.', n:'Visitor', r:'Google Review'} },
+  { ar:{q:'الموظفون ودودون جداً، خصوصاً الأخ أشرف. ساعدني في اختيار كتابٍ يناسب ذوقي. تجربةٌ كاملة.', n:'زائر جديد', r:'مراجعة جوجل'}, 
+    en:{q:'The staff are incredibly friendly, especially Ashraf. He helped me pick a book that suited my taste. A complete experience.', n:'First-time Visitor', r:'Google Review'} }
+];
+
+/* Gallery SVG generator (warm scenes) */
+function gallerySVG(i) {
+  const palettes = [
+    { bg:'#5a3a26', a:'#7a2e3a', b:'#b8924a', c:'#9aa890' },
+    { bg:'#3d2616', a:'#6b4530', b:'#b8924a', c:'#7a2e3a' },
+    { bg:'#7a2e3a', a:'#5a3a26', b:'#b8924a', c:'#9aa890' },
+    { bg:'#6b4530', a:'#3d2616', b:'#9aa890', c:'#b8924a' },
+    { bg:'#3d2616', a:'#5a3a26', b:'#7a2e3a', c:'#b8924a' },
+    { bg:'#5a3a26', a:'#7a2e3a', b:'#9aa890', c:'#b8924a' }
+  ];
+  const p = palettes[i % palettes.length];
+  
+  const scenes = [
+    // 0: Bookshelf wall
+    `<rect width="400" height="300" fill="${p.bg}"/>
+    <rect x="0" y="0" width="400" height="20" fill="${p.a}"/>
+    <rect x="0" y="280" width="400" height="20" fill="${p.a}"/>
+    ${[40,120,200,280].map(y=>`
+      <rect x="20" y="${y}" width="360" height="70" fill="${p.a}" opacity="0.6"/>
+      ${Array.from({length:18}).map((_,k)=>{const colors=[p.b,p.c,p.a,p.bg];const cc=colors[k%4];const h=50+Math.floor(Math.sin(k*7.3)*15);const w=12+(k%3)*4;return `<rect x="${28+k*19}" y="${y+10+(70-h)/2}" width="${w}" height="${h}" fill="${cc}"/>`;}).join('')}
+    `).join('')}`,
+    // 1: Reading nook with armchair
+    `<rect width="400" height="300" fill="${p.bg}"/>
+    <ellipse cx="200" cy="290" rx="180" ry="20" fill="#2a1c12" opacity="0.4"/>
+    <rect x="0" y="0" width="400" height="180" fill="${p.a}" opacity="0.4"/>
+    <rect x="40" y="0" width="120" height="180" fill="${p.b}" opacity="0.15"/>
+    <rect x="240" y="0" width="120" height="180" fill="${p.b}" opacity="0.15"/>
+    <rect x="60" y="0" width="6" height="180" fill="${p.c}" opacity="0.3"/>
+    <rect x="334" y="0" width="6" height="180" fill="${p.c}" opacity="0.3"/>
+    <rect x="120" y="160" width="160" height="100" fill="${p.c}" rx="10"/>
+    <rect x="120" y="160" width="160" height="40" fill="${p.b}" rx="10"/>
+    <rect x="110" y="220" width="20" height="50" fill="${p.a}" rx="4"/>
+    <rect x="270" y="220" width="20" height="50" fill="${p.a}" rx="4"/>
+    <rect x="160" y="200" width="80" height="30" fill="${p.b}" opacity="0.5" rx="4"/>
+    <circle cx="320" cy="100" r="30" fill="${p.b}" opacity="0.4"/>`,
+    // 2: Coffee bar counter
+    `<rect width="400" height="300" fill="${p.bg}"/>
+    <rect x="0" y="0" width="400" height="160" fill="${p.a}"/>
+    <rect x="40" y="40" width="120" height="80" fill="${p.c}" opacity="0.3"/>
+    <rect x="240" y="40" width="120" height="80" fill="${p.c}" opacity="0.3"/>
+    <rect x="0" y="160" width="400" height="20" fill="${p.b}"/>
+    <rect x="0" y="180" width="400" height="120" fill="${p.a}"/>
+    <rect x="0" y="280" width="400" height="20" fill="#2a1c12"/>
+    <rect x="60" y="100" width="60" height="60" fill="${p.c}"/>
+    <rect x="65" y="105" width="50" height="50" fill="${p.bg}"/>
+    <circle cx="90" cy="130" r="15" fill="${p.b}"/>
+    <rect x="160" y="120" width="80" height="40" fill="${p.c}"/>
+    <rect x="170" y="105" width="60" height="20" fill="${p.bg}"/>
+    <rect x="180" y="85" width="40" height="25" fill="${p.c}"/>
+    <rect x="280" y="80" width="60" height="80" fill="${p.b}" rx="6"/>
+    <rect x="285" y="85" width="50" height="40" fill="${p.bg}"/>
+    <circle cx="300" cy="105" r="4" fill="${p.c}"/>
+    <circle cx="320" cy="105" r="4" fill="${p.c}"/>`,
+    // 3: Reflection corner with stack of books
+    `<rect width="400" height="300" fill="${p.bg}"/>
+    <ellipse cx="200" cy="290" rx="200" ry="22" fill="#2a1c12" opacity="0.4"/>
+    <rect x="60" y="200" width="280" height="80" fill="${p.a}" rx="4"/>
+    <rect x="80" y="170" width="240" height="30" fill="${p.c}" rx="2"/>
+    <rect x="100" y="140" width="200" height="30" fill="${p.b}" rx="2"/>
+    <rect x="120" y="110" width="160" height="30" fill="${p.a}" rx="2"/>
+    <rect x="140" y="80" width="120" height="30" fill="${p.c}" rx="2"/>
+    <line x1="160" y1="95" x2="240" y2="95" stroke="${p.bg}" stroke-width="1"/>
+    <line x1="180" y1="155" x2="220" y2="155" stroke="${p.bg}" stroke-width="1"/>
+    <line x1="100" y1="185" x2="300" y2="185" stroke="${p.bg}" stroke-width="1"/>
+    <circle cx="200" cy="40" r="20" fill="${p.b}" opacity="0.5"/>
+    <circle cx="200" cy="40" r="12" fill="${p.b}" opacity="0.7"/>`,
+    // 4: Shared table with books and coffee
+    `<rect width="400" height="300" fill="${p.bg}"/>
+    <rect x="0" y="200" width="400" height="100" fill="${p.a}"/>
+    <rect x="0" y="200" width="400" height="6" fill="${p.b}"/>
+    <rect x="40" y="120" width="80" height="80" fill="${p.c}" rx="2"/>
+    <rect x="40" y="120" width="80" height="6" fill="${p.a}"/>
+    <line x1="50" y1="135" x2="110" y2="135" stroke="${p.bg}" stroke-width="1"/>
+    <line x1="50" y1="145" x2="100" y2="145" stroke="${p.bg}" stroke-width="1"/>
+    <rect x="50" y="160" width="60" height="20" fill="${p.b}" opacity="0.6"/>
+    <rect x="280" y="140" width="60" height="60" fill="${p.b}" rx="2"/>
+    <ellipse cx="310" cy="140" rx="30" ry="6" fill="${p.a}"/>
+    <ellipse cx="310" cy="138" rx="28" ry="4" fill="${p.bg}"/>
+    <path d="M 340 150 Q 360 150 360 165 Q 360 178 340 178" fill="none" stroke="${p.bg}" stroke-width="2"/>
+    <path d="M 290 130 Q 285 115 295 100" stroke="${p.c}" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+    <path d="M 310 130 Q 315 115 305 100" stroke="${p.c}" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+    <path d="M 330 130 Q 325 115 335 100" stroke="${p.c}" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
+    <rect x="180" y="170" width="80" height="30" fill="${p.c}" opacity="0.4" rx="2"/>`,
+    // 5: Warm lighting with hanging lamp
+    `<rect width="400" height="300" fill="${p.bg}"/>
+    <ellipse cx="200" cy="280" rx="200" ry="30" fill="${p.b}" opacity="0.15"/>
+    <rect x="0" y="0" width="400" height="60" fill="${p.a}"/>
+    <line x1="200" y1="0" x2="200" y2="100" stroke="${p.c}" stroke-width="2"/>
+    <path d="M 160 100 L 240 100 L 220 150 L 180 150 Z" fill="${p.b}"/>
+    <path d="M 165 100 L 235 100 L 215 145 L 185 145 Z" fill="${p.a}" opacity="0.7"/>
+    <ellipse cx="200" cy="200" rx="120" ry="80" fill="${p.b}" opacity="0.15"/>
+    <ellipse cx="200" cy="220" rx="80" ry="50" fill="${p.b}" opacity="0.2"/>
+    <rect x="80" y="220" width="100" height="60" fill="${p.a}" rx="2"/>
+    <rect x="85" y="225" width="90" height="6" fill="${p.c}"/>
+    <rect x="240" y="230" width="80" height="50" fill="${p.c}" rx="2"/>
+    <line x1="250" y1="245" x2="310" y2="245" stroke="${p.bg}" stroke-width="1"/>
+    <line x1="250" y1="255" x2="300" y2="255" stroke="${p.bg}" stroke-width="1"/>
+    <circle cx="200" cy="160" r="8" fill="${p.b}"/>`
+  ];
+  return `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">${scenes[i]}</svg>`;
+}
+
+/* Book cover SVG */
+function bookCoverSVG(color, title) {
+  return `<svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <rect width="200" height="280" fill="${color}"/>
+    <rect x="0" y="0" width="200" height="280" fill="url(#bgrad${color.replace('#','')})" opacity="0.3"/>
+    <defs><linearGradient id="bgrad${color.replace('#','')}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff" stop-opacity="0.15"/><stop offset="100%" stop-color="#000" stop-opacity="0.25"/></linearGradient></defs>
+    <rect x="14" y="20" width="172" height="2" fill="#b8924a" opacity="0.7"/>
+    <rect x="14" y="258" width="172" height="2" fill="#b8924a" opacity="0.7"/>
+    <rect x="80" y="40" width="40" height="2" fill="#b8924a" opacity="0.5"/>
+    <rect x="80" y="240" width="40" height="2" fill="#b8924a" opacity="0.5"/>
+    <rect x="0" y="0" width="8" height="280" fill="#000" opacity="0.25"/>
+    <rect x="192" y="0" width="8" height="280" fill="#fff" opacity="0.05"/>
+  </svg>`;
+}
+
+/* ============================
+   STATE & RENDER
+============================ */
+let currentLang = 'ar';
+let currentFilter = 'all';
+let currentTab = 'coffee';
+let currentSlide = 0;
+let autoplayTimer = null;
+
+function t(key) {
+  return key.split('.').reduce((o, k) => o && o[k], i18n[currentLang]) || key;
+}
+
+function applyLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.title = lang === 'ar' ? 'ملتقى الكتاب | مكتبة ومقهى' : 'Multaqa Al-Kitab | Bookstore & Café';
+  
+  // text content
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (val.includes('<')) el.innerHTML = val;
+    else el.textContent = val;
+  });
+  
+  // placeholders
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph')));
+  });
+  
+  // lang toggle button label
+  document.getElementById('langToggle').textContent = lang === 'ar' ? 'EN' : 'ع';
+  
+  // re-render dynamic content
+  renderBooks();
+  renderMenu();
+  renderGallery();
+  renderVoices();
+  updateStatus();
+  highlightToday();
+}
+
+function renderBooks() {
+  const grid = document.getElementById('booksGrid');
+  grid.innerHTML = books.map((b, i) => {
+    const info = b[currentLang];
+    const genreLabel = i18n[currentLang].books.genre[b.genre];
+    return `<div class="book-card" data-genre="${b.genre}">
+      <div class="book-cover" style="background:${b.c}">
+        ${bookCoverSVG(b.c, info.t)}
+        <div class="book-cover-title">${info.t}</div>
+      </div>
+      <div class="book-info">
+        <span class="book-genre">${genreLabel}</span>
+        <h3 class="book-title">${info.t}</h3>
+        <span class="book-author">${info.a}</span>
+      </div>
+    </div>`;
+  }).join('');
+  // re-apply current filter
+  filterBooks(currentFilter);
+}
+
+function renderMenu() {
+  ['coffee','turkish','snacks'].forEach(cat => {
+    const panel = document.getElementById('panel-' + cat);
+    panel.innerHTML = `<div class="menu-grid">${menuData[cat].map(item => {
+      const info = item[currentLang];
+      const sigTag = item.sig ? `<span class="menu-item-tag">${t('menu.signature')}</span>` : '';
+      return `<div class="menu-item">
+        <div class="menu-item-head">
+          <span class="menu-item-name">${info.n}</span>
+          ${sigTag}
+        </div>
+        <p class="menu-item-desc">${info.d}</p>
+      </div>`;
+    }).join('')}</div>`;
+  });
+}
+
+function renderGallery() {
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = gallery.map((g, i) => {
+    const info = g[currentLang];
+    return `<button class="gallery-item ${g.cls}" data-index="${i}" aria-label="${info.t}">
+      ${gallerySVG(i)}
+      <span class="gallery-caption">${info.t}</span>
+    </button>`;
+  }).join('');
+  
+  // attach click handlers
+  grid.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
+  });
+}
+
+function renderVoices() {
+  const track = document.getElementById('carouselTrack');
+  const dots = document.getElementById('carouselDots');
+  track.innerHTML = voices.map(v => {
+    const info = v[currentLang];
+    return `<div class="voice-slide">
+      <p class="voice-quote">${info.q}</p>
+      <div class="voice-author">${info.n}</div>
+      <div class="voice-role">${info.r}</div>
+    </div>`;
+  }).join('');
+  dots.innerHTML = voices.map((_, i) => `<button class="dot ${i===0?'active':''}" data-i="${i}" aria-label="Slide ${i+1}"></button>`).join('');
+  dots.querySelectorAll('.dot').forEach(d => {
+    d.addEventListener('click', () => goToSlide(parseInt(d.dataset.i)));
+  });
+  currentSlide = 0;
+  updateCarousel();
+}
+
+/* ============================
+   FILTERS
+============================ */
+document.getElementById('filters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterBooks(btn.dataset.filter);
+});
+
+function filterBooks(filter) {
+  currentFilter = filter;
+  document.querySelectorAll('.book-card').forEach(card => {
+    if (filter === 'all' || card.dataset.genre === filter) {
+      card.classList.remove('hide');
+    } else {
+      card.classList.add('hide');
+    }
+  });
+}
+
+/* ============================
+   MENU TABS
+============================ */
+document.getElementById('menuTabs').addEventListener('click', e => {
+  const tab = e.target.closest('.menu-tab');
+  if (!tab) return;
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  currentTab = tab.dataset.tab;
+});
+
+/* ============================
+   CAROUSEL
+============================ */
+function goToSlide(i) {
+  currentSlide = (i + voices.length) % voices.length;
+  updateCarousel();
+  resetAutoplay();
+}
+function updateCarousel() {
+  const track = document.getElementById('carouselTrack');
+  const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  // For RTL, translateX is positive; for LTR, negative
+  const offset = currentLang === 'ar' ? currentSlide * 100 : -currentSlide * 100;
+  track.style.transform = `translateX(${offset}%)`;
+  document.querySelectorAll('#carouselDots .dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
+  });
+}
+document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
+document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
+
+function startAutoplay() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  stopAutoplay();
+  autoplayTimer = setInterval(() => goToSlide(currentSlide + 1), 6000);
+}
+function stopAutoplay() {
+  if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+}
+function resetAutoplay() {
+  if (autoplayTimer) startAutoplay();
+}
+document.getElementById('carousel').addEventListener('mouseenter', stopAutoplay);
+document.getElementById('carousel').addEventListener('mouseleave', startAutoplay);
+
+// Touch swipe
+let touchStartX = 0, touchEndX = 0;
+const carousel = document.getElementById('carousel');
+carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive:true});
+carousel.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > 50) {
+    // In RTL, swipe direction semantics flip
+    if (currentLang === 'ar') {
+      goToSlide(currentSlide + (diff > 0 ? -1 : 1));
+    } else {
+      goToSlide(currentSlide + (diff > 0 ? 1 : -1));
+    }
+  }
+}, {passive:true});
+
+/* ============================
+   LIGHTBOX
+============================ */
+function openLightbox(i) {
+  const lb = document.getElementById('lightbox');
+  const info = gallery[i][currentLang];
+  document.getElementById('lightboxSvg').innerHTML = gallerySVG(i);
+  document.getElementById('lightboxTitle').textContent = info.t;
+  document.getElementById('lightboxDesc').textContent = info.d;
+  lb.classList.add('open');
+  lb.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('open');
+  lb.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target.id === 'lightbox') closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+/* ============================
+   OPEN/CLOSED STATUS
+============================ */
+function getStatus() {
+  const now = new Date();
+  const riyadhStr = now.toLocaleString('en-US', { timeZone: 'Asia/Riyadh' });
+  const r = new Date(riyadhStr);
+  const day = r.getDay(); // 0=Sun ... 5=Fri ... 6=Sat
+  const minutes = r.getHours() * 60 + r.getMinutes();
+  
+  // Friday: 13:00 - 23:00
+  if (day === 5) {
+    if (minutes >= 13*60 && minutes <= 23*60) {
+      return { open: true, label: `${t('status.open')} · ${t('status.closesAt')} 11:00 PM` };
+    }
+    if (minutes < 13*60) {
+      return { open: false, label: `${t('status.closed')} · ${t('status.opensAt')} 1:00 PM` };
+    }
+    return { open: false, label: t('status.closed') };
+  }
+  // Sat-Thu: 8:00-11:30 (480-690) AND 16:00-23:00 (960-1380)
+  if (minutes >= 480 && minutes <= 690) {
+    return { open: true, label: `${t('status.open')} · ${t('status.closesAt')} 11:30 AM` };
+  }
+  if (minutes > 690 && minutes < 960) {
+    return { open: false, label: `${t('status.closed')} · ${t('status.opensAt')} 4:00 PM` };
+  }
+  if (minutes >= 960 && minutes <= 1380) {
+    return { open: true, label: `${t('status.open')} · ${t('status.closesAt')} 11:00 PM` };
+  }
+  if (minutes < 480) {
+    return { open: false, label: `${t('status.closed')} · ${t('status.opensAt')} 8:00 AM` };
+  }
+  return { open: false, label: t('status.closed') };
+}
+
+function updateStatus() {
+  const s = getStatus();
+  ['heroStatus', 'visitStatus'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('closed', !s.open);
+    const txt = document.getElementById(id + 'Text');
+    if (txt) txt.textContent = s.label;
+  });
+}
+
+function highlightToday() {
+  const now = new Date();
+  const riyadhStr = now.toLocaleString('en-US', { timeZone: 'Asia/Riyadh' });
+  const r = new Date(riyadhStr);
+  const today = r.getDay();
+  document.querySelectorAll('#hoursTable tr').forEach(tr => {
+    tr.querySelectorAll('td').forEach(td => td.classList.remove('hours-today'));
+    if (parseInt(tr.dataset.day) === today) {
+      tr.querySelectorAll('td').forEach(td => td.classList.add('hours-today'));
+    }
+  });
+}
+
+/* ============================
+   LANG TOGGLE
+============================ */
+document.getElementById('langToggle').addEventListener('click', () => {
+  applyLang(currentLang === 'ar' ? 'en' : 'ar');
+});
+
+/* ============================
+   NAV
+============================ */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// Active section highlight
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navAnchors.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => navObserver.observe(s));
+
+// Nav scrolled state
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+  document.getElementById('toTop').classList.toggle('show', window.scrollY > 600);
+}, { passive: true });
+
+document.getElementById('toTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ============================
+   SCROLL REVEAL
+============================ */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ============================
+   FORM VALIDATION
+============================ */
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  let valid = true;
+  
+  const name = form.name;
+  const phone = form.phone;
+  const msg = form.msg;
+  
+  // reset
+  [name, phone, msg].forEach(input => {
+    input.closest('.form-row').classList.remove('error');
+  });
+  
+  if (!name.value.trim()) {
+    name.closest('.form-row').classList.add('error');
+    valid = false;
+  }
+  if (!phone.value.trim() || !/^[+\d\s()-]{7,}$/.test(phone.value.trim())) {
+    phone.closest('.form-row').classList.add('error');
+    valid = false;
+  }
+  if (!msg.value.trim() || msg.value.trim().length < 5) {
+    msg.closest('.form-row').classList.add('error');
+    valid = false;
+  }
+  
+  if (valid) {
+    const success = document.getElementById('formSuccess');
+    success.classList.add('show');
+    form.reset();
+    setTimeout(() => success.classList.remove('show'), 5000);
+  }
+});
+
+// Clear error on input
+document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(input => {
+  input.addEventListener('input', () => {
+    input.closest('.form-row').classList.remove('error');
+  });
+});
+
+/* ============================
+   INIT
+============================ */
+applyLang('ar');
+startAutoplay();
+updateStatus();
+setInterval(updateStatus, 60000); // refresh status every minute
+highlightToday();
+</script>
+</body>
+</html>
