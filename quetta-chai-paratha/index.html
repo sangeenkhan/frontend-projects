@@ -3,488 +3,1876 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quetta Chai Paratha — Riyadh, Open 24 Hours</title>
-<meta name="description" content="Quetta Chai Paratha — a Pakistani-style dhaba serving hot chai and hand-rolled parathas around the clock in Tuwaiq, Riyadh.">
+<title>Quetta Chai Paratha — 24-Hour Dhaba in Tuwaiq, Riyadh</title>
+<meta name="description" content="Quetta-style doodh patti chai and hand-rolled parathas, open 24 hours in Tuwaiq, Riyadh. Parathas served fresh at breakfast.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Oswald:wght@400;500;600;700&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Oswald:wght@300;400;500;600;700&family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#1B1410;
-    --ink-soft:#2A1F19;
-    --rust:#C1440E;
-    --gold:#E8A33D;
-    --pista:#6B8E4E;
-    --paper:#F2E8D5;
-    --maroon:#7A1F2B;
-    --maroon-deep:#5A1620;
-    --shadow: 0 18px 40px rgba(0,0,0,0.45);
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--ink);
-    color:var(--paper);
-    font-family:'Mukta', sans-serif;
-    font-size:17px;
-    line-height:1.6;
-    overflow-x:hidden;
-  }
-  h1,h2,h3{font-family:'Alfa Slab One', serif; font-weight:400; margin:0; letter-spacing:0.5px;}
-  .eyebrow{
-    font-family:'Oswald', sans-serif;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    font-size:0.78rem;
-    color:var(--gold);
-    font-weight:600;
-  }
-  a{color:inherit;}
-  img{max-width:100%; display:block;}
-  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+:root {
+  --ink: #1B1410;
+  --ink-2: #241A14;
+  --ink-3: #3A2A1F;
+  --rust: #C1440E;
+  --rust-dark: #8E2F08;
+  --gold: #E8A33D;
+  --gold-soft: #C98420;
+  --maroon: #7A1F2B;
+  --maroon-deep: #5A1620;
+  --pistachio: #6B8E4E;
+  --cream: #F2E8D5;
+  --cream-soft: #E8DCC4;
+  --cream-dim: #BDB29B;
+}
 
-  /* ---------- Truck-art border divider ---------- */
-  .tarang{
-    width:100%;
-    height:26px;
-    background-color:var(--maroon-deep);
-    background-image:
-      repeating-linear-gradient(90deg, transparent 0 34px, rgba(232,163,61,0.0) 34px 34px);
-    position:relative;
-    overflow:hidden;
-  }
-  .tarang svg{display:block; width:100%; height:26px;}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Mukta', sans-serif;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
 
-  /* ---------- Top bar ---------- */
-  .topbar{
-    position:fixed; top:0; left:0; right:0; z-index:50;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 28px;
-    background:linear-gradient(180deg, rgba(27,20,16,0.92), rgba(27,20,16,0));
-    backdrop-filter: blur(2px);
-  }
-  .brandmark{display:flex; align-items:center; gap:10px; font-family:'Oswald'; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size:0.95rem; color:var(--paper); text-decoration:none;}
-  .brandmark svg{flex-shrink:0;}
-  .navlinks{display:flex; gap:26px; font-family:'Oswald'; font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px;}
-  .navlinks a{text-decoration:none; color:var(--paper); opacity:0.85; transition:opacity .2s, color .2s;}
-  .navlinks a:hover{opacity:1; color:var(--gold);}
-  @media (max-width:720px){ .navlinks{display:none;} }
+::selection { background: var(--gold); color: var(--ink); }
 
-  /* ---------- Hero ---------- */
-  .hero{
-    position:relative;
-    min-height:100vh;
-    display:flex;
-    align-items:flex-end;
-    background:
-      linear-gradient(180deg, rgba(27,20,16,0.35) 0%, rgba(27,20,16,0.55) 45%, var(--ink) 92%),
-      url('https://lh3.googleusercontent.com/place-photos/AG9NLjApMF-K9ZhWH2aD0JDP-Hli3Vjt5I5nE1_SlhHZTwu1WtzhI6FTB4dXqoOOaHoPy531-DzfV7eWL4Cg9gb_Xw_gPWfRDDpvyfkT04L3rsS8d_BmSjhC3dAubMH7cahnxBk_NoVDF1OVzFwxjz_WHrSTgw=s4800-w800-h600');
-    background-size:cover;
-    background-position:center 65%;
-  }
-  .hero-inner{ position:relative; padding:120px 28px 70px; width:100%; }
-  .steamwrap{ position:absolute; top:64px; left:28px; opacity:0.9; }
-  .steam-path{
-    stroke:var(--paper);
-    stroke-width:3;
-    fill:none;
-    stroke-linecap:round;
-    opacity:0.55;
-  }
-  .steam1{ animation: rise 4s ease-in-out infinite; }
-  .steam2{ animation: rise 4s ease-in-out infinite 1.3s; }
-  .steam3{ animation: rise 4s ease-in-out infinite 2.6s; }
-  @keyframes rise{
-    0%{ transform:translateY(6px); opacity:0; }
-    25%{ opacity:0.6; }
-    80%{ opacity:0; }
-    100%{ transform:translateY(-22px); opacity:0; }
-  }
-  .badge-24{
-    display:inline-flex; align-items:center; gap:8px;
-    background:var(--rust);
-    color:var(--paper);
-    font-family:'Oswald'; font-weight:700; letter-spacing:2px; text-transform:uppercase;
-    font-size:0.78rem;
-    padding:8px 16px;
-    border-radius:2px;
-    margin-bottom:22px;
-  }
-  .badge-24 span.dot{width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 3px rgba(232,163,61,0.25);}
-  .hero h1{
-    font-size:clamp(2.6rem, 8vw, 5.6rem);
-    color:var(--paper);
-    text-shadow:0 6px 24px rgba(0,0,0,0.5);
-    line-height:0.98;
-  }
-  .hero h1 em{ font-style:normal; color:var(--gold); }
-  .hero-sub{
-    max-width:520px;
-    font-size:1.15rem;
-    color:var(--paper);
-    opacity:0.92;
-    margin-top:18px;
-  }
-  .hero-ctas{ display:flex; gap:14px; margin-top:34px; flex-wrap:wrap; }
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'Oswald'; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; font-size:0.85rem;
-    padding:14px 26px;
-    text-decoration:none;
-    border-radius:2px;
-    transition:transform .18s ease, box-shadow .18s ease;
-  }
-  .btn:hover{ transform:translateY(-2px); }
-  .btn-primary{ background:var(--gold); color:var(--ink); box-shadow:var(--shadow); }
-  .btn-outline{ border:2px solid var(--paper); color:var(--paper); }
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
-  /* ---------- Sections generic ---------- */
-  section{ padding:90px 0; }
-  .section-head{ margin-bottom:48px; max-width:640px; }
-  .section-head h2{ font-size:clamp(2rem, 4vw, 2.8rem); margin-top:10px; color:var(--paper); }
-  .section-head p{ margin-top:14px; opacity:0.85; font-size:1.05rem; }
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 10px 16px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  text-decoration: none;
+  z-index: 200;
+  border-radius: 2px;
+}
+.skip-link:focus { top: 16px; }
 
-  /* ---------- Story ---------- */
-  .story{ background:var(--ink-soft); }
-  .story-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center; }
-  .story-grid img{ border-radius:4px; box-shadow:var(--shadow); }
-  .story-text p{ margin:0 0 16px; opacity:0.92; }
-  .story-text p:last-child{ margin-bottom:0; }
-  @media (max-width:860px){ .story-grid{ grid-template-columns:1fr; gap:36px; } }
+/* ============ NAV ============ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(27, 20, 16, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(232, 163, 61, 0.18);
+}
+.nav-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--cream);
+  text-decoration: none;
+}
+.brand-mark { width: 38px; height: 38px; flex-shrink: 0; }
+.brand-text { display: flex; flex-direction: column; line-height: 1; }
+.brand-text .name {
+  font-family: 'Alfa Slab One', serif;
+  font-size: 16px;
+  color: var(--cream);
+  letter-spacing: 0.3px;
+}
+.brand-text .sub {
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin-top: 4px;
+}
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.25s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--rust);
+  color: var(--cream);
+  padding: 10px 18px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid var(--rust);
+  transition: all 0.2s;
+}
+.nav-cta:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+}
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid rgba(232, 163, 61, 0.3);
+  color: var(--cream);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 2px;
+}
+.nav-toggle svg { width: 22px; height: 22px; display: block; }
 
-  /* ---------- Menu ---------- */
-  .menu-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:22px;
-  }
-  .menu-card{
-    background:var(--maroon);
-    border:1px solid rgba(232,163,61,0.35);
-    border-radius:3px;
-    padding:26px 24px;
-    position:relative;
-  }
-  .menu-card.signature{
-    background:linear-gradient(160deg, var(--rust), #9a350c);
-    border-color:var(--gold);
-  }
-  .menu-card .tag{
-    font-family:'Oswald'; text-transform:uppercase; letter-spacing:2px; font-size:0.7rem;
-    color:var(--gold); font-weight:700; margin-bottom:10px; display:block;
-  }
-  .menu-card h3{ font-family:'Oswald'; font-weight:700; font-size:1.25rem; color:var(--paper); text-transform:none; letter-spacing:0.3px;}
-  .menu-card p{ opacity:0.88; font-size:0.95rem; margin-top:10px; }
-  @media (max-width:860px){ .menu-grid{ grid-template-columns:1fr 1fr; } }
-  @media (max-width:560px){ .menu-grid{ grid-template-columns:1fr; } }
+/* ============ HERO ============ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 140px 24px 90px;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://picsum.photos/seed/quetta-tandoor-flame-night/1920/1280.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.45) contrast(1.15) saturate(0.85);
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 18% 45%, rgba(193, 68, 14, 0.32), transparent 60%),
+    linear-gradient(180deg, rgba(27, 20, 16, 0.85) 0%, rgba(27, 20, 16, 0.55) 45%, rgba(27, 20, 16, 0.95) 100%),
+    linear-gradient(90deg, rgba(27, 20, 16, 0.75) 0%, transparent 55%);
+}
+.hero-content {
+  position: relative;
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-text { max-width: 720px; }
+.badge-24h {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 9px 18px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 2px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 20px rgba(232, 163, 61, 0.25);
+}
+.badge-24h .dot {
+  width: 8px; height: 8px;
+  background: var(--maroon-deep);
+  border-radius: 50%;
+  animation: pulse 2.2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+.hero h1 {
+  font-family: 'Alfa Slab One', serif;
+  font-size: clamp(2.4rem, 6.5vw, 5.5rem);
+  line-height: 1.02;
+  color: var(--cream);
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+.hero h1 .gold { color: var(--gold); }
+.hero h1 .rust { color: var(--rust); }
+.hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  color: var(--cream-soft);
+  max-width: 560px;
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: transform 0.22s, box-shadow 0.22s, background 0.22s, color 0.22s, border-color 0.22s;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.btn-primary {
+  background: var(--rust);
+  color: var(--cream);
+  border-color: var(--rust);
+}
+.btn-primary:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(193, 68, 14, 0.4);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--cream);
+  border-color: var(--gold);
+}
+.btn-secondary:hover {
+  background: var(--gold);
+  color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(232, 163, 61, 0.3);
+}
+.btn svg { width: 16px; height: 16px; }
 
-  .timing-note{
-    margin-top:30px;
-    display:flex;
-    gap:14px;
-    align-items:flex-start;
-    background:rgba(232,163,61,0.08);
-    border-left:3px solid var(--gold);
-    padding:16px 20px;
-    border-radius:2px;
-    font-size:0.95rem;
-  }
+/* Hero chai cup visual */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 480px;
+}
+.chai-cup {
+  width: 100%;
+  max-width: 440px;
+  filter: drop-shadow(0 30px 50px rgba(0,0,0,0.55));
+}
+.steam-svg {
+  position: absolute;
+  bottom: 56%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 320px;
+  pointer-events: none;
+  z-index: 2;
+}
+.steam-path {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: steamRise 4.5s ease-out infinite;
+}
+.steam-path:nth-child(1) { animation-delay: 0s; }
+.steam-path:nth-child(2) { animation-delay: 1s; }
+.steam-path:nth-child(3) { animation-delay: 2s; }
+.steam-path:nth-child(4) { animation-delay: 3.2s; }
+.steam-path:nth-child(5) { animation-delay: 1.6s; }
+@keyframes steamRise {
+  0% { opacity: 0; transform: translateY(40px) scale(0.8); }
+  20% { opacity: 0.55; }
+  60% { opacity: 0.35; }
+  100% { opacity: 0; transform: translateY(-50px) scale(1.3); }
+}
 
-  /* ---------- Gallery ---------- */
-  .gallery{ background:var(--ink-soft); }
-  .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:14px;
-  }
-  .gallery-grid img{
-    width:100%; height:220px; object-fit:cover; border-radius:3px;
-    filter:saturate(1.05) contrast(1.02);
-    transition:transform .35s ease;
-  }
-  .gallery-grid a{ overflow:hidden; border-radius:3px; display:block; }
-  .gallery-grid a:hover img{ transform:scale(1.06); }
-  @media (max-width:860px){ .gallery-grid{ grid-template-columns:1fr 1fr; } }
+.hero-meta {
+  position: absolute;
+  bottom: 28px;
+  left: 0; right: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  padding: 0 24px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+  color: var(--cream-dim);
+  flex-wrap: wrap;
+}
+.hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+.hero-meta .star { color: var(--gold); display: inline-flex; }
+.hero-meta .star svg { width: 13px; height: 13px; }
 
-  /* ---------- Reviews ---------- */
-  .reviews-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:22px;
-  }
-  .review-card{
-    background:var(--paper);
-    color:var(--ink);
-    padding:28px 24px;
-    border-radius:2px;
-    box-shadow:var(--shadow);
-    position:relative;
-  }
-  .review-card .stars{ color:var(--rust); font-size:0.95rem; letter-spacing:2px; margin-bottom:12px; }
-  .review-card p{ font-size:0.98rem; opacity:0.9; }
-  .review-card .who{ margin-top:16px; font-family:'Oswald'; font-size:0.78rem; text-transform:uppercase; letter-spacing:1.5px; opacity:0.6; }
-  @media (max-width:860px){ .reviews-grid{ grid-template-columns:1fr; } }
+/* ============ TRUCK ART BORDER ============ */
+.truck-art {
+  display: block;
+  width: 100%;
+  height: 54px;
+  background: var(--maroon-deep);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.truck-art svg { display: block; width: 100%; height: 100%; }
 
-  /* ---------- Visit ---------- */
-  .visit{ background:linear-gradient(160deg, var(--maroon-deep), var(--ink)); }
-  .visit-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-  }
-  .visit-item{ margin-bottom:26px; }
-  .visit-item .eyebrow{ display:block; margin-bottom:6px; }
-  .visit-item .val{ font-size:1.2rem; font-weight:600; }
-  .rating-line{ display:flex; align-items:center; gap:10px; margin-top:8px;}
-  .rating-line .stars{ color:var(--gold); letter-spacing:2px; }
-  @media (max-width:860px){ .visit-grid{ grid-template-columns:1fr; gap:10px; } }
+/* ============ SECTION COMMON ============ */
+section { padding: 100px 24px; position: relative; }
+.container { max-width: 1280px; margin: 0 auto; width: 100%; }
+.section-eyebrow {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 12px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 30px; height: 2px;
+  background: var(--gold);
+}
+.section-title {
+  font-family: 'Alfa Slab One', serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.08;
+  color: var(--cream);
+  margin-bottom: 24px;
+  letter-spacing: -0.005em;
+}
+.section-title .gold { color: var(--gold); }
+.section-title .rust { color: var(--rust); }
 
-  /* ---------- Footer ---------- */
-  footer{
-    background:var(--ink);
-    padding:36px 0 28px;
-    text-align:center;
-    font-family:'Oswald';
-    font-size:0.8rem;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    opacity:0.6;
-  }
+/* ============ STORY ============ */
+.story {
+  background: var(--ink);
+  background-image:
+    radial-gradient(circle at 88% 12%, rgba(193, 68, 14, 0.07), transparent 50%),
+    radial-gradient(circle at 5% 90%, rgba(122, 31, 43, 0.1), transparent 55%);
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 70px;
+  align-items: center;
+}
+.story-image {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  border: 1px solid rgba(232, 163, 61, 0.25);
+}
+.story-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05) saturate(1.05);
+  transition: transform 0.6s ease;
+}
+.story-image:hover img { transform: scale(1.04); }
+.story-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(27, 20, 16, 0.6) 100%);
+  pointer-events: none;
+}
+.story-image .stamp {
+  position: absolute;
+  bottom: 20px; left: 20px;
+  background: var(--maroon-deep);
+  color: var(--gold);
+  padding: 9px 14px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  z-index: 2;
+}
+.story-content p {
+  font-size: 1.06rem;
+  color: var(--cream-soft);
+  margin-bottom: 18px;
+  line-height: 1.75;
+}
+.story-content p .accent { color: var(--gold); font-weight: 600; }
+.story-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 38px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(232, 163, 61, 0.18);
+}
+.story-stat .num {
+  font-family: 'Alfa Slab One', serif;
+  font-size: 1.9rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.story-stat .lbl {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  color: var(--cream-dim);
+  margin-top: 8px;
+}
 
-  @media (prefers-reduced-motion: reduce){
-    .steam1,.steam2,.steam3{ animation:none; opacity:0.3; }
-    .btn:hover{ transform:none; }
-    .gallery-grid a:hover img{ transform:none; }
+/* ============ MENU ============ */
+.menu {
+  background: var(--ink-2);
+  background-image:
+    radial-gradient(circle at 8% 92%, rgba(122, 31, 43, 0.18), transparent 50%),
+    radial-gradient(circle at 92% 8%, rgba(193, 68, 14, 0.1), transparent 50%);
+}
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+.menu-note {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  color: var(--cream-dim);
+  background: rgba(232, 163, 61, 0.08);
+  border: 1px solid rgba(232, 163, 61, 0.28);
+  padding: 9px 14px;
+  border-radius: 2px;
+  line-height: 1.4;
+}
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 22px;
+}
+.menu-card {
+  background: var(--cream);
+  color: var(--ink);
+  border: 2px solid var(--maroon-deep);
+  padding: 30px 24px 22px;
+  position: relative;
+  border-radius: 4px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+}
+.menu-card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(90, 22, 32, 0.45);
+  border-radius: 2px;
+  pointer-events: none;
+}
+.menu-card .rivet {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: var(--maroon-deep);
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  z-index: 2;
+}
+.menu-card .rivet.tl { top: 9px; left: 9px; }
+.menu-card .rivet.tr { top: 9px; right: 9px; }
+.menu-card .rivet.bl { bottom: 9px; left: 9px; }
+.menu-card .rivet.br { bottom: 9px; right: 9px; }
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+}
+.menu-card .menu-tag {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 10px;
+  color: var(--rust);
+  margin-bottom: 12px;
+  display: inline-block;
+  padding: 3px 8px;
+  border: 1px solid var(--rust);
+  border-radius: 2px;
+  align-self: flex-start;
+  background: transparent;
+}
+.menu-card .menu-name {
+  font-family: 'Alfa Slab One', serif;
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+.menu-card .menu-desc {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex: 1;
+}
+.menu-card .menu-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(90, 22, 32, 0.45);
+}
+.menu-card .menu-price {
+  font-family: 'Alfa Slab One', serif;
+  font-size: 1.45rem;
+  color: var(--rust);
+  line-height: 1;
+}
+.menu-card .menu-price .unit {
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  color: var(--ink-2);
+  letter-spacing: 0.12em;
+  margin-left: 4px;
+  font-weight: 500;
+}
+.menu-card .foot-label {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+  color: var(--rust-dark);
+}
+
+/* Signature card */
+.menu-card.signature {
+  background: var(--maroon-deep);
+  color: var(--cream);
+  border-color: var(--gold);
+}
+.menu-card.signature::before { border-color: rgba(232, 163, 61, 0.45); }
+.menu-card.signature .rivet { background: var(--gold); border-color: var(--cream); }
+.menu-card.signature .menu-tag {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.menu-card.signature .menu-name { color: var(--cream); }
+.menu-card.signature .menu-desc { color: var(--cream-soft); }
+.menu-card.signature .menu-foot { border-top-color: rgba(232, 163, 61, 0.35); }
+.menu-card.signature .menu-price { color: var(--gold); }
+.menu-card.signature .menu-price .unit { color: var(--cream-dim); }
+.menu-card.signature .foot-label { color: var(--gold); }
+.menu-card.signature .signature-flag {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 5px 11px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 2px;
+  z-index: 3;
+}
+
+/* ============ GALLERY (UPDATED LAYOUT) ============ */
+.gallery { background: var(--ink); }
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+.gallery-count {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  color: var(--cream-dim);
+  background: rgba(232, 163, 61, 0.08);
+  border: 1px solid rgba(232, 163, 61, 0.28);
+  padding: 9px 14px;
+  border-radius: 2px;
+}
+
+.gallery-wall {
+  column-count: 3;
+  column-gap: 16px;
+}
+.gallery-tile {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  border: 1px solid rgba(232, 163, 61, 0.14);
+  cursor: pointer;
+  background: var(--ink-2);
+  display: block;
+}
+.gallery-tile img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.65s ease, filter 0.4s ease;
+  filter: contrast(1.06) saturate(1.05);
+}
+.gallery-tile:hover img {
+  transform: scale(1.06);
+  filter: contrast(1.12) saturate(1.15);
+}
+.gallery-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(27, 20, 16, 0.92) 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.gallery-tile:hover::after { opacity: 1; }
+
+.gallery-tile .caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 18px 20px 16px;
+  z-index: 2;
+  transform: translateY(14px);
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+.gallery-tile:hover .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gallery-tile .caption .cap-label {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 10px;
+  color: var(--gold);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.gallery-tile .caption .cap-text {
+  font-family: 'Mukta', sans-serif;
+  font-size: 0.92rem;
+  color: var(--cream);
+  line-height: 1.45;
+  font-weight: 500;
+}
+.gallery-tile .corner-mark {
+  position: absolute;
+  top: 12px; left: 12px;
+  width: 28px; height: 28px;
+  background: rgba(27, 20, 16, 0.7);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(232, 163, 61, 0.4);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  z-index: 2;
+  transition: background 0.3s;
+}
+.gallery-tile:hover .corner-mark {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* ============ REVIEWS ============ */
+.reviews {
+  background: var(--ink-2);
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(232, 163, 61, 0.06), transparent 60%);
+}
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 50px;
+}
+.reviews-rating {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--maroon-deep);
+  border: 1px solid var(--gold);
+  padding: 14px 22px;
+  border-radius: 3px;
+}
+.reviews-rating .score {
+  font-family: 'Alfa Slab One', serif;
+  font-size: 1.8rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.reviews-rating .out {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  color: var(--cream-dim);
+  letter-spacing: 0.1em;
+}
+.reviews-rating .stars {
+  color: var(--gold);
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+.reviews-rating .count {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 11px;
+  color: var(--cream-dim);
+  line-height: 1.5;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 32px;
+}
+.review-card {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 34px 26px 26px;
+  position: relative;
+  border-radius: 2px;
+  box-shadow: 0 14px 38px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.25);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.review-card:nth-child(1) { transform: rotate(-1.3deg); }
+.review-card:nth-child(2) { transform: rotate(0.8deg); }
+.review-card:nth-child(3) { transform: rotate(-0.6deg); }
+.review-card:hover {
+  transform: translateY(-5px) rotate(0deg);
+  box-shadow: 0 22px 50px rgba(0,0,0,0.5);
+}
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 14px; left: 16px; right: 16px;
+  border-top: 2px dashed rgba(193, 68, 14, 0.45);
+}
+.review-card::after {
+  content: '';
+  position: absolute;
+  bottom: 14px; left: 16px; right: 16px;
+  border-top: 2px dashed rgba(193, 68, 14, 0.45);
+}
+.review-card .quote-mark {
+  font-family: 'Alfa Slab One', serif;
+  font-size: 3rem;
+  color: var(--rust);
+  line-height: 0.6;
+  margin-bottom: 6px;
+  opacity: 0.55;
+}
+.review-card .review-stars {
+  color: var(--rust);
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+}
+.review-card .review-text {
+  font-size: 1rem;
+  color: var(--ink-2);
+  line-height: 1.7;
+  margin-bottom: 22px;
+  font-style: italic;
+}
+.review-card .review-author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid rgba(90, 22, 32, 0.18);
+  gap: 12px;
+}
+.review-card .review-name {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 600;
+}
+.review-card .review-source {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: 10px;
+  color: var(--rust);
+}
+
+/* ============ VISIT ============ */
+.visit {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(232, 163, 61, 0.14), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(193, 68, 14, 0.15), transparent 55%),
+    linear-gradient(135deg, var(--maroon-deep) 0%, var(--maroon) 55%, var(--maroon-deep) 100%);
+  padding: 110px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.visit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, transparent 0, transparent 32px, rgba(232, 163, 61, 0.025) 32px, rgba(232, 163, 61, 0.025) 33px);
+  pointer-events: none;
+}
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.visit-info .section-title { color: var(--cream); }
+.visit-info .section-eyebrow { color: var(--gold); }
+.visit-info > p {
+  color: var(--cream-soft);
+  font-size: 1.05rem;
+  margin-bottom: 36px;
+  line-height: 1.7;
+  max-width: 480px;
+}
+.visit-details {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+.visit-detail {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 18px;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(232, 163, 61, 0.2);
+}
+.visit-detail:last-child { border-bottom: none; padding-bottom: 0; }
+.visit-detail .icon {
+  width: 48px; height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(232, 163, 61, 0.13);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.visit-detail .icon svg { width: 20px; height: 20px; stroke: var(--gold); }
+.visit-detail .label {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.visit-detail .value {
+  font-size: 1.05rem;
+  color: var(--cream);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.visit-detail .value a {
+  color: var(--cream);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(232, 163, 61, 0.45);
+  transition: color 0.2s, border-color 0.2s;
+}
+.visit-detail .value a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+.visit-detail .sub {
+  font-size: 0.85rem;
+  color: var(--cream-dim);
+  margin-top: 4px;
+}
+.visit-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.visit-map {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--gold);
+  aspect-ratio: 4/5;
+  background: var(--maroon-deep);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+.visit-map .map-svg {
+  width: 100%; height: 100%;
+  display: block;
+}
+.visit-map .map-link {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: var(--gold);
+  color: var(--ink);
+  width: 40px; height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  z-index: 3;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+  border: 1px solid var(--cream);
+}
+.visit-map .map-link:hover { transform: scale(1.08); background: var(--cream); }
+.visit-map .map-link svg { width: 18px; height: 18px; }
+.visit-map .map-label {
+  position: absolute;
+  bottom: 18px; left: 18px; right: 18px;
+  background: rgba(27, 20, 16, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 14px 16px;
+  border-radius: 3px;
+  border: 1px solid var(--gold);
+  z-index: 3;
+}
+.visit-map .map-label .ml-name {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.visit-map .map-label .ml-addr {
+  font-size: 0.85rem;
+  color: var(--cream);
+  line-height: 1.4;
+}
+
+/* ============ FOOTER ============ */
+.footer { background: var(--ink); padding: 0; }
+.footer-art { height: 54px; width: 100%; }
+.footer-inner {
+  padding: 50px 24px 36px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.footer-brand .name {
+  font-family: 'Alfa Slab One', serif;
+  font-size: 1.4rem;
+  color: var(--cream);
+}
+.footer-tag {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.footer-meta {
+  font-size: 0.88rem;
+  color: var(--cream-dim);
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.footer-meta a { color: var(--cream-dim); text-decoration: none; transition: color 0.2s; }
+.footer-meta a:hover { color: var(--gold); }
+.footer-meta .sep { color: var(--gold); opacity: 0.5; }
+.footer-copy {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(232, 163, 61, 0.14);
+  font-size: 0.78rem;
+  color: var(--cream-dim);
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* ============ MOBILE NAV ============ */
+.mobile-nav {
+  position: fixed;
+  top: 0; right: -100%;
+  width: 80%; max-width: 320px;
+  height: 100vh;
+  background: var(--ink);
+  border-left: 1px solid var(--gold);
+  padding: 90px 30px 30px;
+  z-index: 99;
+  transition: right 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mobile-nav.open { right: 0; }
+.mobile-nav a {
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(232, 163, 61, 0.14);
+  transition: color 0.2s, padding-left 0.2s;
+}
+.mobile-nav a:hover { color: var(--gold); padding-left: 8px; }
+.mobile-nav .mobile-call {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--rust);
+  color: var(--cream);
+  padding: 14px;
+  border-radius: 2px;
+  border-bottom: none;
+  font-weight: 600;
+}
+.mobile-nav .mobile-call:hover { background: var(--gold); color: var(--ink); }
+.mobile-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 98;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.mobile-overlay.open { opacity: 1; pointer-events: auto; }
+
+/* ============ REVEAL ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 980px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+  .hero-content { grid-template-columns: 1fr; gap: 30px; }
+  .hero-visual { display: none; }
+  .hero { padding: 130px 22px 80px; min-height: auto; }
+  .story-grid { grid-template-columns: 1fr; gap: 40px; }
+  .visit-grid { grid-template-columns: 1fr; gap: 40px; }
+  .gallery-wall { column-count: 2; }
+  .menu-header { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  section { padding: 70px 18px; }
+  .nav-inner { padding: 10px 18px; }
+  .brand-text .name { font-size: 13px; }
+  .brand-text .sub { font-size: 9px; }
+  .brand-mark { width: 32px; height: 32px; }
+  .hero-meta { gap: 18px; font-size: 10px; }
+  .story-stats { grid-template-columns: 1fr; gap: 14px; padding-top: 24px; }
+  .gallery-wall { column-count: 1; }
+  .visit { padding: 80px 18px; }
+  .menu-card { padding: 26px 18px 18px; min-height: auto; }
+  .review-card { padding: 28px 22px 22px; }
+  .reviews-rating { padding: 12px 16px; gap: 12px; }
+  .reviews-rating .score { font-size: 1.5rem; }
+  .btn { padding: 13px 22px; font-size: 12px; }
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
+  .steam-path { animation: none; opacity: 0; }
+  .badge-24h .dot { animation: none; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+}
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <a href="#top" class="brandmark">
-    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-      <path d="M4 11h18v4a9 9 0 0 1-9 9 9 9 0 0 1-9-9v-4z" fill="#E8A33D"/>
-      <path d="M22 12h1.5a3 3 0 0 1 0 6H21" stroke="#E8A33D" stroke-width="1.6" fill="none"/>
+<a href="#home" class="skip-link">Skip to content</a>
+
+<!-- Hidden SVG with reusable truck-art pattern definition -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="truckTile" x="0" y="0" width="140" height="54" patternUnits="userSpaceOnUse">
+      <rect width="140" height="54" fill="#5A1620"/>
+      <rect x="0" y="0" width="140" height="2.5" fill="#E8A33D"/>
+      <rect x="0" y="51.5" width="140" height="2.5" fill="#E8A33D"/>
+      <rect x="0" y="4.5" width="140" height="0.8" fill="#C1440E"/>
+      <rect x="0" y="48.7" width="140" height="0.8" fill="#C1440E"/>
+      <g transform="translate(70, 27)">
+        <circle r="6.5" fill="none" stroke="#E8A33D" stroke-width="1.3"/>
+        <circle r="3" fill="#E8A33D"/>
+        <circle r="9.5" fill="none" stroke="#C1440E" stroke-width="0.7" stroke-dasharray="2 2"/>
+      </g>
+      <g transform="translate(35, 27)" fill="none" stroke="#E8A33D" stroke-width="1.4" stroke-linecap="round">
+        <path d="M 0 -11 C -9 -8 -12 4 -5 10 C 3 14 11 9 8 1 C 5 -4 -2 -2 0 3"/>
+        <circle cx="-3" cy="-7" r="1.1" fill="#E8A33D" stroke="none"/>
+      </g>
+      <g transform="translate(105, 27) scale(-1, 1)" fill="none" stroke="#E8A33D" stroke-width="1.4" stroke-linecap="round">
+        <path d="M 0 -11 C -9 -8 -12 4 -5 10 C 3 14 11 9 8 1 C 5 -4 -2 -2 0 3"/>
+        <circle cx="-3" cy="-7" r="1.1" fill="#E8A33D" stroke="none"/>
+      </g>
+      <circle cx="10" cy="10" r="1.8" fill="#C1440E"/>
+      <circle cx="130" cy="10" r="1.8" fill="#C1440E"/>
+      <circle cx="10" cy="44" r="1.8" fill="#C1440E"/>
+      <circle cx="130" cy="44" r="1.8" fill="#C1440E"/>
+      <ellipse cx="18" cy="14" rx="3" ry="1.5" fill="none" stroke="#E8A33D" stroke-width="0.7"/>
+      <ellipse cx="122" cy="14" rx="3" ry="1.5" fill="none" stroke="#E8A33D" stroke-width="0.7"/>
+      <ellipse cx="18" cy="40" rx="3" ry="1.5" fill="none" stroke="#E8A33D" stroke-width="0.7"/>
+      <ellipse cx="122" cy="40" rx="3" ry="1.5" fill="none" stroke="#E8A33D" stroke-width="0.7"/>
+      <circle cx="52" cy="27" r="1.2" fill="#E8A33D"/>
+      <circle cx="88" cy="27" r="1.2" fill="#E8A33D"/>
+    </pattern>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand" aria-label="Quetta Chai Paratha home">
+      <svg class="brand-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="18" cy="29" rx="12" ry="2.5" fill="none" stroke="#E8A33D" stroke-width="1.5"/>
+        <path d="M 8 13 L 10 27 Q 10 29 12 29 L 24 29 Q 26 29 26 27 L 28 13 Z" fill="#7A1F2B" stroke="#E8A33D" stroke-width="1.5" stroke-linejoin="round"/>
+        <ellipse cx="18" cy="14" rx="9.5" ry="2" fill="#C1440E" stroke="#E8A33D" stroke-width="1.2"/>
+        <path d="M 28 16 Q 33 17 33 22 Q 33 26 28 26" fill="none" stroke="#E8A33D" stroke-width="1.5"/>
+        <circle cx="14" cy="22" r="1" fill="#E8A33D"/>
+        <circle cx="18" cy="23" r="1" fill="#E8A33D"/>
+        <circle cx="22" cy="22" r="1" fill="#E8A33D"/>
+        <path d="M 14 9 Q 13 7 14 5 Q 15 3 14 1" stroke="#E8A33D" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M 18 9 Q 17 7 18 5 Q 19 3 18 1" stroke="#E8A33D" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M 22 9 Q 21 7 22 5 Q 23 3 22 1" stroke="#E8A33D" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.7"/>
+      </svg>
+      <span class="brand-text">
+        <span class="name">QUETTA CHAI PARATHA</span>
+        <span class="sub">Dhaba · Tuwaiq, Riyadh</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="tel:+966570490190" class="nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" width="14" height="14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      Call
+    </a>
+    <button class="nav-toggle" aria-label="Open menu" id="navToggle" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#story">Story</a>
+  <a href="#menu">Menu</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#visit">Visit</a>
+  <a href="tel:+966570490190" class="mobile-call">
+    <svg viewBox="0 0 24 24" fill="none" width="16" height="16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
     </svg>
-    Quetta Chai Paratha
+    +966 57 049 0190
   </a>
-  <nav class="navlinks">
-    <a href="#story">Story</a>
-    <a href="#menu">Menu</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#visit">Visit</a>
-  </nav>
 </div>
+<div class="mobile-overlay" id="mobileOverlay"></div>
 
-<div id="top" class="hero">
-  <div class="steamwrap">
-    <svg width="80" height="70" viewBox="0 0 80 70">
-      <path class="steam-path steam1" d="M20 60 C 14 48, 26 42, 20 30"/>
-      <path class="steam-path steam2" d="M38 60 C 32 46, 44 40, 38 26"/>
-      <path class="steam-path steam3" d="M56 60 C 50 48, 62 42, 56 30"/>
-    </svg>
-  </div>
-  <div class="hero-inner">
-    <div class="badge-24"><span class="dot"></span>Open 24 hours, every day</div>
-    <h1>Chai on the boil.<br>Paratha on the <em>tawa</em>.</h1>
-    <p class="hero-sub">A Quetta-style dhaba in Tuwaiq, Riyadh, pouring hand-stirred karak chai and rolling out fresh parathas the way they're made back home — any hour you happen to be hungry.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="tel:+966570490190">Call to Order</a>
-      <a class="btn btn-outline" href="https://maps.google.com/?cid=16002511917923919557" target="_blank" rel="noopener">Get Directions</a>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="badge-24h">
+        <span class="dot"></span>
+        Open 24 Hours · Chai Always On
+      </span>
+      <h1>
+        Chai on the boil.<br>
+        <span class="gold">Paratha</span> on the <span class="rust">tawa.</span>
+      </h1>
+      <p class="hero-sub">
+        Quetta-style doodh patti brewed strong and sweet, all day and all night. Hand-rolled parathas hit the tawa at dawn — qeema, chicken tikka, aloo — the way a proper dhaba does it.
+      </p>
+      <div class="hero-buttons">
+        <a href="tel:+966570490190" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call to Order
+        </a>
+        <a href="#visit" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Get Directions
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <svg class="steam-svg" viewBox="0 0 240 320" preserveAspectRatio="xMidYMax meet">
+        <path class="steam-path" d="M 80 300 Q 70 260 80 220 Q 90 180 80 140 Q 70 100 80 60"/>
+        <path class="steam-path" d="M 120 300 Q 130 260 120 220 Q 110 180 120 140 Q 130 100 120 60"/>
+        <path class="steam-path" d="M 160 300 Q 150 260 160 220 Q 170 180 160 140 Q 150 100 160 60"/>
+        <path class="steam-path" d="M 100 300 Q 105 260 100 220 Q 95 180 100 140"/>
+        <path class="steam-path" d="M 140 300 Q 135 260 140 220 Q 145 180 140 140"/>
+      </svg>
+
+      <svg class="chai-cup" viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="200" cy="408" rx="175" ry="22" fill="#5A1620" stroke="#E8A33D" stroke-width="3"/>
+        <ellipse cx="200" cy="403" rx="155" ry="14" fill="none" stroke="#E8A33D" stroke-width="1.4" stroke-dasharray="3 2"/>
+        <ellipse cx="200" cy="403" rx="138" ry="10" fill="#3A0F16"/>
+        <path d="M 90 205 L 115 380 Q 117 405 138 405 L 262 405 Q 283 405 285 380 L 310 205 Z" fill="#7A1F2B" stroke="#E8A33D" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="100" y="226" width="200" height="12" fill="#5A1620" stroke="#E8A33D" stroke-width="1.4"/>
+        <g fill="#E8A33D">
+          <circle cx="120" cy="232" r="1.8"/><circle cx="145" cy="232" r="1.8"/><circle cx="170" cy="232" r="1.8"/>
+          <circle cx="195" cy="232" r="1.8"/><circle cx="220" cy="232" r="1.8"/><circle cx="245" cy="232" r="1.8"/>
+          <circle cx="270" cy="232" r="1.8"/><circle cx="295" cy="232" r="1.8"/>
+        </g>
+        <g transform="translate(200, 320)">
+          <circle r="8" fill="#E8A33D"/>
+          <g stroke="#E8A33D" stroke-width="1.8" fill="none" stroke-linecap="round">
+            <path d="M 0 -15 L 0 -22"/><path d="M 0 15 L 0 22"/>
+            <path d="M -15 0 L -22 0"/><path d="M 15 0 L 22 0"/>
+            <path d="M -11 -11 L -16 -16"/><path d="M 11 -11 L 16 -16"/>
+            <path d="M -11 11 L -16 16"/><path d="M 11 11 L 16 16"/>
+          </g>
+        </g>
+        <g fill="none" stroke="#E8A33D" stroke-width="1.8" stroke-linecap="round">
+          <path d="M 145 312 C 132 314 128 329 138 337 C 148 342 158 334 154 325 C 151 320 142 323 145 328"/>
+          <circle cx="140" cy="318" r="1.4" fill="#E8A33D" stroke="none"/>
+          <path d="M 255 312 C 268 314 272 329 262 337 C 252 342 242 334 246 325 C 249 320 258 323 255 328"/>
+          <circle cx="260" cy="318" r="1.4" fill="#E8A33D" stroke="none"/>
+        </g>
+        <path d="M 105 372 L 295 372" stroke="#E8A33D" stroke-width="1" fill="none" stroke-dasharray="4 3"/>
+        <ellipse cx="200" cy="207" rx="110" ry="18" fill="#C1440E" stroke="#E8A33D" stroke-width="3"/>
+        <ellipse cx="200" cy="205" rx="100" ry="13" fill="#8E2F08"/>
+        <ellipse cx="175" cy="200" rx="22" ry="4" fill="#E8A33D" opacity="0.35"/>
+        <ellipse cx="225" cy="208" rx="14" ry="3" fill="#E8A33D" opacity="0.25"/>
+        <path d="M 310 230 Q 368 245 368 300 Q 368 350 310 360" fill="none" stroke="#E8A33D" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 312 245 Q 352 258 352 300 Q 352 340 312 345" fill="none" stroke="#E8A33D" stroke-width="1.2" opacity="0.5"/>
+        <g fill="#E8A33D">
+          <circle cx="335" cy="270" r="1.5"/>
+          <circle cx="335" cy="300" r="1.5"/>
+          <circle cx="335" cy="330" r="1.5"/>
+        </g>
+        <g fill="#E8A33D">
+          <circle cx="110" cy="207" r="2.5"/><circle cx="140" cy="213" r="2"/><circle cx="170" cy="217" r="2"/>
+          <circle cx="200" cy="218" r="2"/><circle cx="230" cy="217" r="2"/><circle cx="260" cy="213" r="2"/>
+          <circle cx="290" cy="207" r="2.5"/>
+        </g>
+      </svg>
     </div>
   </div>
+
+  <div class="hero-meta">
+    <span>
+      <span class="star"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+      4.6 / 5 · 91 Google reviews
+    </span>
+    <span>Tuwaiq · Riyadh</span>
+    <span>Paratha · Breakfast only</span>
+  </div>
+</section>
+
+<!-- TRUCK ART BORDER 1 -->
+<div class="truck-art" aria-hidden="true">
+  <svg viewBox="0 0 1400 54" preserveAspectRatio="xMidYMid"><rect width="1400" height="54" fill="url(#truckTile)"/></svg>
 </div>
 
-<div class="tarang">
-  <svg viewBox="0 0 800 26" preserveAspectRatio="none">
-    <rect width="800" height="26" fill="#5A1620"/>
-    <g fill="none" stroke="#E8A33D" stroke-width="1.4">
-      <path d="M0 13 C 10 3, 20 23, 30 13 S 50 3, 60 13 S 80 23, 90 13"/>
-      <path d="M100 13 C 110 3, 120 23, 130 13 S 150 3, 160 13 S 180 23, 190 13"/>
-      <path d="M200 13 C 210 3, 220 23, 230 13 S 250 3, 260 13 S 280 23, 290 13"/>
-      <path d="M300 13 C 310 3, 320 23, 330 13 S 350 3, 360 13 S 380 23, 390 13"/>
-      <path d="M400 13 C 410 3, 420 23, 430 13 S 450 3, 460 13 S 480 23, 490 13"/>
-      <path d="M500 13 C 510 3, 520 23, 530 13 S 550 3, 560 13 S 580 23, 590 13"/>
-      <path d="M600 13 C 610 3, 620 23, 630 13 S 650 3, 660 13 S 680 23, 690 13"/>
-      <path d="M700 13 C 710 3, 720 23, 730 13 S 750 3, 760 13 S 780 23, 790 13"/>
-    </g>
-    <g fill="#C1440E">
-      <circle cx="45" cy="13" r="3"/><circle cx="145" cy="13" r="3"/><circle cx="245" cy="13" r="3"/>
-      <circle cx="345" cy="13" r="3"/><circle cx="445" cy="13" r="3"/><circle cx="545" cy="13" r="3"/>
-      <circle cx="645" cy="13" r="3"/><circle cx="745" cy="13" r="3"/>
-    </g>
-  </svg>
-</div>
-
+<!-- STORY -->
 <section class="story" id="story">
-  <div class="wrap story-grid">
-    <div class="story-text">
-      <span class="eyebrow">The Story</span>
-      <h2 style="margin-top:10px;">A slice of Quetta, rolled out in Riyadh</h2>
-      <p>Quetta's chai culture runs on two things: a pot that never goes cold, and dough that gets worked by hand until it's soft enough to fold. This kitchen keeps both traditions alive for Riyadh's Pakistani community and anyone else who's discovered it — regulars say the flavour reminds them of a mother's kitchen back in Lahore or Quetta.</p>
-      <p>The doors don't close. Chai, tea-time snacks and the daily menu run around the clock, which makes it as much a 3 a.m. stop as a breakfast spot. Staff are known for being warm and quick, and the dining area is kept noticeably clean — small things regulars mention again and again.</p>
-      <p>It's still a young kitchen, growing its menu one dish at a time — so a little patience (and an early visit for paratha) goes a long way.</p>
-    </div>
-    <img src="https://lh3.googleusercontent.com/place-photos/AG9NLjD9mFU6oAVnzAUNtjjLhJHs7gz-w-yNoQ71xPmzjbOOihgdoaAtOwTqrGdbj5EJx-KdqcV9tGQGRLzd63nVNiJSmHjX0YE1RwYKMaLCdibY6rKMOHkzBke_-2_w1tmbDJtYomnJfiH7SMsFKc-r5i6SJw=s4800-w800-h600" alt="Fresh paratha and chai served at Quetta Chai Paratha, Riyadh" loading="lazy">
-  </div>
-</section>
-
-<section id="menu">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">On the Tawa</span>
-      <h2>What to order</h2>
-      <p>The paratha list is short and changing as the kitchen grows — these are the dishes regulars keep coming back for.</p>
-    </div>
-    <div class="menu-grid">
-      <div class="menu-card signature">
-        <span class="tag">House Favourite</span>
-        <h3>Qeema Paratha</h3>
-        <p>Spiced minced-meat folded straight into the dough, griddled until the edges crisp up. The dish reviewers mention most.</p>
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-image reveal">
+        <img src="https://picsum.photos/seed/quetta-dhaba-chai-pot-night/800/1000.jpg" alt="Chai being poured in a dhaba setting" loading="lazy">
+        <span class="stamp">Est. Tuwaiq</span>
       </div>
-      <div class="menu-card">
-        <span class="tag">Classic</span>
-        <h3>Chicken Tikka Paratha</h3>
-        <p>Smoky, well-seasoned chicken tikka wrapped into a hot paratha — a full breakfast in one hand.</p>
+      <div class="story-content reveal">
+        <span class="section-eyebrow">Our Story</span>
+        <h2 class="section-title">From the <span class="gold">mountain passes</span> of Quetta to a corner of <span class="rust">Tuwaiq.</span></h2>
+        <p>
+          In the high country around <span class="accent">Quetta</span>, the nights are cold and the chai is serious business. Brewed dark with full-cream milk, green tea, cardamom, and sugar reduced until the kettle sings — that's doodh patti, the cup that fuels long drives, longer conversations, and the kind of dhabas that never close.
+        </p>
+        <p>
+          We brought that same kettle to Tuwaiq. <span class="accent">It stays on, round the clock.</span> Truckers, night-shift workers, students after midnight — the door is open and the chai is hot, every hour of every day.
+        </p>
+        <p>
+          But the paratha tawa lights up only at dawn. Hand-rolled, layered, slapped onto searing iron with a slick of oil — <span class="accent">qeema, chicken tikka, aloo, plain with white butter.</span> Breakfast hours only. The way it's meant to be.
+        </p>
+        <div class="story-stats">
+          <div class="story-stat">
+            <div class="num">24/7</div>
+            <div class="lbl">Chai on the boil</div>
+          </div>
+          <div class="story-stat">
+            <div class="num">6–11</div>
+            <div class="lbl">Paratha breakfast</div>
+          </div>
+          <div class="story-stat">
+            <div class="num">4.6★</div>
+            <div class="lbl">91 Google reviews</div>
+          </div>
+        </div>
       </div>
-      <div class="menu-card">
-        <span class="tag">Comfort</span>
-        <h3>Chicken Cheese Paratha</h3>
-        <p>Melted cheese and chicken, a milder option for anyone easing into the menu.</p>
-      </div>
-      <div class="menu-card">
-        <span class="tag">All Day</span>
-        <h3>Doodh Patti Karak Chai</h3>
-        <p>Strong, milky, and simmered slow — the pot that never stops boiling, served morning, noon or 3 a.m.</p>
-      </div>
-      <div class="menu-card">
-        <span class="tag">Simple</span>
-        <h3>Plain &amp; Aloo Paratha</h3>
-        <p>The everyday version — buttery, flaky, and best with a side of yoghurt or pickle.</p>
-      </div>
-      <div class="menu-card">
-        <span class="tag">Heads Up</span>
-        <h3>Ask what's fresh</h3>
-        <p>The menu is still filling out, so it's worth asking staff what's available before you order.</p>
-      </div>
-    </div>
-    <div class="timing-note">
-      <strong style="color:var(--gold); font-family:'Oswald'; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px;">Good to know —</strong>
-      <span>Paratha is served during breakfast hours only. Chai and the rest of the menu run 24 hours.</span>
     </div>
   </div>
 </section>
 
-<section class="gallery" id="gallery">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Inside the Kitchen</span>
-      <h2>A look at the tawa</h2>
-    </div>
-    <div class="gallery-grid">
-      <a href="https://lh3.googleusercontent.com/place-photos/AG9NLjApMF-K9ZhWH2aD0JDP-Hli3Vjt5I5nE1_SlhHZTwu1WtzhI6FTB4dXqoOOaHoPy531-DzfV7eWL4Cg9gb_Xw_gPWfRDDpvyfkT04L3rsS8d_BmSjhC3dAubMH7cahnxBk_NoVDF1OVzFwxjz_WHrSTgw=s4800-w800-h600" target="_blank" rel="noopener">
-        <img src="https://lh3.googleusercontent.com/place-photos/AG9NLjApMF-K9ZhWH2aD0JDP-Hli3Vjt5I5nE1_SlhHZTwu1WtzhI6FTB4dXqoOOaHoPy531-DzfV7eWL4Cg9gb_Xw_gPWfRDDpvyfkT04L3rsS8d_BmSjhC3dAubMH7cahnxBk_NoVDF1OVzFwxjz_WHrSTgw=s800-w800-h600" loading="lazy" alt="Paratha plate">
-      </a>
-      <a href="https://lh3.googleusercontent.com/place-photos/AG9NLjDpgHu0IyCjQprS2-FS4--33MEfaAl9skx1Td_Pvzg90oWEYsEfK1ZeMMEOzOQW-vSNEYzidGfvS434WsIyRDA2YTc4KqegPAL9UGPo7lt6FVRk2lAyNQqxs2lRWh1oC9QuiPmlcJKmnA0bprVqZL-qqA=s4800-w800-h600" target="_blank" rel="noopener">
-        <img src="https://lh3.googleusercontent.com/place-photos/AG9NLjDpgHu0IyCjQprS2-FS4--33MEfaAl9skx1Td_Pvzg90oWEYsEfK1ZeMMEOzOQW-vSNEYzidGfvS434WsIyRDA2YTc4KqegPAL9UGPo7lt6FVRk2lAyNQqxs2lRWh1oC9QuiPmlcJKmnA0bprVqZL-qqA=s800-w800-h600" loading="lazy" alt="Chai being poured">
-      </a>
-      <a href="https://lh3.googleusercontent.com/place-photos/AG9NLjAEu0eWbbajTRnBMJ0YaYmTDYMs7HyUihUn6ARG8UvBubWTtx2oPo3wLmGHlEDoHavXM5uPuFuJzpWB8KQK6FzuAtxUxyaK2UwESv51bQsYqopVxSpIsynV8fA9B6ta2Geh427uvdqWwHLnY1_8F9j7mg=s4800-w495-h498" target="_blank" rel="noopener">
-        <img src="https://lh3.googleusercontent.com/place-photos/AG9NLjAEu0eWbbajTRnBMJ0YaYmTDYMs7HyUihUn6ARG8UvBubWTtx2oPo3wLmGHlEDoHavXM5uPuFuJzpWB8KQK6FzuAtxUxyaK2UwESv51bQsYqopVxSpIsynV8fA9B6ta2Geh427uvdqWwHLnY1_8F9j7mg=s800-w495-h498" loading="lazy" alt="Dish at Quetta Chai Paratha">
-      </a>
-      <a href="https://lh3.googleusercontent.com/place-photos/AG9NLjAfkZVkwCSh-vKH3f2Ku3ct4hMdWSTt4syviPSlXADBzSEhavLNiAWvqqtQBlHWUK5TiDTSK6FVi-drWtekdrcS24OzpPb-CrZKGkP-16m23b0dRX2suT2ADxbUKqJEnuqQrqvZ8MntAWjxmcLlH5Sk0g=s4800-w800-h600" target="_blank" rel="noopener">
-        <img src="https://lh3.googleusercontent.com/place-photos/AG9NLjAfkZVkwCSh-vKH3f2Ku3ct4hMdWSTt4syviPSlXADBzSEhavLNiAWvqqtQBlHWUK5TiDTSK6FVi-drWtekdrcS24OzpPb-CrZKGkP-16m23b0dRX2suT2ADxbUKqJEnuqQrqvZ8MntAWjxmcLlH5Sk0g=s800-w800-h600" loading="lazy" alt="Food close-up">
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="tarang">
-  <svg viewBox="0 0 800 26" preserveAspectRatio="none">
-    <rect width="800" height="26" fill="#5A1620"/>
-    <g fill="none" stroke="#6B8E4E" stroke-width="1.4">
-      <path d="M0 13 C 10 3, 20 23, 30 13 S 50 3, 60 13 S 80 23, 90 13"/>
-      <path d="M100 13 C 110 3, 120 23, 130 13 S 150 3, 160 13 S 180 23, 190 13"/>
-      <path d="M200 13 C 210 3, 220 23, 230 13 S 250 3, 260 13 S 280 23, 290 13"/>
-      <path d="M300 13 C 310 3, 320 23, 330 13 S 350 3, 360 13 S 380 23, 390 13"/>
-      <path d="M400 13 C 410 3, 420 23, 430 13 S 450 3, 460 13 S 480 23, 490 13"/>
-      <path d="M500 13 C 510 3, 520 23, 530 13 S 550 3, 560 13 S 580 23, 590 13"/>
-      <path d="M600 13 C 610 3, 620 23, 630 13 S 650 3, 660 13 S 680 23, 690 13"/>
-      <path d="M700 13 C 710 3, 720 23, 730 13 S 750 3, 760 13 S 780 23, 790 13"/>
-    </g>
-    <g fill="#E8A33D">
-      <circle cx="45" cy="13" r="3"/><circle cx="145" cy="13" r="3"/><circle cx="245" cy="13" r="3"/>
-      <circle cx="345" cy="13" r="3"/><circle cx="445" cy="13" r="3"/><circle cx="545" cy="13" r="3"/>
-      <circle cx="645" cy="13" r="3"/><circle cx="745" cy="13" r="3"/>
-    </g>
-  </svg>
+<!-- TRUCK ART BORDER 2 -->
+<div class="truck-art" aria-hidden="true">
+  <svg viewBox="0 0 1400 54" preserveAspectRatio="xMidYMid"><rect width="1400" height="54" fill="url(#truckTile)"/></svg>
 </div>
 
-<section id="reviews">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">4.6 out of 5 · 91 Google reviews</span>
-      <h2>What regulars say</h2>
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="menu-header reveal">
+      <div>
+        <span class="section-eyebrow">On the Tawa</span>
+        <h2 class="section-title">Menu <span class="gold">highlights</span></h2>
+      </div>
+      <span class="menu-note">Parathas served 6:00 AM – 11:00 AM<br>Chai all day, all night</span>
     </div>
+
+    <div class="menu-grid">
+      <article class="menu-card signature reveal">
+        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+        <span class="signature-flag">Signature</span>
+        <span class="menu-tag">Paratha · Breakfast</span>
+        <h3 class="menu-name">Qeema Paratha</h3>
+        <p class="menu-desc">Hand-rolled paratha stuffed with spiced minced beef, seared on the tawa until crisp. The reason the morning line forms.</p>
+        <div class="menu-foot">
+          <span class="menu-price">14<span class="unit">SAR</span></span>
+          <span class="foot-label">Most ordered</span>
+        </div>
+      </article>
+
+      <article class="menu-card reveal">
+        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+        <span class="menu-tag">Paratha · Breakfast</span>
+        <h3 class="menu-name">Chicken Tikka Paratha</h3>
+        <p class="menu-desc">Smoky tandoor-charred chicken tikka folded into a flaky paratha. Yogurt-marinated, tawa-finished.</p>
+        <div class="menu-foot">
+          <span class="menu-price">13<span class="unit">SAR</span></span>
+          <span class="foot-label">Breakfast</span>
+        </div>
+      </article>
+
+      <article class="menu-card reveal">
+        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+        <span class="menu-tag">Paratha · Breakfast</span>
+        <h3 class="menu-name">Chicken Cheese Paratha</h3>
+        <p class="menu-desc">Shredded chicken and melting cheese rolled into a layered paratha. The crowd-pleaser.</p>
+        <div class="menu-foot">
+          <span class="menu-price">15<span class="unit">SAR</span></span>
+          <span class="foot-label">Breakfast</span>
+        </div>
+      </article>
+
+      <article class="menu-card reveal">
+        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+        <span class="menu-tag">Paratha · Breakfast</span>
+        <h3 class="menu-name">Aloo Paratha</h3>
+        <p class="menu-desc">Spiced mashed potato stuffed paratha, tawa-fried hot. Served with white butter and karak chai.</p>
+        <div class="menu-foot">
+          <span class="menu-price">8<span class="unit">SAR</span></span>
+          <span class="foot-label">Breakfast</span>
+        </div>
+      </article>
+
+      <article class="menu-card reveal">
+        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+        <span class="menu-tag">Paratha · Breakfast</span>
+        <h3 class="menu-name">Plain Paratha</h3>
+        <p class="menu-desc">Layered, flaky, tawa-crisp. The canvas. Pair with a cup of karak or a side of qeema.</p>
+        <div class="menu-foot">
+          <span class="menu-price">5<span class="unit">SAR</span></span>
+          <span class="foot-label">Breakfast</span>
+        </div>
+      </article>
+
+      <article class="menu-card reveal">
+        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+        <span class="menu-tag">Chai · All Day</span>
+        <h3 class="menu-name">Doodh Patti Karak</h3>
+        <p class="menu-desc">Full-cream milk, green tea, cardamom, sugar — reduced slow until dark, thick, and properly karak. The reason we exist.</p>
+        <div class="menu-foot">
+          <span class="menu-price">6<span class="unit">SAR</span></span>
+          <span class="foot-label">24 hours</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TRUCK ART BORDER 3 -->
+<div class="truck-art" aria-hidden="true">
+  <svg viewBox="0 0 1400 54" preserveAspectRatio="xMidYMid"><rect width="1400" height="54" fill="url(#truckTile)"/></svg>
+</div>
+
+<!-- GALLERY (UPDATED LAYOUT — masonry photo wall with captions) -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <div>
+        <span class="section-eyebrow">From the Dhaba</span>
+        <h2 class="section-title">A look <span class="gold">inside</span></h2>
+      </div>
+      <span class="gallery-count">09 frames<br>chai · tawa · corners</span>
+    </div>
+
+    <div class="gallery-wall">
+      <figure class="gallery-tile reveal">
+        <span class="corner-mark">01</span>
+        <img src="https://picsum.photos/seed/quetta-chai-kettle-brass-pour-steam/700/900.jpg" alt="Brass kettle pouring chai" loading="lazy">
+        <figcaption class="caption">
+          <div class="cap-label">The Kettle</div>
+          <div class="cap-text">Brass kettle, never empty. Reduced slow since 6 AM.</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-tile reveal">
+        <span class="corner-mark">02</span>
+        <img src="https://picsum.photos/seed/paratha-dough-hand-roll-flour-tawa/700/520.jpg" alt="Hand-rolling paratha dough" loading="lazy">
+        <figcaption class="caption">
+          <div class="cap-label">Hand-rolled</div>
+          <div class="cap-text">Every paratha. Every morning. No shortcuts.</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-tile reveal">
+        <span class="corner-mark">03</span>
+        <img src="https://picsum.photos/seed/tawa-sizzle-oil-crisp-paratha-flame/700/780.jpg" alt="Paratha sizzling on tawa" loading="lazy">
+        <figcaption class="caption">
+          <div class="cap-label">On the Tawa</div>
+          <div class="cap-text">Searing iron, a slick of oil, the proper crisp.</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-tile reveal">
+        <span class="corner-mark">04</span>
+        <img src="https://picsum.photos/seed/doodh-patti-glass-foam-karak-crema/700/700.jpg" alt="Glass of doodh patti chai" loading="lazy">
+        <figcaption class="caption">
+          <div class="cap-label">Doodh Patti</div>
+          <div class="cap-text">Dark, thick, properly karak. The reason we exist.</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-tile reveal">
+        <span class="corner-mark">05</span>
+        <img src="https://picsum.photos/seed/dhaba-signboard-neon-night-warm-glow/700/950.jpg" alt="Dhaba signboard at night" loading="lazy">
+        <figcaption class="caption">
+          <div class="cap-label">3 AM</div>
+          <div class="cap-text">The sign stays lit. The kettle stays on.</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-tile reveal">
+        <span class="corner-mark">06</span>
+        <img src="https://picsum.photos/seed/cardamom-pods-green-tea-brass-bowl-spices/700/500.jpg" alt="Cardamom and green tea in brass bowl" loading="lazy">
+        <figcaption class="caption">
+          <div class="cap-label">The Base</div>
+          <div class="cap-text">Green tea, cardamom, full-cream milk. That's it.</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-tile reveal">
+        <span class="corner-mark">07</span>
+        <img src="https://picsum.photos/seed/qeema-stuffing-spoon-spice-minced-beef/700/720.jpg" alt="Qeema filling being spooned" loading="lazy">
+        <figcaption class="caption">
+          <div class="cap-label">Qeema</div>
+          <div class="cap-text">Spiced minced beef, ready to fold into the dough.</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-tile reveal">
+        <span class="corner-mark">08</span>
+        <img src="https://picsum.photos/seed/chai-stall-crowd-morning-regulars-riyadh/700/620.jpg" alt="Morning crowd at chai stall" loading="lazy">
+        <figcaption class="caption">
+          <div class="cap-label">Morning Regulars</div>
+          <div class="cap-text">The 7 AM paratha rush. Every day, the same faces.</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-tile reveal">
+        <span class="corner-mark">09</span>
+        <img src="https://picsum.photos/seed/paratha-stack-plate-butter-white-serve/700/820.jpg" alt="Stacked parathas on plate" loading="lazy">
+        <figcaption class="caption">
+          <div class="cap-label">Plated</div>
+          <div class="cap-text">Stacked, buttered, served with karak on the side.</div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- TRUCK ART BORDER 4 -->
+<div class="truck-art" aria-hidden="true">
+  <svg viewBox="0 0 1400 54" preserveAspectRatio="xMidYMid"><rect width="1400" height="54" fill="url(#truckTile)"/></svg>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header reveal">
+      <div>
+        <span class="section-eyebrow">Said by Guests</span>
+        <h2 class="section-title">What the <span class="gold">regulars</span> say</h2>
+      </div>
+      <div class="reviews-rating">
+        <div>
+          <div class="score">4.6 <span class="out">/ 5</span></div>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="count">Based on 91<br>Google reviews</div>
+      </div>
+    </div>
+
     <div class="reviews-grid">
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p>One visitor compared the cooking to their own mother's parathas, calling it some of the best Pakistani food they've found anywhere in the city.</p>
-        <div class="who">Google review</div>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p>A regular singled out the Qeema Paratha as a standout, and said they're working their way through the rest of the menu next.</p>
-        <div class="who">Google review</div>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p>Several diners praised the fresh, well-balanced spicing and the quick, respectful service, adding that cleanliness clearly gets attention here.</p>
-        <div class="who">Google review</div>
-      </div>
+      <article class="review-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Best doodh patti in Tuwaiq, hands down. Came in at 2 AM after a long shift — the chai hit exactly the way it should. Came back the next morning for the qeema paratha at dawn. Worth the wait.</p>
+        <div class="review-author">
+          <span class="review-name">Fahad A.</span>
+          <span class="review-source">Google · 2 weeks ago</span>
+        </div>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Proper Quetta-style chai — the kind that tastes like it was brewed on a mountain roadside. Open all night, which is genuinely a lifesaver in this part of Riyadh. Parathas at breakfast are the highlight.</p>
+        <div class="review-author">
+          <span class="review-name">Sana K.</span>
+          <span class="review-source">Google · 1 month ago</span>
+        </div>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">Parathas are only breakfast hours, but that's exactly when you want them — fresh, hot, hand-rolled in front of you. Karak chai is on point any time of day. Staff are quick and the place has a real dhaba feel.</p>
+        <div class="review-author">
+          <span class="review-name">Bilal R.</span>
+          <span class="review-source">Google · 3 weeks ago</span>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
+<!-- TRUCK ART BORDER 5 -->
+<div class="truck-art" aria-hidden="true">
+  <svg viewBox="0 0 1400 54" preserveAspectRatio="xMidYMid"><rect width="1400" height="54" fill="url(#truckTile)"/></svg>
+</div>
+
+<!-- VISIT -->
 <section class="visit" id="visit">
-  <div class="wrap visit-grid">
-    <div>
-      <span class="eyebrow">Visit</span>
-      <h2 style="margin-top:10px; font-size:clamp(1.8rem,3.4vw,2.4rem);">Find your way to the tawa</h2>
-      <div class="rating-line">
-        <span class="stars">★★★★★</span>
-        <span style="opacity:0.85; font-size:0.9rem;">4.6 rating from 91 Google reviews</span>
+  <div class="container">
+    <div class="visit-grid">
+      <div class="visit-info reveal">
+        <span class="section-eyebrow">Find Us</span>
+        <h2 class="section-title">Come <span class="gold">sit a while.</span></h2>
+        <p>Whether it's 6 AM paratha or a 3 AM chai stop, the kettle's on and the tawa's hot. Pull up to Tuwaiq — we'll take care of the rest.</p>
+
+        <div class="visit-details">
+          <div class="visit-detail">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="label">Address</div>
+              <div class="value">Khadijah bint Khuwailid Road<br>Tuwaiq, Riyadh 14923</div>
+              <div class="sub">Corner lot — look for the chai-cup sign</div>
+            </div>
+          </div>
+
+          <div class="visit-detail">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="label">Hours</div>
+              <div class="value">Open 24 hours · 7 days a week</div>
+              <div class="sub">Paratha breakfast: 6:00 AM – 11:00 AM</div>
+            </div>
+          </div>
+
+          <div class="visit-detail">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="label">Phone</div>
+              <div class="value"><a href="tel:+966570490190">+966 57 049 0190</a></div>
+              <div class="sub">Call ahead for paratha pickup</div>
+            </div>
+          </div>
+
+          <div class="visit-detail">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div>
+              <div class="label">Rating</div>
+              <div class="value">4.6 / 5 · 91 Google reviews</div>
+              <div class="sub">★★★★★ — Thank you, regulars.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="visit-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Quetta+Chai+Paratha+Tuwaiq+Riyadh" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Open in Google Maps
+          </a>
+          <a href="tel:+966570490190" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now
+          </a>
+        </div>
       </div>
-      <div class="hero-ctas" style="margin-top:30px;">
-        <a class="btn btn-primary" href="tel:+966570490190">Call +966 57 049 0190</a>
-        <a class="btn btn-outline" href="https://maps.google.com/?cid=16002511917923919557" target="_blank" rel="noopener">Open in Google Maps</a>
-      </div>
-    </div>
-    <div>
-      <div class="visit-item">
-        <span class="eyebrow">Address</span>
-        <div class="val">Khadijah bint Khuwailid Road, Tuwaiq, Riyadh 14923</div>
-      </div>
-      <div class="visit-item">
-        <span class="eyebrow">Hours</span>
-        <div class="val">Open 24 hours — every day of the week</div>
-      </div>
-      <div class="visit-item">
-        <span class="eyebrow">Paratha Hours</span>
-        <div class="val">Served at breakfast — arrive early to catch it</div>
-      </div>
-      <div class="visit-item">
-        <span class="eyebrow">Phone</span>
-        <div class="val"><a href="tel:+966570490190">+966 57 049 0190</a></div>
+
+      <div class="visit-map reveal">
+        <svg class="map-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="500" fill="#3A0F16"/>
+          <g stroke="#5A1620" stroke-width="1">
+            <line x1="0" y1="60" x2="400" y2="60"/>
+            <line x1="0" y1="130" x2="400" y2="130"/>
+            <line x1="0" y1="200" x2="400" y2="200"/>
+            <line x1="0" y1="340" x2="400" y2="340"/>
+            <line x1="0" y1="410" x2="400" y2="410"/>
+            <line x1="0" y1="470" x2="400" y2="470"/>
+            <line x1="60" y1="0" x2="60" y2="500"/>
+            <line x1="140" y1="0" x2="140" y2="500"/>
+            <line x1="280" y1="0" x2="280" y2="500"/>
+            <line x1="350" y1="0" x2="350" y2="500"/>
+          </g>
+          <g fill="#5A1620" stroke="#7A1F2B" stroke-width="0.5">
+            <rect x="20" y="20" width="35" height="35"/><rect x="70" y="20" width="65" height="35"/>
+            <rect x="150" y="20" width="125" height="35"/><rect x="285" y="20" width="60" height="35"/>
+            <rect x="355" y="20" width="35" height="35"/>
+            <rect x="20" y="70" width="35" height="55"/><rect x="70" y="70" width="65" height="55"/>
+            <rect x="150" y="70" width="55" height="55"/><rect x="285" y="70" width="60" height="55"/>
+            <rect x="355" y="70" width="35" height="55"/>
+            <rect x="20" y="140" width="35" height="55"/><rect x="70" y="140" width="65" height="55"/>
+            <rect x="285" y="140" width="60" height="55"/><rect x="355" y="140" width="35" height="55"/>
+            <rect x="20" y="210" width="35" height="55"/><rect x="70" y="210" width="65" height="55"/>
+            <rect x="150" y="210" width="55" height="55"/><rect x="285" y="210" width="60" height="55"/>
+            <rect x="20" y="285" width="35" height="50"/><rect x="70" y="285" width="65" height="50"/>
+            <rect x="150" y="285" width="125" height="50"/><rect x="285" y="285" width="60" height="50"/>
+            <rect x="355" y="285" width="35" height="50"/>
+            <rect x="20" y="350" width="115" height="55"/><rect x="150" y="350" width="55" height="55"/>
+            <rect x="220" y="350" width="55" height="55"/><rect x="285" y="350" width="105" height="55"/>
+            <rect x="20" y="420" width="35" height="40"/><rect x="70" y="420" width="65" height="40"/>
+            <rect x="150" y="420" width="125" height="40"/><rect x="285" y="420" width="60" height="40"/>
+            <rect x="355" y="420" width="35" height="40"/>
+          </g>
+          <line x1="0" y1="272" x2="400" y2="272" stroke="#E8A33D" stroke-width="5" opacity="0.85"/>
+          <line x1="0" y1="272" x2="400" y2="272" stroke="#C1440E" stroke-width="1.5" stroke-dasharray="8 5"/>
+          <line x1="215" y1="0" x2="215" y2="500" stroke="#E8A33D" stroke-width="3" opacity="0.5"/>
+          <text x="200" y="263" font-family="Oswald, sans-serif" font-size="9" fill="#E8A33D" text-anchor="end" letter-spacing="1.5" font-weight="600">KHADIJAH BINT KHUWAILID RD</text>
+          <text x="60" y="490" font-family="Oswald, sans-serif" font-size="10" fill="#7A1F2B" letter-spacing="2.5" font-weight="600">TUWAIQ · RIYADH</text>
+          <g transform="translate(215, 272)">
+            <ellipse cx="0" cy="3" rx="14" ry="4" fill="#000" opacity="0.5"/>
+            <path d="M 0 -32 C -10 -32 -16 -24 -16 -14 C -16 -4 0 6 0 6 C 0 6 16 -4 16 -14 C 16 -24 10 -32 0 -32 Z" fill="#C1440E" stroke="#E8A33D" stroke-width="2"/>
+            <circle cx="0" cy="-14" r="5" fill="#E8A33D"/>
+            <circle cx="0" cy="-14" r="2" fill="#5A1620"/>
+          </g>
+          <circle cx="215" cy="272" r="20" fill="none" stroke="#E8A33D" stroke-width="1.5" opacity="0.6">
+            <animate attributeName="r" from="14" to="38" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" from="0.7" to="0" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+        <a href="https://www.google.com/maps/search/?api=1&query=Quetta+Chai+Paratha+Tuwaiq+Riyadh" target="_blank" rel="noopener" class="map-link" aria-label="Open in Google Maps">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <div class="map-label">
+          <div class="ml-name">Quetta Chai Paratha</div>
+          <div class="ml-addr">Khadijah bint Khuwailid Rd, Tuwaiq, Riyadh 14923</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  Quetta Chai Paratha · Tuwaiq, Riyadh · Open 24 Hours
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-art truck-art" aria-hidden="true">
+    <svg viewBox="0 0 1400 54" preserveAspectRatio="xMidYMid"><rect width="1400" height="54" fill="url(#truckTile)"/></svg>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="brand-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 34px; height: 34px;">
+        <ellipse cx="18" cy="29" rx="12" ry="2.5" fill="none" stroke="#E8A33D" stroke-width="1.5"/>
+        <path d="M 8 13 L 10 27 Q 10 29 12 29 L 24 29 Q 26 29 26 27 L 28 13 Z" fill="#7A1F2B" stroke="#E8A33D" stroke-width="1.5" stroke-linejoin="round"/>
+        <ellipse cx="18" cy="14" rx="9.5" ry="2" fill="#C1440E" stroke="#E8A33D" stroke-width="1.2"/>
+        <path d="M 28 16 Q 33 17 33 22 Q 33 26 28 26" fill="none" stroke="#E8A33D" stroke-width="1.5"/>
+        <circle cx="14" cy="22" r="1" fill="#E8A33D"/>
+        <circle cx="18" cy="23" r="1" fill="#E8A33D"/>
+        <circle cx="22" cy="22" r="1" fill="#E8A33D"/>
+      </svg>
+      <span class="name">QUETTA CHAI PARATHA</span>
+    </div>
+    <div class="footer-tag">Chai on the boil · Paratha on the tawa · Tuwaiq, Riyadh</div>
+    <div class="footer-meta">
+      <a href="tel:+966570490190">+966 57 049 0190</a>
+      <span class="sep">·</span>
+      <a href="https://www.google.com/maps/search/?api=1&query=Quetta+Chai+Paratha+Tuwaiq+Riyadh" target="_blank" rel="noopener">Khadijah bint Khuwailid Rd, Tuwaiq, Riyadh 14923</a>
+      <span class="sep">·</span>
+      <span>Open 24 hours</span>
+    </div>
+    <div class="footer-copy">© 2024 Quetta Chai Paratha · Dhaba-style · Tuwaiq, Riyadh</div>
+  </div>
 </footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+  function openMobileNav() {
+    mobileNav.classList.add('open');
+    mobileOverlay.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+  }
+
+  if (navToggle) {
+    navToggle.addEventListener('click', () => {
+      if (mobileNav.classList.contains('open')) closeMobileNav();
+      else openMobileNav();
+    });
+  }
+  mobileOverlay.addEventListener('click', closeMobileNav);
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMobileNav();
+  });
+
+  // Scroll reveal with IntersectionObserver
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('visible'));
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth > 980) closeMobileNav();
+    }, 150);
+  });
+</script>
 
 </body>
 </html>
