@@ -3,300 +3,1513 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sangeen Khan — Front-End Architect</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@200;300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Sangeen Khan — Selected Works, 2022–2024</title>
+<meta name="description" content="Frontend developer based in Swat, Pakistan. Seven live projects — editorial, restaurant, library, travel, commerce, dashboard.">
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.13/dist/lenis.min.js"></script>
+
 <style>
-:root{
-  --bg:#060708;
-  --bg-2:#0A0B0F;
-  --surface:rgba(255,255,255,.03);
-  --surface-hover:rgba(255,255,255,.06);
-  --border:rgba(255,255,255,.08);
-  --border-strong:rgba(255,255,255,.15);
-  --fg:#F8F5F0;
-  --muted:#8892A6;
-  --accent:#00FFA3; /* Cyber Mint */
-  --accent-2:#8B5CF6; /* Electric Violet */
-  --accent-3:#FF00E5; /* Neon Magenta */
+:root {
+  --bg:        #ffffff;
+  --text:      #000000;
+  --text-soft: rgba(0,0,0,0.70);
+  --text-mute: rgba(0,0,0,0.50);
+  --text-faint:rgba(0,0,0,0.30);
+  --line:      rgba(0,0,0,0.12);
+  --line-strong: rgba(0,0,0,0.22);
+  --serif: 'Times New Roman', 'Times', 'Songti SC', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Source Code Pro', monospace;
+  --ease-quiet:    cubic-bezier(.22, 1, .36, 1);
+  --ease-precise:  cubic-bezier(.4, 0, .2, 1);
+  --ease-emphasis: cubic-bezier(.16, 1, .3, 1);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
-h1,h2,h3,h4,.font-display{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}
-.mono{font-family:'Space Mono',monospace}
 
-/* Background Effects */
-.spotlight{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background:radial-gradient(circle at var(--mx, 50%) var(--my, 50%),rgba(0,255,163,.06),transparent 40%)}
-.bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Custom Cursor */
-.cursor-dot,.cursor-outline{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);transition:transform .15s ease-out,width .3s,height .3s,border-color .3s,background .3s}
-.cursor-dot{width:6px;height:6px;background:var(--accent)}
-.cursor-outline{width:32px;height:32px;border:1px solid rgba(0,255,163,.4)}
-.cursor-outline.hover{width:60px;height:60px;border-color:var(--accent-2);background:rgba(139,92,246,.05)}
+html { scroll-behavior: smooth; }
 
-/* Navigation */
-nav{position:fixed;top:0;left:0;width:100%;padding:24px 5%;display:flex;align-items:center;justify-content:space-between;z-index:1000;transition:all .4s}
-nav.scrolled{background:rgba(6,7,8,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 5%}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;cursor:none}
-.logo-icon{width:32px;height:32px;border:1px solid var(--accent);display:grid;place-items:center;transform:rotate(45deg);transition:transform .4s}
-.logo:hover .logo-icon{transform:rotate(135deg);border-color:var(--accent-2)}
-.logo-icon span{transform:rotate(-45deg);color:var(--accent);font-size:14px;font-family:'Space Mono',monospace}
-.nav-links{display:flex;gap:36px;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:1px;text-transform:uppercase;transition:color .3s;cursor:none}
-.nav-links a:hover{color:var(--fg)}
-.nav-cta{padding:10px 22px;background:transparent;border:1px solid var(--accent);color:var(--accent);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:none;transition:all .3s;position:relative;overflow:hidden}
-.nav-cta:hover{color:var(--bg)}
-.nav-cta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--accent);transition:left .4s cubic-bezier(.4,0,.2,1);z-index:-1}
-.nav-cta:hover::before{left:0}
-
-/* Hero */
-.hero{min-height:100vh;display:flex;align-items:center;padding:140px 5% 60px;position:relative;z-index:1}
-.hero-content{max-width:1400px;margin:0 auto;width:100%}
-.hero-badge{display:inline-flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);padding:8px 16px;border-radius:100px;font-size:13px;color:var(--accent);font-family:'Space Mono',monospace;margin-bottom:32px}
-.badge-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;box-shadow:0 0 10px var(--accent);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-size:clamp(3.5rem,10vw,9rem);font-weight:700;line-height:.9;margin-bottom:32px}
-.hero h1 .line{display:block;overflow:hidden}
-.hero h1 .word{display:inline-block;transform:translateY(100%);animation:revealWord 1s cubic-bezier(.2,1,.3,1) forwards}
-.hero h1 .word:nth-child(2){animation-delay:.1s}
-.hero h1 .word:nth-child(3){animation-delay:.2s}
-@keyframes revealWord{to{transform:translateY(0)}}
-.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-top:60px}
-.hero p{font-size:20px;color:var(--muted);max-width:500px;line-height:1.6}
-.hero-meta{display:flex;flex-direction:column;gap:16px;font-family:'Space Mono',monospace;font-size:13px;color:var(--muted)}
-.hero-meta div{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:8px}
-.hero-meta span:last-child{color:var(--fg)}
-
-/* Section Structure */
-section{padding:120px 5%;position:relative;z-index:1}
-.container{max-width:1400px;margin:0 auto}
-.section-header{margin-bottom:80px}
-.section-tag{display:inline-block;color:var(--accent);font-size:13px;font-family:'Space Mono',monospace;margin-bottom:12px}
-.section-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:500}
-.section-title em{font-weight:200;font-style:italic;color:var(--muted)}
-
-/* About Section */
-.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:80px;align-items:start}
-.about-text p{color:var(--muted);font-size:18px;line-height:1.8;margin-bottom:24px;max-width:600px}
-.about-text p strong{color:var(--fg);font-weight:500}
-.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.skill-card{background:var(--surface);border:1px solid var(--border);padding:24px;border-radius:12px;transition:all .3s}
-.skill-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-.skill-card h4{font-family:'Space Mono',monospace;font-size:12px;color:var(--accent);margin-bottom:12px;text-transform:uppercase}
-.skill-card ul{list-style:none}
-.skill-card ul li{color:var(--fg);font-size:14px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.skill-card ul li::before{content:'//';color:var(--muted);font-family:'Space Mono',monospace}
-
-/* Work/Projects */
-.work-grid{display:flex;flex-direction:column;gap:120px}
-.project-item{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center}
-.project-item.reverse{grid-template-columns:1fr 1.2fr}
-.project-item.reverse .project-info{order:2}
-.project-info .project-num{font-family:'Space Mono',monospace;color:var(--accent-2);font-size:14px;margin-bottom:16px;display:block}
-.project-info h3{font-size:clamp(2rem,4vw,3.5rem);font-weight:500;margin-bottom:24px}
-.project-info p{color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:32px;max-width:500px}
-.project-tags{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
-.project-tag{padding:6px 14px;background:var(--surface);border:1px solid var(--border);border-radius:100px;font-size:12px;color:var(--muted);font-family:'Space Mono',monospace}
-.project-link{display:inline-flex;align-items:center;gap:12px;color:var(--fg);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--accent);padding-bottom:8px;cursor:none;transition:gap .3s}
-.project-link:hover{gap:20px}
-.project-link svg{width:18px;height:18px;color:var(--accent)}
-
-/* Project Visual Mockups (Pure CSS/SVG) */
-.project-visual{position:relative;height:500px;border-radius:16px;overflow:hidden;border:1px solid var(--border-strong);background:var(--bg-2);transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,1,.3,1);box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.browser-bar{height:36px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:8px}
-.browser-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2)}
-.browser-url{margin-left:16px;background:rgba(255,255,255,.05);padding:6px 14px;border-radius:6px;font-size:11px;color:var(--muted);font-family:'Space Mono',monospace;width:300px;text-align:center}
-.mockup-content{width:100%;height:calc(100% - 36px);position:relative;overflow:hidden}
-
-/* Mockup 1: Dashboard */
-.mock-dashboard{background:linear-gradient(135deg,#0A0E1A 0%,#131826 100%);padding:20px;display:grid;grid-template-columns:1fr 2fr;gap:12px}
-.mock-sidebar{background:rgba(255,255,255,.03);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:10px}
-.mock-nav-item{height:8px;background:rgba(255,255,255,.1);border-radius:4px;width:80%}
-.mock-nav-item.active{background:var(--accent);box-shadow:0 0 10px rgba(180,255,57,.3)}
-.mock-main{display:grid;grid-template-rows:auto 1fr;gap:12px}
-.mock-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.mock-card{background:rgba(255,255,255,.03);border-radius:6px;padding:8px;display:flex;flex-direction:column;justify-content:space-between;height:60px}
-.mock-line{height:4px;background:rgba(255,255,255,.1);border-radius:2px}
-.mock-line.short{width:40%}
-.mock-chart{background:rgba(255,255,255,.03);border-radius:6px;position:relative;padding:12px}
-.mock-chart svg{width:100%;height:100%}
-
-/* Mockup 2: Ecommerce */
-.mock-ecommerce{background:radial-gradient(circle at 50% 0%,#1A1B3A 0%,#050508 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px}
-.mock-glow{position:absolute;width:200px;height:200px;background:radial-gradient(circle,rgba(0,240,255,.2),transparent 70%);border-radius:50%}
-.mock-ring{position:absolute;width:150px;height:150px;border:1px solid rgba(0,240,255,.2);border-radius:50%;animation:spin 10s linear infinite}
-.mock-ring:nth-child(2){width:100px;height:100px;border-color:rgba(139,92,246,.3);animation:spin 8s linear infinite reverse}
-@keyframes spin{to{transform:rotate(360deg)}}
-.mock-core{width:60px;height:60px;background:linear-gradient(135deg,#00F0FF,#8B5CF6);border-radius:50%;box-shadow:0 0 30px rgba(0,240,255,.5);z-index:2}
-
-/* Mockup 3: Travel */
-.mock-travel{background:linear-gradient(180deg,#060708 0%,#1A1B3A 50%,#FF6B35 100%);position:relative}
-.mock-dune{position:absolute;bottom:0;left:0;width:100%;height:50%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23E3B778' fill-opacity='1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,160C960,139,1056,149,1152,165.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");background-size:cover;background-position:bottom}
-.mock-text{position:absolute;top:40px;left:40px;font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:#fff}
-.mock-text span{display:block;font-size:14px;font-weight:400;color:var(--accent);margin-bottom:8px}
-
-/* Mockup 4: Restaurant */
-.mock-restaurant{background:linear-gradient(180deg,#0B0B0D 0%,#1A1A1E 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-.mock-res-logo{width:60px;height:60px;border:1px solid var(--gold, #D4AF37);transform:rotate(45deg);margin-bottom:24px;display:grid;place-items:center}
-.mock-res-logo span{transform:rotate(-45deg);color:#D4AF37;font-family:'Amiri',serif;font-size:24px}
-.mock-res-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;color:#fff;letter-spacing:4px}
-.mock-res-line{width:60px;height:1px;background:#D4AF37;margin:16px auto}
-.mock-res-sub{color:#E5D3B3;font-size:12px;letter-spacing:2px;text-transform:uppercase}
-
-/* Mockup 5: Trendrica */
-.mock-trendrica{background:linear-gradient(135deg, #050508 0%, #0A0E1A 50%, #1A1B3A 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
-.mock-trendrica-glow{position:absolute;width:250px;height:250px;background:radial-gradient(circle, rgba(0,255,163,.15), transparent 70%);border-radius:50%}
-.mock-trendrica-logo{font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:#fff;letter-spacing:4px;z-index:2}
-.mock-trendrica-logo span{color:var(--accent)}
-.mock-trendrica-sub{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);margin-top:12px;letter-spacing:2px;text-transform:uppercase;z-index:2}
-.mock-trendrica-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px}
-
-/* Marquee */
-.marquee{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 0;overflow:hidden;background:var(--bg-2)}
-.marquee-track{display:flex;gap:60px;animation:marquee 30s linear infinite;white-space:nowrap}
-@keyframes marquee{to{transform:translateX(-50%)}}
-.marquee-item{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:600;color:transparent;-webkit-text-stroke:1px var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:60px}
-.marquee-item span{color:var(--accent);-webkit-text-stroke:0}
-
-/* Contact */
-.contact-section{text-align:center;padding:140px 5%}
-.contact-content{max-width:900px;margin:0 auto}
-.contact-tag{font-family:'Space Mono',monospace;color:var(--accent);margin-bottom:24px;display:block}
-.contact-title{font-size:clamp(3rem,8vw,7rem);font-weight:500;line-height:1;margin-bottom:40px}
-.contact-title em{font-style:italic;font-weight:200;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.contact-email{display:inline-block;font-size:24px;color:var(--fg);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:8px;cursor:none;transition:transform .3s}
-.contact-email:hover{transform:translateY(-4px)}
-
-/* Footer */
-footer{padding:60px 5% 30px;border-top:1px solid var(--border)}
-.footer-content{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
-.footer-social{display:flex;gap:24px}
-.footer-social a{color:var(--muted);text-decoration:none;font-size:13px;transition:color .3s;cursor:none}
-.footer-social a:hover{color:var(--accent)}
-.footer-copy{color:var(--muted);font-size:13px;font-family:'Space Mono',monospace}
-
-/* Reveal */
-.reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.2,1,.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-/* Responsive */
-@media (max-width:1024px){
-  .hero-grid{grid-template-columns:1fr;gap:40px}
-  .project-item, .project-item.reverse{grid-template-columns:1fr;gap:40px}
-  .project-item.reverse .project-info{order:0}
-  .project-visual{height:400px}
-  .about-grid{grid-template-columns:1fr;gap:40px}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
-@media (max-width:768px){
-  body{cursor:auto}
-  .cursor-dot,.cursor-outline{display:none}
-  .nav-links{display:none}
-  .mock-dashboard{grid-template-columns:1fr}
-  .mock-sidebar{display:none}
-  .skills-grid{grid-template-columns:1fr}
+
+::selection { background: var(--text); color: var(--bg); }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+/* ─────────── Noise overlay ─────────── */
+.noise-overlay {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  animation: noise 20s linear infinite;
+  mix-blend-mode: multiply;
+}
+@keyframes noise {
+  0%,100% { transform: translate(0,0); }
+  20%     { transform: translate(-10%, 5%); }
+  50%     { transform: translate(-5%, -8%); }
+  80%     { transform: translate(-15%, 0); }
+}
+
+/* ─────────── Top bar ─────────── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  padding: 1.25rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 100;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.topbar .brand {
+  font-family: var(--serif);
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  display: inline-flex; align-items: baseline; gap: 0.4em;
+}
+.topbar .brand sup {
+  font-size: 0.55em;
+  opacity: 0.4;
+  letter-spacing: 0;
+  font-family: var(--sans);
+}
+
+.topbar nav {
+  display: flex; gap: 2.5rem;
+}
+
+.topbar nav a {
+  display: inline-block;
+  position: relative;
+  transition: transform 280ms var(--ease-quiet);
+}
+.topbar nav a:hover { transform: translateX(4px); }
+
+.topbar .meta {
+  color: var(--text-mute);
+  display: flex; gap: 1.5rem; align-items: center;
+}
+.topbar .meta .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--text); opacity: 0.4;
+}
+
+/* ─────────── Hero ─────────── */
+.hero {
+  min-height: 100vh;
+  padding: 8rem 2rem 4rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  max-width: 1400px; margin: 0 auto;
+  position: relative;
+}
+
+.hero-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--line);
+  gap: 2rem;
+}
+
+.hero-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.hero-kicker::before {
+  content: ""; display: inline-block;
+  width: 2rem; height: 1px; background: var(--text-mute);
+}
+
+.hero-coord {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: right;
+  line-height: 1.8;
+  font-family: var(--mono);
+}
+
+.hero-headline {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 6.2vw, 5.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.022em;
+  margin: 4rem 0 3rem;
+  max-width: 16ch;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--text-soft);
+}
+
+.hero-bottom {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  padding-top: 3rem;
+  border-top: 1px solid var(--line);
+}
+
+.hero-sub {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  max-width: 34ch;
+}
+
+.hero-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  line-height: 2;
+}
+.hero-meta strong {
+  color: var(--text);
+  font-weight: 400;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.4em;
+  margin-right: 0.3em;
+}
+
+.hero-cta {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--text);
+  align-self: flex-start;
+  transition: transform 280ms var(--ease-quiet);
+  width: fit-content;
+}
+.hero-cta:hover { transform: translateX(6px); }
+.hero-cta .arrow {
+  display: inline-block;
+  transition: transform 280ms var(--ease-quiet);
+}
+.hero-cta:hover .arrow { transform: translate(0.25em, -0.25em); }
+
+/* ─────────── Manifesto ─────────── */
+.manifesto {
+  padding: 8rem 2rem 6rem;
+  max-width: 1400px; margin: 0 auto;
+  border-top: 1px solid var(--line);
+}
+
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.manifesto-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  position: sticky;
+  top: 6rem;
+}
+
+.manifesto-text {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  max-width: 30ch;
+  color: var(--text);
+}
+.manifesto-text em { font-style: italic; color: var(--text-soft); }
+.manifesto-text .drop {
+  font-size: 1.2em;
+  line-height: 0.9;
+  float: left;
+  margin: 0.05em 0.1em 0 0;
+  font-style: italic;
+  color: var(--text-mute);
+}
+
+/* ─────────── Table of contents ─────────── */
+.toc {
+  padding: 6rem 2rem;
+  max-width: 1400px; margin: 0 auto;
+  border-top: 1px solid var(--line);
+}
+
+.toc-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 4rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.toc-header h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing: -0.01em;
+}
+.toc-header h2 em { font-style: italic; color: var(--text-soft); }
+.toc-header .toc-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.toc-list {
+  list-style: none;
+}
+
+.toc-row {
+  display: grid;
+  grid-template-columns: 4rem 1fr 1fr 1fr 4rem;
+  gap: 2rem;
+  align-items: baseline;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--serif);
+  cursor: pointer;
+  transition: padding-left 320ms var(--ease-quiet);
+}
+.toc-row:hover { padding-left: 1rem; }
+
+.toc-row .toc-num {
+  font-style: italic;
+  color: var(--text-faint);
+  font-size: 0.95rem;
+}
+
+.toc-row .toc-title {
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.toc-row .toc-title em { font-style: italic; color: var(--text-soft); }
+
+.toc-row .toc-type {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.toc-row .toc-year {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.toc-row .toc-arrow {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--text-faint);
+  text-align: right;
+  font-size: 1.2rem;
+  transition: transform 320ms var(--ease-quiet), color 320ms var(--ease-quiet);
+}
+.toc-row:hover .toc-arrow {
+  transform: translate(0.3em, -0.3em);
+  color: var(--text);
+}
+
+.toc-row .toc-status {
+  display: inline-block;
+  margin-left: 0.6em;
+  font-family: var(--sans);
+  font-size: 0.6em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);
+  vertical-align: 0.2em;
+  border: 1px solid var(--line-strong);
+  padding: 0.2em 0.6em;
+}
+
+/* ─────────── Featured project ─────────── */
+.featured {
+  padding: 6rem 2rem 8rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+}
+
+.featured-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 4rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.featured-header h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing: -0.01em;
+}
+.featured-header h2 em { font-style: italic; color: var(--text-soft); }
+.featured-header .featured-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.featured-info {
+  position: sticky;
+  top: 7rem;
+}
+
+.project-number {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-mute);
+  margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.project-number::after {
+  content: ""; flex: 1; height: 1px; background: var(--line);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.project-tags span:not(:last-child)::after {
+  content: "·";
+  margin-left: 1.4rem;
+  color: var(--text-faint);
+}
+
+.project-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  margin-bottom: 1.5rem;
+}
+.project-title em { font-style: italic; color: var(--text-soft); }
+
+.project-desc {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--text-soft);
+  margin-bottom: 2rem;
+  max-width: 38ch;
+}
+.project-desc + .project-desc { margin-top: -0.5rem; }
+
+.project-link {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--text);
+  margin-top: 1.5rem;
+  transition: transform 280ms var(--ease-quiet);
+}
+.project-link:hover { transform: translateX(6px); }
+.project-link .arrow {
+  display: inline-block;
+  transition: transform 280ms var(--ease-quiet);
+}
+.project-link:hover .arrow { transform: translate(0.25em, -0.25em); }
+
+.project-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+.project-stat .stat-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 0.5rem;
+}
+.project-stat .stat-value {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-style: italic;
+}
+
+.featured-images {
+  display: flex; flex-direction: column;
+  gap: 1.5rem;
+}
+
+.featured-image-main {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: rgba(0,0,0,0.04);
+}
+.featured-image-main img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.4s var(--ease-emphasis);
+  will-change: transform;
+}
+.featured-image-main:hover img { transform: scale(1.03); }
+
+.featured-image-meta {
+  position: absolute;
+  bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
+  display: flex; justify-content: space-between;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+.featured-image-secondary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.featured-image-secondary > div {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  background: rgba(0,0,0,0.04);
+}
+.featured-image-secondary img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.4s var(--ease-emphasis);
+}
+.featured-image-secondary > div:hover img { transform: scale(1.04); }
+
+.featured-caption {
+  font-size: 0.78rem;
+  color: var(--text-mute);
+  font-style: italic;
+  font-family: var(--serif);
+  padding-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* ─────────── Index grid section ─────────── */
+.index-section {
+  padding: 6rem 2rem 8rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+}
+
+.index-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.index-header h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing: -0.01em;
+  max-width: 24ch;
+}
+.index-header h2 em { font-style: italic; color: var(--text-soft); }
+.index-header .index-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4rem 2rem;
+}
+
+.index-item {
+  display: block;
+  position: relative;
+}
+
+.index-item.span-7 { grid-column: span 7; }
+.index-item.span-5 { grid-column: span 5; }
+.index-item.span-6 { grid-column: span 6; }
+.index-item.span-8 { grid-column: span 8; }
+.index-item.span-4 { grid-column: span 4; }
+
+.index-item-meta {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.index-item-num {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--text);
+  font-size: 1.1rem;
+  letter-spacing: 0;
+}
+
+.index-item-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: rgba(0,0,0,0.04);
+  margin-bottom: 1.5rem;
+}
+.index-item.span-5 .index-item-image { aspect-ratio: 5/4; }
+
+.index-item-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.4s var(--ease-emphasis);
+  will-change: transform;
+}
+.index-item:hover .index-item-image img { transform: scale(1.04); }
+
+.index-item-image-tag {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  mix-blend-mode: difference;
+  font-family: var(--mono);
+}
+
+.index-item-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+  margin-bottom: 0.6rem;
+  display: inline-block;
+  transition: transform 280ms var(--ease-quiet);
+}
+.index-item:hover .index-item-title { transform: translateX(6px); }
+.index-item-title em { font-style: italic; color: var(--text-soft); }
+
+.index-item-desc {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  max-width: 42ch;
+  margin-bottom: 1.2rem;
+}
+
+.index-item-tags {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  display: flex; gap: 0.6rem 1.4rem;
+  flex-wrap: wrap;
+}
+.index-item-tags span:not(:last-child)::after {
+  content: "·";
+  margin-left: 1.4rem;
+  color: var(--text-faint);
+}
+
+/* ─────────── Approach ─────────── */
+.approach {
+  padding: 8rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+}
+
+.approach-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+  gap: 2rem;
+}
+.approach-header h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing: -0.01em;
+  max-width: 28ch;
+  line-height: 1.2;
+}
+.approach-header h2 em { font-style: italic; color: var(--text-soft); }
+.approach-header .approach-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  white-space: nowrap;
+}
+
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4rem;
+}
+
+.approach-item {
+  position: relative;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--text);
+}
+
+.approach-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-mute);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.approach-item h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.2rem;
+}
+.approach-item h3 em { font-style: italic; color: var(--text-soft); }
+
+.approach-item p {
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+/* ─────────── About ─────────── */
+.about {
+  padding: 8rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+}
+
+.about-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.about-header h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing: -0.01em;
+}
+.about-header h2 em { font-style: italic; color: var(--text-soft); }
+.about-header .about-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-portrait {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: rgba(0,0,0,0.04);
+}
+.about-portrait img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.05);
+  transition: transform 1.4s var(--ease-emphasis);
+}
+.about-portrait:hover img { transform: scale(1.03); }
+
+.about-portrait-caption {
+  position: absolute;
+  bottom: 1.2rem; left: 1.2rem; right: 1.2rem;
+  display: flex; justify-content: space-between;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  mix-blend-mode: difference;
+  font-family: var(--mono);
+}
+
+.about-text h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  margin-bottom: 2rem;
+  max-width: 22ch;
+}
+.about-text h3 em { font-style: italic; color: var(--text-soft); }
+
+.about-text p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-soft);
+  margin-bottom: 1.4rem;
+  max-width: 56ch;
+}
+
+.about-text p:first-letter {
+  font-family: var(--serif);
+  font-size: 1.3em;
+  font-style: italic;
+  color: var(--text);
+}
+
+.about-stack {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.about-stack-col h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 1.2rem;
+  font-weight: 400;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.about-stack-col ul {
+  list-style: none;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 2;
+}
+.about-stack-col li {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.2rem 0;
+}
+.about-stack-col li span {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ─────────── Contact ─────────── */
+.contact {
+  padding: 10rem 2rem 6rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+}
+
+.contact-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 3rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.contact-kicker::before {
+  content: ""; display: inline-block;
+  width: 2rem; height: 1px; background: var(--text-mute);
+}
+.contact-kicker .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--text); opacity: 1;
+  margin-left: 0.6rem;
+  animation: pulse 2.4s var(--ease-quiet) infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.contact-headline {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 7.5vw, 6.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin-bottom: 4rem;
+  max-width: 13ch;
+}
+.contact-headline em { font-style: italic; color: var(--text-soft); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--line);
+}
+
+.contact-item .label {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 1rem;
+}
+.contact-item a {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  display: inline-block;
+  transition: transform 280ms var(--ease-quiet);
+  line-height: 1.4;
+  word-break: break-word;
+}
+.contact-item a:hover { transform: translateX(6px); }
+.contact-item .note {
+  font-size: 0.85rem;
+  color: var(--text-mute);
+  margin-top: 0.6rem;
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+/* ─────────── Footer ─────────── */
+.footer {
+  padding: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  gap: 2rem;
+}
+
+.footer-mark {
+  font-family: var(--serif);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+/* ─────────── Animation utilities ─────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s var(--ease-quiet), transform 1.2s var(--ease-quiet);
+  will-change: transform, opacity;
+}
+.fade-up.is-in { opacity: 1; transform: none; }
+
+.fade-up-stagger > * {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s var(--ease-quiet), transform 1.2s var(--ease-quiet);
+}
+.fade-up-stagger.is-in > * { opacity: 1; transform: none; }
+.fade-up-stagger.is-in > *:nth-child(1) { transition-delay: 0ms; }
+.fade-up-stagger.is-in > *:nth-child(2) { transition-delay: 140ms; }
+.fade-up-stagger.is-in > *:nth-child(3) { transition-delay: 280ms; }
+.fade-up-stagger.is-in > *:nth-child(4) { transition-delay: 420ms; }
+
+/* Hero 4-beat */
+.hero > * { opacity: 0; transform: translateY(50px); }
+.hero.is-in .hero-top      { animation: heroFade 1.0s var(--ease-quiet) 0ms forwards; }
+.hero.is-in .hero-headline { animation: heroFade 1.2s var(--ease-emphasis) 200ms forwards; }
+.hero.is-in .hero-bottom   { animation: heroFade 1.0s var(--ease-quiet) 500ms forwards; }
+
+@keyframes heroFade {
+  to { opacity: 1; transform: none; }
+}
+
+/* TOC rows reveal */
+.toc-list.is-in .toc-row {
+  opacity: 1; transform: none;
+}
+.toc-row {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.8s var(--ease-quiet), transform 0.8s var(--ease-quiet);
+}
+.toc-list.is-in .toc-row:nth-child(1) { transition-delay: 0ms; }
+.toc-list.is-in .toc-row:nth-child(2) { transition-delay: 80ms; }
+.toc-list.is-in .toc-row:nth-child(3) { transition-delay: 160ms; }
+.toc-list.is-in .toc-row:nth-child(4) { transition-delay: 240ms; }
+.toc-list.is-in .toc-row:nth-child(5) { transition-delay: 320ms; }
+.toc-list.is-in .toc-row:nth-child(6) { transition-delay: 400ms; }
+.toc-list.is-in .toc-row:nth-child(7) { transition-delay: 480ms; }
+
+/* ─────────── Responsive ─────────── */
+@media (max-width: 1024px) {
+  .topbar { padding: 1rem 1.5rem; }
+  .topbar nav { gap: 1.8rem; }
+  .hero { padding: 7rem 1.5rem 3rem; }
+  .hero-bottom { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .hero-cta { grid-column: 1 / -1; }
+  .manifesto { padding: 6rem 1.5rem 4rem; }
+  .manifesto-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .manifesto-label { position: static; }
+  .toc, .featured, .index-section, .approach, .about, .contact { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .featured-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .featured-info { position: static; }
+  .approach-grid { grid-template-columns: 1fr 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 720px) {
+  .topbar { padding: 0.9rem 1.2rem; font-size: 0.65rem; }
+  .topbar nav { gap: 1.2rem; }
+  .topbar .meta { display: none; }
+  .topbar .brand { font-size: 0.9rem; }
+
+  .hero { padding: 6rem 1.2rem 3rem; min-height: auto; }
+  .hero-top { flex-direction: column; gap: 1.5rem; padding-bottom: 2rem; }
+  .hero-coord { text-align: left; }
+  .hero-headline { margin: 2.5rem 0 2rem; }
+  .hero-bottom { grid-template-columns: 1fr; gap: 2rem; padding-top: 2rem; }
+
+  .manifesto-text { font-size: 1.3rem; }
+
+  .toc-row {
+    grid-template-columns: 3rem 1fr 2rem;
+    gap: 1rem;
+    padding: 1.2rem 0;
+  }
+  .toc-row .toc-type, .toc-row .toc-year { display: none; }
+
+  .featured { padding: 4rem 1.2rem 5rem; }
+  .featured-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .featured-image-secondary { grid-template-columns: 1fr; }
+
+  .index-section { padding: 4rem 1.2rem 5rem; }
+  .index-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .index-item.span-7, .index-item.span-5, .index-item.span-6,
+  .index-item.span-8, .index-item.span-4 { grid-column: span 1; }
+
+  .approach { padding: 5rem 1.2rem; }
+  .approach-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .approach-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+
+  .about { padding: 5rem 1.2rem; }
+  .about-stack { grid-template-columns: 1fr; gap: 2rem; }
+
+  .contact { padding: 5rem 1.2rem 3rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; }
+
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: left;
+    gap: 1rem;
+  }
+  .footer-center, .footer-right { text-align: left; }
+}
+
+@media (pointer: coarse) {
+  .toc-row:hover { padding-left: 0; }
+  .toc-row:hover .toc-arrow { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .noise-overlay { animation: none; }
+  .hero > * { opacity: 1; transform: none; }
+  .fade-up, .fade-up-stagger > *, .toc-row { opacity: 1; transform: none; }
 }
 </style>
 </head>
 <body>
 
-<div class="spotlight" id="spotlight"></div>
-<div class="bg-grid"></div>
-<div class="cursor-outline" id="cursor-outline"></div>
-<div class="cursor-dot" id="cursor-dot"></div>
+<div class="noise-overlay" aria-hidden="true"></div>
 
-<nav id="navbar">
-  <a href="#" class="logo">
-    <div class="logo-icon"><span>SK</span></div>
-    Sangeen Khan
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="https://sangeenkhan.github.io/frontend-projects/quetta-chai-paratha/index.html">Cafe</a></li>
-    <li><a href="https://sangeenkhan.github.io/frontend-projects/Multaqa%20Al-Kitab/index.html">Library</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Let's Talk</a>
-</nav>
-
-<header class="hero">
-  <div class="hero-content">
-    <div class="hero-badge"><span class="badge-dot"></span> Available for Freelance & Collaborations</div>
-    <h1>
-      <span class="line"><span class="word">Creative</span></span>
-      <span class="line"><span class="word">Front-End</span></span>
-      <span class="line"><span class="word"><em>Architect</em></span></span>
-    </h1>
-    <div class="hero-grid">
-      <p>I design and build immersive, high-performance digital experiences. Blending aesthetic precision with clean, scalable code to bring visions to life.</p>
-      <div class="hero-meta">
-        <div><span>Status</span> <span>// Open to Work</span></div>
-        <div><span>Location</span> <span>// Global / Remote</span></div>
-        <div><span>Stack</span> <span>// HTML · CSS · JS · UI/UX</span></div>
-      </div>
-    </div>
-  </div>
+<!-- ═══════════════════════ TOP BAR ═══════════════════════ -->
+<header class="topbar">
+  <a href="#" class="brand">Sangeen Khan<sup>(07)</sup></a>
+  <nav>
+    <a href="#works">Works</a>
+    <a href="#approach">Approach</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <span class="meta">
+    <span class="dot"></span>
+    Swat · PK
+  </span>
 </header>
 
-<div class="marquee">
-  <div class="marquee-track">
-    <div class="marquee-item">UI/UX Design <span>✦</span> Front-End Development <span>✦</span> Web Animation <span>✦</span> Creative Coding <span>✦</span></div>
-    <div class="marquee-item">UI/UX Design <span>✦</span> Front-End Development <span>✦</span> Web Animation <span>✦</span> Creative Coding <span>✦</span></div>
-  </div>
-</div>
-
-<!-- About Section -->
-<section id="about">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag">01 · Profile</span>
-      <h2 class="section-title">About <em>Me</em></h2>
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-top">
+    <span class="hero-kicker">Selected works — 2022 to 2024</span>
+    <div class="hero-coord">
+      34.7920° N<br>
+      72.1970° E<br>
+      Barikot, Swat
     </div>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>I am <strong>Sangeen Khan</strong>, a front-end architect and digital designer dedicated to building immersive, high-performance web experiences. I transform complex ideas into elegant, user-centric interfaces that blend technical precision with creative vision.</p>
-        <p>With a deep passion for modern UI/UX paradigms, web animations, and clean architecture, I bridge the gap between design and development. My focus is on crafting digital products that are not only visually striking but also highly functional and responsive across all platforms.</p>
-        <p>When I'm not coding, you'll find me exploring emerging web technologies, experimenting with 3D interfaces, and pushing the boundaries of what's possible in a browser.</p>
+  </div>
+
+  <h1 class="hero-headline">
+    Frontend developer crafting <em>quiet interfaces</em> — websites that read like well-printed books.
+  </h1>
+
+  <div class="hero-bottom">
+    <p class="hero-sub">
+      Seven live projects built between Swat and the open web. Editorial journals, library catalogues, restaurant counters, dashboards — each one a small argument for restraint.
+    </p>
+    <div class="hero-meta">
+      <div><strong>07</strong> Projects shipped</div>
+      <div><strong>02</strong> Years of practice</div>
+      <div><strong>01</strong> Studio of one</div>
+    </div>
+    <a href="#works" class="hero-cta">
+      See the index
+      <span class="arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MANIFESTO ═══════════════════════ -->
+<section class="manifesto">
+  <div class="manifesto-grid fade-up">
+    <span class="manifesto-label">Statement</span>
+    <p class="manifesto-text">
+      <span class="drop">T</span>he web is loud by default. Most pages compete for attention they haven't earned. I build the opposite — small, slow, well-set pages that respect the reader's eye and the writer's voice. <em>Seven projects follow. Each one is live.</em>
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TABLE OF CONTENTS ═══════════════════════ -->
+<section class="toc" id="index">
+  <div class="toc-header fade-up">
+    <h2>Index, <em>in order of completion</em></h2>
+    <span class="toc-meta">07 entries · 2022—2024</span>
+  </div>
+
+  <ul class="toc-list">
+    <li>
+      <a href="https://trendrica.com/" target="_blank" rel="noopener" class="toc-row">
+        <span class="toc-num">01</span>
+        <span class="toc-title">Trendrica, <em>a journal of slow writing</em><span class="toc-status">Live</span></span>
+        <span class="toc-type">Editorial · Blog</span>
+        <span class="toc-year">2024</span>
+        <span class="toc-arrow">↗</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://sangeenkhan.github.io/frontend-projects/Multaqa%20Al-Kitab/index.html" target="_blank" rel="noopener" class="toc-row">
+        <span class="toc-num">02</span>
+        <span class="toc-title">Multaqa Al-Kitab, <em>a meeting point for readers</em></span>
+        <span class="toc-type">Library · Community</span>
+        <span class="toc-year">2024</span>
+        <span class="toc-arrow">↗</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://sangeenkhan.github.io/frontend-projects/quetta-chai-paratha/index.html" target="_blank" rel="noopener" class="toc-row">
+        <span class="toc-num">03</span>
+        <span class="toc-title">Quetta Chai Paratha</span>
+        <span class="toc-type">Restaurant · F&B</span>
+        <span class="toc-year">2024</span>
+        <span class="toc-arrow">↗</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://sangeenkhan.github.io/frontend-projects/restaurant-website/" target="_blank" rel="noopener" class="toc-row">
+        <span class="toc-num">04</span>
+        <span class="toc-title">A Restaurant, <em>front of house</em></span>
+        <span class="toc-type">Restaurant · Hospitality</span>
+        <span class="toc-year">2023</span>
+        <span class="toc-arrow">↗</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://sangeenkhan.github.io/frontend-projects/travel-website/" target="_blank" rel="noopener" class="toc-row">
+        <span class="toc-num">05</span>
+        <span class="toc-title">Slow routes, <em>quiet panoramas</em></span>
+        <span class="toc-type">Travel · Editorial</span>
+        <span class="toc-year">2023</span>
+        <span class="toc-arrow">↗</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://sangeenkhan.github.io/frontend-projects/ecommerce-landing/" target="_blank" rel="noopener" class="toc-row">
+        <span class="toc-num">06</span>
+        <span class="toc-title">A single-product <em>landing page</em></span>
+        <span class="toc-type">Commerce · Retail</span>
+        <span class="toc-year">2023</span>
+        <span class="toc-arrow">↗</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://sangeenkhan.github.io/frontend-projects/dashboard-ui/" target="_blank" rel="noopener" class="toc-row">
+        <span class="toc-num">07</span>
+        <span class="toc-title">Dashboard, <em>for a content team</em></span>
+        <span class="toc-type">SaaS · Admin</span>
+        <span class="toc-year">2023</span>
+        <span class="toc-arrow">↗</span>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════ FEATURED PROJECT ═══════════════════════ -->
+<section class="featured" id="works">
+  <div class="featured-header fade-up">
+    <h2>Featured — <em>the most recent</em></h2>
+    <span class="featured-meta">01 / 07</span>
+  </div>
+
+  <a href="https://trendrica.com/" target="_blank" rel="noopener" class="featured-grid fade-up">
+    <div class="featured-info">
+      <span class="project-number">№ 01 — Trendrica</span>
+      <div class="project-tags">
+        <span>Live</span>
+        <span>Editorial</span>
+        <span>Production</span>
+        <span>2024</span>
       </div>
-      <div class="skills-grid reveal">
-        <div class="skill-card">
-          <h4>// Frontend</h4>
+      <h3 class="project-title">Trendrica, <em>a journal of slow writing</em></h3>
+      <p class="project-desc">
+        A blogging platform focused on long-form essays on culture, technology, and the craft of writing on the web. Built for readers who arrive for the prose and stay for the page.
+      </p>
+      <p class="project-desc">
+        The site runs on a custom editorial stack — handwritten templates, generous measure, no tracking, no popups. Every typographic decision was made with a printed book in one hand and a browser in the other.
+      </p>
+      <span class="project-link">
+        Visit trendrica.com
+        <span class="arrow">↗</span>
+      </span>
+
+      <div class="project-stats">
+        <div class="project-stat">
+          <div class="stat-label">Live since</div>
+          <div class="stat-value">2024</div>
+        </div>
+        <div class="project-stat">
+          <div class="stat-label">Role</div>
+          <div class="stat-value">Sole build</div>
+        </div>
+        <div class="project-stat">
+          <div class="stat-label">Format</div>
+          <div class="stat-value">Editorial</div>
+        </div>
+        <div class="project-stat">
+          <div class="stat-label">Status</div>
+          <div class="stat-value">In use</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="featured-images">
+      <div class="featured-image-main">
+        <img src="https://picsum.photos/seed/trendrica-editorial-journal-pages/1200/1500" alt="Trendrica — editorial blogging platform">
+        <div class="featured-image-meta">
+          <span>trendrica.com</span>
+          <span>Plate i</span>
+        </div>
+      </div>
+      <p class="featured-caption">
+        <em>Fig. i</em> — The journal's cover page, set in Times New Roman at 5.4rem on a 1400px measure. Headline cadence follows the rhythm of a printed title page.
+      </p>
+      <div class="featured-image-secondary">
+        <div>
+          <img src="https://picsum.photos/seed/trendrica-article-reading-view/800/800" alt="Trendrica article view">
+        </div>
+        <div>
+          <img src="https://picsum.photos/seed/trendrica-archive-list/800/800" alt="Trendrica archive">
+        </div>
+      </div>
+      <p class="featured-caption">
+        <em>Fig. ii — iii</em> — Article reading view and archive index. Body copy holds a 38ch measure; metadata sits in a 4-column rail.
+      </p>
+    </div>
+  </a>
+</section>
+
+<!-- ═══════════════════════ INDEX GRID ═══════════════════════ -->
+<section class="index-section">
+  <div class="index-header fade-up">
+    <h2>Six further projects, <em>each one live, each one small, each one mine.</em></h2>
+    <span class="index-meta">02 — 07</span>
+  </div>
+
+  <div class="index-grid">
+
+    <a href="https://sangeenkhan.github.io/frontend-projects/Multaqa%20Al-Kitab/index.html" target="_blank" rel="noopener" class="index-item span-7 fade-up">
+      <div class="index-item-meta">
+        <span class="index-item-num">02</span>
+        <span>Library · 2024</span>
+      </div>
+      <div class="index-item-image">
+        <img src="https://picsum.photos/seed/multaqa-al-kitab-library-books-shelves/1200/900" alt="Multaqa Al-Kitab library website">
+        <span class="index-item-image-tag">Live demo</span>
+      </div>
+      <h3 class="index-item-title">Multaqa Al-Kitab, <em>a meeting point for readers</em></h3>
+      <p class="index-item-desc">
+        A book cataloguing and community site — listings, reading lists, and a quiet corner to gather around what's been written. The name translates roughly as "the book's meeting place".
+      </p>
+      <div class="index-item-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>Vanilla JS</span>
+      </div>
+    </a>
+
+    <a href="https://sangeenkhan.github.io/frontend-projects/quetta-chai-paratha/index.html" target="_blank" rel="noopener" class="index-item span-5 fade-up">
+      <div class="index-item-meta">
+        <span class="index-item-num">03</span>
+        <span>Restaurant · 2024</span>
+      </div>
+      <div class="index-item-image">
+        <img src="https://picsum.photos/seed/quetta-chai-paratha-tea-counter-warm/900/720" alt="Quetta Chai Paratha restaurant">
+        <span class="index-item-image-tag">Live demo</span>
+      </div>
+      <h3 class="index-item-title">Quetta Chai Paratha</h3>
+      <p class="index-item-desc">
+        A late-night chai and paratha house. The site reads like a printed menu — warm, plain, and ready at the counter.
+      </p>
+      <div class="index-item-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>Responsive</span>
+      </div>
+    </a>
+
+    <a href="https://sangeenkhan.github.io/frontend-projects/restaurant-website/" target="_blank" rel="noopener" class="index-item span-5 fade-up">
+      <div class="index-item-meta">
+        <span class="index-item-num">04</span>
+        <span>Restaurant · 2023</span>
+      </div>
+      <div class="index-item-image">
+        <img src="https://picsum.photos/seed/restaurant-fine-dining-table-menu/900/720" alt="Restaurant website">
+        <span class="index-item-image-tag">Live demo</span>
+      </div>
+      <h3 class="index-item-title">A Restaurant, <em>front of house</em></h3>
+      <p class="index-item-desc">
+        Reservations, menu, atmosphere. Restrained photography and generous whitespace for a dining room that prefers to whisper rather than shout.
+      </p>
+      <div class="index-item-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>Grid</span>
+      </div>
+    </a>
+
+    <a href="https://sangeenkhan.github.io/frontend-projects/travel-website/" target="_blank" rel="noopener" class="index-item span-7 fade-up">
+      <div class="index-item-meta">
+        <span class="index-item-num">05</span>
+        <span>Travel · 2023</span>
+      </div>
+      <div class="index-item-image">
+        <img src="https://picsum.photos/seed/travel-mountain-panorama-journal-quiet/1200/900" alt="Travel website">
+        <span class="index-item-image-tag">Live demo</span>
+      </div>
+      <h3 class="index-item-title">Slow routes, <em>quiet panoramas</em></h3>
+      <p class="index-item-desc">
+        An itinerary-led travel site — routes, journals, and slow panoramas rather than loud booking funnels. Built for travellers who plan in pencil and revise by hand.
+      </p>
+      <div class="index-item-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>Flexbox</span>
+      </div>
+    </a>
+
+    <a href="https://sangeenkhan.github.io/frontend-projects/ecommerce-landing/" target="_blank" rel="noopener" class="index-item span-7 fade-up">
+      <div class="index-item-meta">
+        <span class="index-item-num">06</span>
+        <span>Commerce · 2023</span>
+      </div>
+      <div class="index-item-image">
+        <img src="https://picsum.photos/seed/ecommerce-product-still-life-quiet/1200/900" alt="E-commerce landing page">
+        <span class="index-item-image-tag">Live demo</span>
+      </div>
+      <h3 class="index-item-title">A single-product <em>landing page</em></h3>
+      <p class="index-item-desc">
+        Hero, proof, price, and one quiet CTA. Built to convert without shouting — the kind of product page that earns the click it asks for rather than demanding it.
+      </p>
+      <div class="index-item-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>Conversion</span>
+      </div>
+    </a>
+
+    <a href="https://sangeenkhan.github.io/frontend-projects/dashboard-ui/" target="_blank" rel="noopener" class="index-item span-5 fade-up">
+      <div class="index-item-meta">
+        <span class="index-item-num">07</span>
+        <span>SaaS · 2023</span>
+      </div>
+      <div class="index-item-image">
+        <img src="https://picsum.photos/seed/dashboard-admin-interface-data-quiet/900/720" alt="Dashboard UI">
+        <span class="index-item-image-tag">Live demo</span>
+      </div>
+      <h3 class="index-item-title">Dashboard, <em>for a content team</em></h3>
+      <p class="index-item-desc">
+        An admin interface — sidebar, tables, charts. Built for legible density over decoration; designed to be lived in for eight hours at a time.
+      </p>
+      <div class="index-item-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>Layout</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════ APPROACH ═══════════════════════ -->
+<section class="approach" id="approach">
+  <div class="approach-header fade-up">
+    <h2>Three principles I keep returning to <em>when the brief is open.</em></h2>
+    <span class="approach-meta">Approach · i — iii</span>
+  </div>
+
+  <div class="approach-grid fade-up-stagger">
+    <article class="approach-item">
+      <span class="approach-num">i.</span>
+      <h3>Read <em>before you design</em></h3>
+      <p>Every page is a piece of writing before it is a layout. I draft the headline, the sub-headline, and the body first; the grid follows the cadence of the sentences, never the other way around. A page that hasn't been read aloud isn't finished.</p>
+    </article>
+    <article class="approach-item">
+      <span class="approach-num">ii.</span>
+      <h3>Restraint <em>is a feature</em></h3>
+      <p>One type family. One column measure. One accent, if any. The web is loud by default; the work is in choosing what to leave out so the remaining elements can be heard. White space is not emptiness — it is the page breathing.</p>
+    </article>
+    <article class="approach-item">
+      <span class="approach-num">iii.</span>
+      <h3>Ship, <em>then refine</em></h3>
+      <p>Every project in this index is live. None are case studies of what could have been. The discipline of finishing — of pressing deploy, of letting a page exist in public — is itself half of the craft. The web rewards pages that ship.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+<section class="about" id="about">
+  <div class="about-header fade-up">
+    <h2>About <em>the maker</em></h2>
+    <span class="about-meta">Profile · Swat</span>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-portrait fade-up">
+      <img src="https://picsum.photos/seed/sangeen-khan-portrait-quiet-study/800/1000" alt="Sangeen Khan, portrait">
+      <div class="about-portrait-caption">
+        <span>Plate iv</span>
+        <span>Swat, 2024</span>
+      </div>
+    </div>
+
+    <div class="about-text fade-up">
+      <h3>I build the web the way I'd rather read it — <em>slowly, plainly, and with care.</em></h3>
+
+      <p>
+        I'm Sangeen Khan, a frontend developer based in Swat, Pakistan. I work alone, mostly on small projects for people who care about how things read. The portfolio leans toward editorial — blogs, libraries, restaurants, travel journals — because those are the briefs that let typography do its work.
+      </p>
+      <p>
+        I write HTML and CSS by hand, keep JavaScript to the minimum a page actually needs, and prefer systems that can be maintained by one person on a slow afternoon. Every project linked above is deployed and in use; none are demos dressed up as case studies.
+      </p>
+      <p>
+        If you have a project in mind — a journal, a catalogue, a single product that deserves its own page — I'd be glad to hear about it.
+      </p>
+
+      <div class="about-stack">
+        <div class="about-stack-col">
+          <h4>Stack</h4>
           <ul>
-            <li>HTML5 & Semantics</li>
-            <li>CSS3 / Tailwind / SASS</li>
-            <li>JavaScript (ES6+)</li>
-            <li>React / Next.js</li>
+            <li>HTML &amp; CSS <span>handwritten</span></li>
+            <li>Vanilla JS <span>minimal</span></li>
+            <li>Responsive layout <span>mobile-first</span></li>
+            <li>GitHub Pages <span>deploy</span></li>
+            <li>Lenis · GSAP <span>motion</span></li>
           </ul>
         </div>
-        <div class="skill-card">
-          <h4>// Design</h4>
+        <div class="about-stack-col">
+          <h4>Focus</h4>
           <ul>
-            <li>UI/UX Principles</li>
-            <li>Figma / Adobe XD</li>
-            <li>Design Systems</li>
-            <li>Typography</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <h4>// Animation</h4>
-          <ul>
-            <li>GSAP</li>
-            <li>Framer Motion</li>
-            <li>CSS Keyframes</li>
-            <li>SVG Animations</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <h4>// Backend</h4>
-          <ul>
-            <li>Node.js</li>
-            <li>REST APIs</li>
-            <li>Git / GitHub</li>
-            <li>Responsive Design</li>
+            <li>Editorial &amp; blogs <span>primary</span></li>
+            <li>Restaurant &amp; retail <span>regular</span></li>
+            <li>Community platforms <span>often</span></li>
+            <li>Admin &amp; dashboard <span>selected</span></li>
+            <li>Reading interfaces <span>always</span></li>
           </ul>
         </div>
       </div>
@@ -304,272 +1517,141 @@ footer{padding:60px 5% 30px;border-top:1px solid var(--border)}
   </div>
 </section>
 
-<!-- Work Section -->
-<section id="work">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag">02 · Selected Work</span>
-      <h2 class="section-title">Featured <em>Projects</em></h2>
+<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+<section class="contact" id="contact">
+  <span class="contact-kicker fade-up">
+    Available for new work — 2025
+    <span class="dot"></span>
+  </span>
+
+  <h2 class="contact-headline fade-up">
+    Have a project <em>in mind?</em>
+  </h2>
+
+  <div class="contact-grid fade-up">
+    <div class="contact-item">
+      <div class="label">Email</div>
+      <a href="mailto:sangeencomsats@gmail.com">sangeencomsats@gmail.com ↗</a>
+      <div class="note">Best for new briefs and correspondence.</div>
     </div>
-
-    <div class="work-grid">
-      <!-- Project 1: Trendrica -->
-      <div class="project-item reveal">
-        <div class="project-visual">
-          <div class="browser-bar">
-            <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
-            <div class="browser-url">trendrica.com</div>
-          </div>
-          <div class="mockup-content mock-trendrica">
-            <div class="mock-trendrica-grid"></div>
-            <div class="mock-trendrica-glow"></div>
-            <div class="mock-trendrica-logo">Trend<span>rica</span></div>
-            <div class="mock-trendrica-sub">Premium Blogging Platform</div>
-          </div>
-        </div>
-        <div class="project-info">
-          <span class="project-num">// Project 01</span>
-          <h3>Trendrica Blog</h3>
-          <p>A live, high-end blogging platform designed for immersive reading. Features sleek micro-interactions, a futuristic dark-mode aesthetic, and custom typography to deliver a premium content experience.</p>
-          <div class="project-tags">
-            <span class="project-tag">Live Site</span>
-            <span class="project-tag">Blogging</span>
-            <span class="project-tag">UI/UX</span>
-            <span class="project-tag">Micro-interactions</span>
-          </div>
-          <a href="https://trendrica.com" target="_blank" class="project-link">
-            Visit Trendrica.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>        
-      </div>
-
-      <!-- Project 2: Dashboard -->
-      <div class="project-item reverse reveal">
-        <div class="project-info">
-          <span class="project-num">// Project 02</span>
-          <h3>Trendrica Analytics Dashboard</h3>
-          <p>A premium, data-driven dashboard UI featuring glassmorphism, animated SVG charts, and a live activity feed. Built with a focus on micro-interactions and visual hierarchy.</p>
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS Grid</span>
-            <span class="project-tag">Vanilla JS</span>
-            <span class="project-tag">SVG Animation</span>
-          </div>
-          <a href="https://sangeenkhan.github.io/frontend-projects/dashboard-ui/" target="_blank" class="project-link">
-            View Live Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-        <div class="project-visual">
-          <div class="browser-bar">
-            <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
-            <div class="browser-url">sangeenkhan.github.io/dashboard-ui</div>
-          </div>
-          <div class="mockup-content mock-dashboard">
-            <div class="mock-sidebar">
-              <div class="mock-nav-item active"></div>
-              <div class="mock-nav-item"></div>
-              <div class="mock-nav-item"></div>
-              <div class="mock-nav-item"></div>
-              <div class="mock-nav-item"></div>
-            </div>
-            <div class="mock-main">
-              <div class="mock-cards">
-                <div class="mock-card"><div class="mock-line"></div><div class="mock-line short"></div></div>
-                <div class="mock-card"><div class="mock-line"></div><div class="mock-line short"></div></div>
-                <div class="mock-card"><div class="mock-line"></div><div class="mock-line short"></div></div>
-              </div>
-              <div class="mock-chart">
-                <svg viewBox="0 0 100 40" preserveAspectRatio="none">
-                  <path d="M0,30 Q20,10 40,20 T80,5 L100,10" fill="none" stroke="#B4FF39" stroke-width="1.5"/>
-                  <path d="M0,30 Q20,10 40,20 T80,5 L100,10 L100,40 L0,40 Z" fill="rgba(180,255,57,.2)"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3: Ecommerce -->
-      <div class="project-item reveal">
-        <div class="project-visual">
-          <div class="browser-bar">
-            <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
-            <div class="browser-url">sangeenkhan.github.io/ecommerce-landing</div>
-          </div>
-          <div class="mockup-content mock-ecommerce">
-            <div class="mock-glow"></div>
-            <div class="mock-ring"></div>
-            <div class="mock-ring"></div>
-            <div class="mock-core"></div>
-          </div>
-        </div>
-        <div class="project-info">
-          <span class="project-num">// Project 03</span>
-          <h3>NEXUS Future Tech</h3>
-          <p>An immersive, futuristic e-commerce landing page. Features a custom glowing cursor, 3D tilt cards, and a holographic product display using pure CSS and SVG.</p>
-          <div class="project-tags">
-            <span class="project-tag">3D Transforms</span>
-            <span class="project-tag">CSS Variables</span>
-            <span class="project-tag">JS Events</span>
-            <span class="project-tag">Futurism</span>
-          </div>
-          <a href="https://sangeenkhan.github.io/frontend-projects/ecommerce-landing/" target="_blank" class="project-link">
-            View Live Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Project 4: Travel -->
-      <div class="project-item reverse reveal">
-        <div class="project-info">
-          <span class="project-num">// Project 04</span>
-          <h3>Rihla Travel Platform</h3>
-          <p>A cinematic, luxury travel website for Saudi Arabia. Features a glassmorphism booking widget, interactive destination tabs, and bespoke SVG landscapes.</p>
-          <div class="project-tags">
-            <span class="project-tag">UI/UX</span>
-            <span class="project-tag">CSS Art</span>
-            <span class="project-tag">Intersection Observer</span>
-            <span class="project-tag">Luxury Design</span>
-          </div>
-          <a href="https://sangeenkhan.github.io/frontend-projects/travel-website/" target="_blank" class="project-link">
-            View Live Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-        <div class="project-visual">
-          <div class="browser-bar">
-            <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
-            <div class="browser-url">sangeenkhan.github.io/travel-website</div>
-          </div>
-          <div class="mockup-content mock-travel">
-            <div class="mock-text">
-              <span>RIHLA TRAVEL</span>
-              Discover the<br>Undiscovered
-            </div>
-            <div class="mock-dune"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 5: Restaurant -->
-      <div class="project-item reveal">
-        <div class="project-visual">
-          <div class="browser-bar">
-            <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
-            <div class="browser-url">sangeenkhan.github.io/restaurant-website</div>
-          </div>
-          <div class="mockup-content mock-restaurant">
-            <div class="mock-res-logo"><span>L</span></div>
-            <h3 class="mock-res-title">LAYALI</h3>
-            <div class="mock-res-line"></div>
-            <div class="mock-res-sub">Modern Saudi Gastronomy</div>
-          </div>
-        </div>
-        <div class="project-info">
-          <span class="project-num">// Project 05</span>
-          <h3>Layali Fine Dining</h3>
-          <p>An elegant, world-class restaurant website. Combines Arabic heritage with modern luxury through bespoke typography, editorial layouts, and smooth reveals.</p>
-          <div class="project-tags">
-            <span class="project-tag">Typography</span>
-            <span class="project-tag">CSS Grid</span>
-            <span class="project-tag">Animations</span>
-            <span class="project-tag">Responsive</span>
-          </div>
-          <a href="https://sangeenkhan.github.io/frontend-projects/restaurant-website/" target="_blank" class="project-link">
-            View Live Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
+    <div class="contact-item">
+      <div class="label">GitHub</div>
+      <a href="https://github.com/sangeenkhan" target="_blank" rel="noopener">github.com/sangeenkhan ↗</a>
+      <div class="note">Source for every project above.</div>
+    </div>
+    <div class="contact-item">
+      <div class="label">Journal</div>
+      <a href="https://trendrica.com/" target="_blank" rel="noopener">trendrica.com ↗</a>
+      <div class="note">Where I publish what I'm thinking.</div>
     </div>
   </div>
 </section>
 
-<section id="contact" class="contact-section">
-  <div class="contact-content reveal">
-    <span class="contact-tag mono">// 03 · Let's Connect</span>
-    <h2 class="contact-title">Have a project <br>in <em>mind?</em></h2>
-    <a href="mailto:sangeencomsats@gmail.com" class="contact-email">sangeencomsats@gmail.com</a>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-content">
-    <div class="footer-copy">© 2024 Sangeen Khan. All rights reserved.</div>
-    <div class="footer-social">
-      <a href="https://github.com/sangeenkhan" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/sangeenkhan91" target="_blank">LinkedIn</a>
-      <a href="https://trendrica.com" target="_blank">Trendrica.com</a>
-    </div>
-  </div>
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+  <span class="footer-mark">Sangeen Khan<em>, frontend developer</em></span>
+  <span class="footer-center">© 2024 — Swat, Pakistan</span>
+  <span class="footer-right">Set in Times New Roman · System sans</span>
 </footer>
 
 <script>
-// Custom Cursor
-const dot = document.getElementById('cursor-dot');
-const outline = document.getElementById('cursor-outline');
-let mouseX = 0, mouseY = 0, outX = 0, outY = 0;
+  /* ─────────── Lenis smooth scroll ─────────── */
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    touchMultiplier: 1.4,
+  });
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 
-window.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  dot.style.left = mouseX + 'px';
-  dot.style.top = mouseY + 'px';
-  
-  // Spotlight effect
-  document.getElementById('spotlight').style.setProperty('--mx', mouseX + 'px');
-  document.getElementById('spotlight').style.setProperty('--my', mouseY + 'px');
-});
+  /* ─────────── GSAP ScrollTrigger sync ─────────── */
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
 
-function animateCursor(){
-  outX += (mouseX - outX) * 0.15;
-  outY += (mouseY - outY) * 0.15;
-  outline.style.left = outX + 'px';
-  outline.style.top = outY + 'px';
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
+  /* ─────────── Hero 4-beat cadence ─────────── */
+  window.addEventListener('load', () => {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        document.getElementById('hero').classList.add('is-in');
+      }, 120);
+    });
+  });
 
-document.querySelectorAll('a, button, .project-visual').forEach(el => {
-  el.addEventListener('mouseenter', () => outline.classList.add('hover'));
-  el.addEventListener('mouseleave', () => outline.classList.remove('hover'));
-});
+  /* ─────────── Fade-up on scroll ─────────── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
 
-// Sticky Nav
-const nav = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if(window.scrollY > 50) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-});
+  document.querySelectorAll('.fade-up, .fade-up-stagger').forEach((el) => {
+    observer.observe(el);
+  });
 
-// Scroll Reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
+  /* ─────────── TOC list stagger reveal ─────────── */
+  const tocObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        tocObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.toc-list').forEach((el) => tocObserver.observe(el));
+
+  /* ─────────── Smooth anchor scroll via Lenis ─────────── */
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href === '#' || href.length <= 1) return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -80, duration: 1.2 });
+      }
+    });
+  });
+
+  /* ─────────── Subtle parallax on featured image ─────────── */
+  if (window.matchMedia('(pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const featuredImg = document.querySelector('.featured-image-main img');
+    if (featuredImg && window.ScrollTrigger) {
+      gsap.to(featuredImg, {
+        yPercent: -8,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.featured-image-main',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
+    }
+  }
+
+  /* ─────────── Top bar background opacity on scroll ─────────── */
+  const topbar = document.querySelector('.topbar');
+  lenis.on('scroll', ({ scroll }) => {
+    if (scroll > 40) {
+      topbar.style.background = 'rgba(255,255,255,0.92)';
+    } else {
+      topbar.style.background = 'rgba(255,255,255,0.85)';
     }
   });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// 3D Tilt on Project Visuals
-document.querySelectorAll('.project-visual').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 25;
-    const rotateY = (centerX - x) / 25;
-    
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-  });
-  
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-  });
-});
 </script>
+
 </body>
 </html>
