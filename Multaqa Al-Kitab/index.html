@@ -35,7 +35,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   
   body {
     margin: 0;
@@ -70,8 +70,8 @@
     margin: 0;
     letter-spacing: 0;
   }
-  h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); }
-  h2 { font-size: clamp(1.9rem, 4vw, 3rem); }
+  h1 { font-size: clamp(2.2rem, 6vw, 4.4rem); }
+  h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
   h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); }
   
   p { margin: 0 0 1em; }
@@ -176,7 +176,7 @@
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
-    transition: padding 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease;
   }
   .nav.scrolled { background: rgba(244, 235, 220, 0.95); }
   .nav-inner {
@@ -205,6 +205,7 @@
     font-size: 1.4rem;
     font-weight: 700;
     box-shadow: inset 0 0 0 1px var(--gold), 0 4px 10px -4px rgba(58,38,22,0.4);
+    flex-shrink: 0;
   }
   .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
   .brand-text strong { font-family: var(--font-serif); font-size: 1.15rem; color: var(--walnut-dark); }
@@ -484,8 +485,8 @@
   }
   .books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
   }
   .book-card {
     background: var(--paper);
@@ -597,7 +598,7 @@
 
   .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
     gap: 20px;
   }
   .menu-item {
@@ -650,6 +651,10 @@
     cursor: pointer;
     background: var(--walnut);
     box-shadow: var(--shadow-card);
+    border: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
   }
   .gallery-item svg { width: 100%; height: 100%; display: block; transition: transform 0.6s ease; }
   .gallery-item:hover svg { transform: scale(1.06); }
@@ -819,7 +824,7 @@
     align-items: center;
     gap: 10px;
   }
-  .info-card h3 svg { width: 18px; height: 18px; color: var(--burgundy); }
+  .info-card h3 svg { width: 18px; height: 18px; color: var(--burgundy); flex-shrink: 0; }
   .hours-table { width: 100%; border-collapse: collapse; }
   .hours-table tr { border-bottom: 1px dashed var(--line); }
   .hours-table tr:last-child { border-bottom: 0; }
@@ -992,9 +997,16 @@
     .footer-brand { grid-column: span 2; }
   }
   @media (max-width: 768px) {
+    /* Removed backdrop-filter on mobile to prevent scroll lag */
+    .nav {
+      background: var(--paper);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
     .nav-links {
       position: fixed;
-      inset: 70px 0 auto 0;
+      top: 64px; 
+      inset-inline: 0;
       background: var(--paper);
       flex-direction: column;
       align-items: stretch;
@@ -1004,6 +1016,8 @@
       transition: transform 0.4s ease;
       border-bottom: 1px solid var(--line);
       box-shadow: var(--shadow-deep);
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
     }
     .nav-links.open { transform: translateY(0); }
     .nav-links a { padding: 14px 8px; border-bottom: 1px solid var(--line); }
@@ -1018,6 +1032,7 @@
     .footer-brand { grid-column: span 1; }
     .about-stats { grid-template-columns: 1fr 1fr; }
     .stat:last-child { grid-column: span 2; }
+    .lightbox { padding: 20px; }
   }
   @media (max-width: 480px) {
     .wrap { padding: 0 20px; }
@@ -1025,9 +1040,18 @@
     .brand-text em { display: none; }
     .hero-actions { flex-direction: column; align-items: stretch; }
     .hero-actions .btn { width: 100%; }
+    .hero-meta { 
+      flex-direction: column; 
+      align-items: flex-start; 
+      gap: 18px;
+    }
     .about-stats { grid-template-columns: 1fr; }
     .stat:last-child { grid-column: span 1; }
     .voice-slide { padding: 16px 8px; }
+    .filters { gap: 6px; }
+    .filter-btn { padding: 8px 12px; font-size: 0.8rem; }
+    .menu-tabs { gap: 0; }
+    .menu-tab { padding: 12px 16px; font-size: 0.85rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1108,7 +1132,6 @@
         </div>
       </div>
       <div class="hero-visual reveal reveal-delay-2" aria-hidden="true">
-        <!-- Hero SVG: stack of books with coffee cup and steam -->
         <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="hglow" cx="50%" cy="50%" r="55%">
@@ -1121,14 +1144,10 @@
             </linearGradient>
           </defs>
           <circle cx="250" cy="250" r="240" fill="url(#hglow)"/>
-          
-          <!-- Table surface -->
           <ellipse cx="250" cy="400" rx="220" ry="22" fill="#3d2616" opacity="0.25"/>
           <rect x="60" y="380" width="380" height="40" fill="url(#woodG)" rx="2"/>
           <rect x="60" y="380" width="380" height="3" fill="#b8924a" opacity="0.4"/>
           
-          <!-- Stack of books (closed, lying down, spine facing viewer) -->
-          <!-- Book 1 (bottom) -->
           <rect x="90" y="350" width="280" height="30" fill="#5a3a26" rx="2"/>
           <rect x="90" y="350" width="280" height="4" fill="#3d2616"/>
           <rect x="90" y="377" width="280" height="3" fill="#2a1c12"/>
@@ -1136,30 +1155,25 @@
           <line x1="310" y1="365" x2="350" y2="365" stroke="#b8924a" stroke-width="1.2"/>
           <circle cx="170" cy="365" r="2" fill="#b8924a"/>
           
-          <!-- Book 2 -->
           <rect x="100" y="322" width="270" height="28" fill="#7a2e3a" rx="2"/>
           <rect x="100" y="322" width="270" height="4" fill="#5e222c"/>
           <rect x="100" y="348" width="270" height="2" fill="#3a151c"/>
           <line x1="120" y1="337" x2="155" y2="337" stroke="#b8924a" stroke-width="1.2"/>
           <line x1="315" y1="337" x2="350" y2="337" stroke="#b8924a" stroke-width="1.2"/>
           
-          <!-- Book 3 -->
           <rect x="115" y="296" width="255" height="26" fill="#9aa890" rx="2"/>
           <rect x="115" y="296" width="255" height="3" fill="#7d8a73"/>
           <rect x="115" y="320" width="255" height="2" fill="#5c6855"/>
           <line x1="135" y1="310" x2="170" y2="310" stroke="#b8924a" stroke-width="1.2"/>
           <line x1="315" y1="310" x2="350" y2="310" stroke="#b8924a" stroke-width="1.2"/>
           
-          <!-- Book 4 (top, slightly offset) -->
           <rect x="130" y="272" width="230" height="24" fill="#b8924a" rx="2"/>
           <rect x="130" y="272" width="230" height="3" fill="#8e6f3a"/>
           <rect x="130" y="294" width="230" height="2" fill="#6b5128"/>
           <line x1="150" y1="285" x2="180" y2="285" stroke="#3d2616" stroke-width="1.2"/>
           <line x1="310" y1="285" x2="340" y2="285" stroke="#3d2616" stroke-width="1.2"/>
           
-          <!-- Coffee cup with saucer on top of books -->
           <g transform="translate(190, 200)">
-            <!-- Steam -->
             <g class="steam steam-1">
               <path d="M 35 30 Q 28 12 38 -2 Q 48 -16 40 -34" stroke="#8a7a66" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
             </g>
@@ -1170,28 +1184,21 @@
               <path d="M 85 30 Q 78 14 88 0 Q 98 -14 90 -30" stroke="#8a7a66" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
             </g>
             
-            <!-- Saucer -->
             <ellipse cx="60" cy="68" rx="90" ry="12" fill="#3d2616"/>
             <ellipse cx="60" cy="66" rx="90" ry="10" fill="#5a3a26"/>
             <ellipse cx="60" cy="64" rx="80" ry="7" fill="none" stroke="#b8924a" stroke-width="0.8" opacity="0.6"/>
             
-            <!-- Cup -->
             <path d="M 12 10 L 22 60 Q 22 66 30 66 L 90 66 Q 98 66 98 60 L 108 10 Z" fill="#faf5ea" stroke="#3d2616" stroke-width="1.8"/>
-            <!-- Cup rim -->
             <ellipse cx="60" cy="10" rx="48" ry="6" fill="#3d2616"/>
             <ellipse cx="60" cy="9" rx="46" ry="4.5" fill="#5a3a26"/>
             <ellipse cx="60" cy="8" rx="44" ry="3.5" fill="#2a1c12"/>
-            <!-- Coffee surface highlight -->
             <ellipse cx="55" cy="8" rx="20" ry="1.5" fill="#8e6f3a" opacity="0.6"/>
-            <!-- Handle -->
             <path d="M 102 22 Q 130 22 130 42 Q 130 58 102 58" fill="none" stroke="#3d2616" stroke-width="3"/>
             <path d="M 102 28 Q 124 28 124 42 Q 124 52 102 52" fill="none" stroke="#3d2616" stroke-width="1.5" opacity="0.5"/>
-            <!-- Decorative band on cup -->
             <line x1="18" y1="35" x2="102" y2="35" stroke="#b8924a" stroke-width="0.8" opacity="0.7"/>
             <line x1="20" y1="40" x2="100" y2="40" stroke="#b8924a" stroke-width="0.5" opacity="0.5"/>
           </g>
           
-          <!-- Decorative open book in background -->
           <g transform="translate(330, 230) rotate(-12)" opacity="0.85">
             <path d="M 0 20 L 50 12 L 50 50 L 0 56 Z" fill="#faf5ea" stroke="#3d2616" stroke-width="1.2"/>
             <path d="M 50 12 L 100 20 L 100 56 L 50 50 Z" fill="#ecdfc7" stroke="#3d2616" stroke-width="1.2"/>
@@ -1217,7 +1224,7 @@
         <h2 data-i18n="about.title">زاويةٌ هادئة بين الكتب والقهوة</h2>
         <p class="lead" data-i18n="about.lead">"كأنّك تدخل متحفاً صغيراً للثقافة السعودية والعربية، حيث يحيط بك عبق الورق وعبق البنّ."</p>
         <p class="drop-cap" data-i18n="about.p1">في حيّ طويق، جنوب غرب الرياض، وُلِد ملتقى الكتاب ليكون مساحةً جامعة بين عشّاق القراءة وعشّاق القهوة المختصّة. ليست مجرد مكتبة تبيع الكتب، ولا مقهى يقدّم القهوة فحسب — بل مكانٌ صُمِّم ليكون "المكان الثالث" الذي يبحث عنه القارئ: هادئٌ بلا ضجيج، دافئٌ بلا تكلّف، غنيٌّ بالكتاب بلا تكدّس.</p>
-        <p data-i18n="about.p2">انتقينا رفوفنا بعنايةٍ لتضمّ نماذج من الشعر العربي وأدبه، وكتباً في التاريخ والسير الذاتية وتطوير الذات، إلى جانب corner للقهوة التركية المقدّمة في كأس زجاجي — لأنّ التفاصيل الصغيرة هي ما يصنع الفارق.</p>
+        <p data-i18n="about.p2">انتقينا رفوفنا بعنايةٍ لتضمّ نماذج من الشعر العربي وأدبه، وكتباً في التاريخ والسير الذاتية وتطوير الذات، إلى جانب ركنٍ للقهوة التركية المقدّمة في كأس زجاجي — لأنّ التفاصيل الصغيرة هي ما يصنع الفارق.</p>
         <div class="about-stats">
           <div class="stat">
             <span class="num">4.7★</span>
@@ -1240,25 +1247,14 @@
               <stop offset="0%" stop-color="#6b4530"/>
               <stop offset="100%" stop-color="#3d2616"/>
             </linearGradient>
-            <pattern id="spine" x="0" y="0" width="20" height="100" patternUnits="userSpaceOnUse">
-              <rect width="20" height="100" fill="#5a3a26"/>
-              <rect width="2" height="100" fill="#3d2616"/>
-              <rect x="18" width="2" height="100" fill="#3d2616"/>
-            </pattern>
           </defs>
           <rect width="400" height="500" fill="url(#abg)"/>
-          <!-- warm light from above -->
           <ellipse cx="200" cy="60" rx="180" ry="80" fill="#b8924a" opacity="0.25"/>
           
-          <!-- Bookshelf wall -->
           <g transform="translate(0, 100)">
-            <!-- shelf outer frame -->
             <rect x="20" y="0" width="360" height="380" fill="#2a1c12"/>
-            <!-- shelves -->
             <g>
-              <!-- Shelf 1 -->
               <rect x="30" y="10" width="340" height="80" fill="#3d2616"/>
-              <!-- books on shelf 1 -->
               <rect x="35" y="15" width="18" height="70" fill="#7a2e3a"/>
               <rect x="55" y="20" width="16" height="65" fill="#9aa890"/>
               <rect x="73" y="12" width="20" height="73" fill="#b8924a"/>
@@ -1276,10 +1272,8 @@
               <rect x="311" y="16" width="22" height="69" fill="#7a2e3a"/>
               <rect x="335" y="18" width="16" height="67" fill="#9aa890"/>
               <rect x="353" y="14" width="17" height="71" fill="#3d2616"/>
-              <!-- horizontal book stack -->
               <rect x="35" y="78" width="80" height="6" fill="#b8924a"/>
               <rect x="35" y="72" width="80" height="6" fill="#7a2e3a"/>
-              <!-- shelf line -->
               <rect x="20" y="90" width="360" height="4" fill="#2a1c12"/>
             </g>
             <g transform="translate(0, 95)">
@@ -1310,7 +1304,6 @@
               <rect x="73" y="12" width="20" height="73" fill="#b8924a"/>
               <rect x="95" y="18" width="14" height="67" fill="#5a3a26"/>
               <rect x="111" y="15" width="22" height="70" fill="#3d2616"/>
-              <!-- decorative plant -->
               <g transform="translate(150, 30)">
                 <rect x="0" y="40" width="20" height="30" fill="#6b4530"/>
                 <path d="M 10 40 Q -5 25 0 5 Q 8 15 10 30 Q 12 15 20 5 Q 25 25 10 40" fill="#6f7d65"/>
@@ -1328,12 +1321,10 @@
             </g>
             <g transform="translate(0, 285)">
               <rect x="30" y="10" width="340" height="80" fill="#3d2616"/>
-              <!-- framed picture -->
               <rect x="40" y="20" width="50" height="60" fill="#b8924a"/>
               <rect x="46" y="26" width="38" height="48" fill="#3d2616"/>
               <circle cx="65" cy="46" r="8" fill="#b8924a"/>
               <path d="M 50 70 L 60 56 L 70 64 L 80 50 L 82 70 Z" fill="#9aa890"/>
-              <!-- books -->
               <rect x="100" y="20" width="18" height="65" fill="#7a2e3a"/>
               <rect x="120" y="14" width="20" height="71" fill="#5a3a26"/>
               <rect x="142" y="18" width="16" height="67" fill="#9aa890"/>
@@ -1342,19 +1333,16 @@
               <rect x="204" y="22" width="20" height="63" fill="#7a2e3a"/>
               <rect x="226" y="16" width="14" height="69" fill="#5a3a26"/>
               <rect x="242" y="18" width="22" height="67" fill="#9aa890"/>
-              <!-- clock -->
               <circle cx="290" cy="50" r="22" fill="#faf5ea" stroke="#3d2616" stroke-width="2"/>
               <line x1="290" y1="50" x2="290" y2="35" stroke="#3d2616" stroke-width="2"/>
               <line x1="290" y1="50" x2="300" y2="50" stroke="#3d2616" stroke-width="2"/>
               <circle cx="290" cy="50" r="2" fill="#3d2616"/>
-              <!-- more books -->
               <rect x="320" y="20" width="18" height="65" fill="#7a2e3a"/>
               <rect x="340" y="14" width="20" height="71" fill="#b8924a"/>
               <rect x="362" y="18" width="16" height="67" fill="#5a3a26"/>
             </g>
           </g>
           
-          <!-- floor lamp glow -->
           <ellipse cx="200" cy="500" rx="200" ry="40" fill="#b8924a" opacity="0.15"/>
         </svg>
       </div>
@@ -1687,14 +1675,14 @@ const books = [
   { genre:'literature', ar:{t:'موسم الهجرة', a:'الطيّب صالح'}, en:{t:'Season of Migration', a:'Tayeb Salih'}, c:'#9aa890' },
   { genre:'literature', ar:{t:'أرض زيكولا', a:'عمرو عبد الحميد'}, en:{t:'Land of Zikola', a:'Amr Abdel Hamid'}, c:'#b8924a' },
   { genre:'literature', ar:{t:'اللص والكلاب', a:'نجيب محفوظ'}, en:{t:'The Thief and the Dogs', a:'Naguib Mahfouz'}, c:'#3d2616' },
-  { genre:'history', ar:{ت:'تاريخ الطبري', a:'الطبري'}, en:{t:'History of Tabari', a:'Al-Tabari'}, c:'#5a3a26' },
+  { genre:'history', ar:{t:'تاريخ الطبري', a:'الطبري'}, en:{t:'History of Tabari', a:'Al-Tabari'}, c:'#5a3a26' },
   { genre:'history', ar:{t:'البداية والنهاية', a:'ابن كثير'}, en:{t:'The Beginning and the End', a:'Ibn Kathir'}, c:'#7a2e3a' },
   { genre:'biography', ar:{t:'سيرة ابن هشام', a:'ابن هشام'}, en:{t:'Ibn Hisham Biography', a:'Ibn Hisham'}, c:'#9aa890' },
   { genre:'biography', ar:{t:'الأيام', a:'طه حسين'}, en:{t:'The Days', a:'Taha Hussein'}, c:'#b8924a' },
   { genre:'selfhelp', ar:{t:'العادات الذرّية', a:'جيمس كلير'}, en:{t:'Atomic Habits', a:'James Clear'}, c:'#5a3a26' },
   { genre:'selfhelp', ar:{t:'فنّ اللامبالاة', a:'مارك مانسون'}, en:{t:'The Subtle Art', a:'Mark Manson'}, c:'#7a2e3a' },
   { genre:'selfhelp', ar:{t:'ابدأ بالأسباب', a:'سايمون سينك'}, en:{t:'Start with Why', a:'Simon Sinek'}, c:'#3d2616' }
-].map(b => ({...b, ar:{t:b.ar.t||b.ar.ت, a:b.ar.a}, en:b.en}));
+];
 
 /* Menu data */
 const menuData = {
@@ -1756,7 +1744,6 @@ function gallerySVG(i) {
   const p = palettes[i % palettes.length];
   
   const scenes = [
-    // 0: Bookshelf wall
     `<rect width="400" height="300" fill="${p.bg}"/>
     <rect x="0" y="0" width="400" height="20" fill="${p.a}"/>
     <rect x="0" y="280" width="400" height="20" fill="${p.a}"/>
@@ -1764,7 +1751,6 @@ function gallerySVG(i) {
       <rect x="20" y="${y}" width="360" height="70" fill="${p.a}" opacity="0.6"/>
       ${Array.from({length:18}).map((_,k)=>{const colors=[p.b,p.c,p.a,p.bg];const cc=colors[k%4];const h=50+Math.floor(Math.sin(k*7.3)*15);const w=12+(k%3)*4;return `<rect x="${28+k*19}" y="${y+10+(70-h)/2}" width="${w}" height="${h}" fill="${cc}"/>`;}).join('')}
     `).join('')}`,
-    // 1: Reading nook with armchair
     `<rect width="400" height="300" fill="${p.bg}"/>
     <ellipse cx="200" cy="290" rx="180" ry="20" fill="#2a1c12" opacity="0.4"/>
     <rect x="0" y="0" width="400" height="180" fill="${p.a}" opacity="0.4"/>
@@ -1778,7 +1764,6 @@ function gallerySVG(i) {
     <rect x="270" y="220" width="20" height="50" fill="${p.a}" rx="4"/>
     <rect x="160" y="200" width="80" height="30" fill="${p.b}" opacity="0.5" rx="4"/>
     <circle cx="320" cy="100" r="30" fill="${p.b}" opacity="0.4"/>`,
-    // 2: Coffee bar counter
     `<rect width="400" height="300" fill="${p.bg}"/>
     <rect x="0" y="0" width="400" height="160" fill="${p.a}"/>
     <rect x="40" y="40" width="120" height="80" fill="${p.c}" opacity="0.3"/>
@@ -1796,7 +1781,6 @@ function gallerySVG(i) {
     <rect x="285" y="85" width="50" height="40" fill="${p.bg}"/>
     <circle cx="300" cy="105" r="4" fill="${p.c}"/>
     <circle cx="320" cy="105" r="4" fill="${p.c}"/>`,
-    // 3: Reflection corner with stack of books
     `<rect width="400" height="300" fill="${p.bg}"/>
     <ellipse cx="200" cy="290" rx="200" ry="22" fill="#2a1c12" opacity="0.4"/>
     <rect x="60" y="200" width="280" height="80" fill="${p.a}" rx="4"/>
@@ -1809,7 +1793,6 @@ function gallerySVG(i) {
     <line x1="100" y1="185" x2="300" y2="185" stroke="${p.bg}" stroke-width="1"/>
     <circle cx="200" cy="40" r="20" fill="${p.b}" opacity="0.5"/>
     <circle cx="200" cy="40" r="12" fill="${p.b}" opacity="0.7"/>`,
-    // 4: Shared table with books and coffee
     `<rect width="400" height="300" fill="${p.bg}"/>
     <rect x="0" y="200" width="400" height="100" fill="${p.a}"/>
     <rect x="0" y="200" width="400" height="6" fill="${p.b}"/>
@@ -1826,7 +1809,6 @@ function gallerySVG(i) {
     <path d="M 310 130 Q 315 115 305 100" stroke="${p.c}" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
     <path d="M 330 130 Q 325 115 335 100" stroke="${p.c}" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
     <rect x="180" y="170" width="80" height="30" fill="${p.c}" opacity="0.4" rx="2"/>`,
-    // 5: Warm lighting with hanging lamp
     `<rect width="400" height="300" fill="${p.bg}"/>
     <ellipse cx="200" cy="280" rx="200" ry="30" fill="${p.b}" opacity="0.15"/>
     <rect x="0" y="0" width="400" height="60" fill="${p.a}"/>
@@ -1879,7 +1861,6 @@ function applyLang(lang) {
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.title = lang === 'ar' ? 'ملتقى الكتاب | مكتبة ومقهى' : 'Multaqa Al-Kitab | Bookstore & Café';
   
-  // text content
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const val = t(key);
@@ -1887,15 +1868,12 @@ function applyLang(lang) {
     else el.textContent = val;
   });
   
-  // placeholders
   document.querySelectorAll('[data-i18n-ph]').forEach(el => {
     el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph')));
   });
   
-  // lang toggle button label
   document.getElementById('langToggle').textContent = lang === 'ar' ? 'EN' : 'ع';
   
-  // re-render dynamic content
   renderBooks();
   renderMenu();
   renderGallery();
@@ -1921,7 +1899,6 @@ function renderBooks() {
       </div>
     </div>`;
   }).join('');
-  // re-apply current filter
   filterBooks(currentFilter);
 }
 
@@ -1952,7 +1929,6 @@ function renderGallery() {
     </button>`;
   }).join('');
   
-  // attach click handlers
   grid.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
   });
@@ -2022,8 +1998,6 @@ function goToSlide(i) {
 }
 function updateCarousel() {
   const track = document.getElementById('carouselTrack');
-  const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-  // For RTL, translateX is positive; for LTR, negative
   const offset = currentLang === 'ar' ? currentSlide * 100 : -currentSlide * 100;
   track.style.transform = `translateX(${offset}%)`;
   document.querySelectorAll('#carouselDots .dot').forEach((d, i) => {
@@ -2047,7 +2021,6 @@ function resetAutoplay() {
 document.getElementById('carousel').addEventListener('mouseenter', stopAutoplay);
 document.getElementById('carousel').addEventListener('mouseleave', startAutoplay);
 
-// Touch swipe
 let touchStartX = 0, touchEndX = 0;
 const carousel = document.getElementById('carousel');
 carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive:true});
@@ -2055,7 +2028,6 @@ carousel.addEventListener('touchend', e => {
   touchEndX = e.changedTouches[0].screenX;
   const diff = touchStartX - touchEndX;
   if (Math.abs(diff) > 50) {
-    // In RTL, swipe direction semantics flip
     if (currentLang === 'ar') {
       goToSlide(currentSlide + (diff > 0 ? -1 : 1));
     } else {
@@ -2098,10 +2070,9 @@ function getStatus() {
   const now = new Date();
   const riyadhStr = now.toLocaleString('en-US', { timeZone: 'Asia/Riyadh' });
   const r = new Date(riyadhStr);
-  const day = r.getDay(); // 0=Sun ... 5=Fri ... 6=Sat
+  const day = r.getDay();
   const minutes = r.getHours() * 60 + r.getMinutes();
   
-  // Friday: 13:00 - 23:00
   if (day === 5) {
     if (minutes >= 13*60 && minutes <= 23*60) {
       return { open: true, label: `${t('status.open')} · ${t('status.closesAt')} 11:00 PM` };
@@ -2111,7 +2082,6 @@ function getStatus() {
     }
     return { open: false, label: t('status.closed') };
   }
-  // Sat-Thu: 8:00-11:30 (480-690) AND 16:00-23:00 (960-1380)
   if (minutes >= 480 && minutes <= 690) {
     return { open: true, label: `${t('status.open')} · ${t('status.closesAt')} 11:30 AM` };
   }
@@ -2159,15 +2129,18 @@ document.getElementById('langToggle').addEventListener('click', () => {
 });
 
 /* ============================
-   NAV
+   NAV & SCROLL HANDLING
 ============================ */
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
+const nav = document.querySelector('.nav');
+
 hamburger.addEventListener('click', () => {
   const open = navLinks.classList.toggle('open');
   hamburger.classList.toggle('open', open);
   hamburger.setAttribute('aria-expanded', open);
 });
+
 navLinks.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => {
     navLinks.classList.remove('open');
@@ -2176,7 +2149,6 @@ navLinks.querySelectorAll('a').forEach(a => {
   });
 });
 
-// Active section highlight
 const sections = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
 const navObserver = new IntersectionObserver(entries => {
@@ -2191,11 +2163,29 @@ const navObserver = new IntersectionObserver(entries => {
 }, { rootMargin: '-40% 0px -55% 0px' });
 sections.forEach(s => navObserver.observe(s));
 
-// Nav scrolled state
+// Smart Nav: Hide on scroll down, show on scroll up (Mobile Fix)
+let lastScrollTop = 0;
 window.addEventListener('scroll', () => {
-  const nav = document.querySelector('.nav');
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-  document.getElementById('toTop').classList.toggle('show', window.scrollY > 600);
+  let scrollTop = window.scrollY || document.documentElement.scrollTop;
+  
+  nav.classList.toggle('scrolled', scrollTop > 20);
+  document.getElementById('toTop').classList.toggle('show', scrollTop > 600);
+
+  // Mobile Hide/Show logic
+  if (window.innerWidth <= 768) {
+    if (navLinks.classList.contains('open')) {
+      nav.style.transform = 'translateY(0)';
+      return; 
+    }
+    if (scrollTop > lastScrollTop && scrollTop > 80) {
+      nav.style.transform = 'translateY(-100%)';
+    } else {
+      nav.style.transform = 'translateY(0)';
+    }
+  } else {
+    nav.style.transform = 'translateY(0)';
+  }
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
 }, { passive: true });
 
 document.getElementById('toTop').addEventListener('click', () => {
@@ -2227,7 +2217,6 @@ document.getElementById('contactForm').addEventListener('submit', e => {
   const phone = form.phone;
   const msg = form.msg;
   
-  // reset
   [name, phone, msg].forEach(input => {
     input.closest('.form-row').classList.remove('error');
   });
@@ -2253,7 +2242,6 @@ document.getElementById('contactForm').addEventListener('submit', e => {
   }
 });
 
-// Clear error on input
 document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(input => {
   input.addEventListener('input', () => {
     input.closest('.form-row').classList.remove('error');
@@ -2266,7 +2254,7 @@ document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(i
 applyLang('ar');
 startAutoplay();
 updateStatus();
-setInterval(updateStatus, 60000); // refresh status every minute
+setInterval(updateStatus, 60000); 
 highlightToday();
 </script>
 </body>
